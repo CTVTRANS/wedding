@@ -1,0 +1,794 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B312FC487BEC603D587C832 /* Pods_Weding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500324A2C54666C533D2D01 /* Pods_Weding.framework */; };
+		6D29AC9D1F34039C00A17621 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29AC9C1F34039C00A17621 /* AppDelegate.swift */; };
+		6D29ACA21F34039C00A17621 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D29ACA01F34039C00A17621 /* Main.storyboard */; };
+		6D29ACA41F34039C00A17621 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D29ACA31F34039C00A17621 /* Assets.xcassets */; };
+		6D29ACA71F34039C00A17621 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D29ACA51F34039C00A17621 /* LaunchScreen.storyboard */; };
+		6D29ACB21F34039C00A17621 /* WedingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACB11F34039C00A17621 /* WedingTests.swift */; };
+		6D29ACBD1F34039C00A17621 /* WedingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACBC1F34039C00A17621 /* WedingUITests.swift */; };
+		6D29ACCB1F34261500A17621 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACCA1F34261500A17621 /* MainViewController.swift */; };
+		6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACCC1F345E8900A17621 /* SecondViewController.swift */; };
+		6D29ACD01F34710F00A17621 /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACCF1F34710F00A17621 /* MessageViewCell.swift */; };
+		6D29ACD31F3481F100A17621 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACD21F3481F100A17621 /* BaseViewController.swift */; };
+		6D29ACD51F34822C00A17621 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACD41F34822C00A17621 /* WebViewController.swift */; };
+		6D6228571F34C658000CE328 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6228561F34C658000CE328 /* CustomNavigationBar.swift */; };
+		6DABE6DF1F34C2FC00053AA3 /* CustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */; };
+		6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */; };
+		6DF082CE1F3552EA0073A9BF /* SecondNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */; };
+		6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */; };
+		E19E08D17C0560817A4AF853 /* Pods_WedingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */; };
+		E7D2C5B895444686E9A6B648 /* Pods_WedingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D29ACAE1F34039C00A17621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D29AC911F34039C00A17621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D29AC981F34039C00A17621;
+			remoteInfo = Weding;
+		};
+		6D29ACB91F34039C00A17621 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D29AC911F34039C00A17621 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D29AC981F34039C00A17621;
+			remoteInfo = Weding;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		129EFFA576E8CA79F5403B4E /* Pods-Weding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weding.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weding/Pods-Weding.debug.xcconfig"; sourceTree = "<group>"; };
+		2C01A1563FCA4B7F379322FA /* Pods-WedingUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WedingUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WedingUITests/Pods-WedingUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		33E5B8048A67492F24CCAC1A /* Pods-Weding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weding.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weding/Pods-Weding.release.xcconfig"; sourceTree = "<group>"; };
+		3500324A2C54666C533D2D01 /* Pods_Weding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		420399E05782CEB504B10164 /* Pods-WedingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WedingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WedingTests/Pods-WedingTests.release.xcconfig"; sourceTree = "<group>"; };
+		44761337A1FC0665B24D15F1 /* Pods-WedingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WedingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WedingUITests/Pods-WedingUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4AA48B413161ECED27D30A07 /* Pods-WedingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WedingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WedingTests/Pods-WedingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D29AC991F34039C00A17621 /* Weding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weding.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D29AC9C1F34039C00A17621 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6D29ACA11F34039C00A17621 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6D29ACA31F34039C00A17621 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D29ACA61F34039C00A17621 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6D29ACA81F34039C00A17621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D29ACAD1F34039C00A17621 /* WedingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WedingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D29ACB11F34039C00A17621 /* WedingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedingTests.swift; sourceTree = "<group>"; };
+		6D29ACB31F34039C00A17621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D29ACB81F34039C00A17621 /* WedingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WedingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D29ACBC1F34039C00A17621 /* WedingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WedingUITests.swift; sourceTree = "<group>"; };
+		6D29ACBE1F34039C00A17621 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D29ACCA1F34261500A17621 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6D29ACCC1F345E8900A17621 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		6D29ACCF1F34710F00A17621 /* MessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewCell.swift; sourceTree = "<group>"; };
+		6D29ACD21F3481F100A17621 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		6D29ACD41F34822C00A17621 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		6D6228561F34C658000CE328 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNavigationBar.xib; sourceTree = "<group>"; };
+		6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondNavigation.xib; sourceTree = "<group>"; };
+		6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondNavigation.swift; sourceTree = "<group>"; };
+		75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D29AC961F34039C00A17621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B312FC487BEC603D587C832 /* Pods_Weding.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D29ACAA1F34039C00A17621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19E08D17C0560817A4AF853 /* Pods_WedingTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D29ACB51F34039C00A17621 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7D2C5B895444686E9A6B648 /* Pods_WedingUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18A0DA8A73640FF7B97B89F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3500324A2C54666C533D2D01 /* Pods_Weding.framework */,
+				75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */,
+				913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D29AC901F34039C00A17621 = {
+			isa = PBXGroup;
+			children = (
+				6D29AC9B1F34039C00A17621 /* Weding */,
+				6D29ACB01F34039C00A17621 /* WedingTests */,
+				6D29ACBB1F34039C00A17621 /* WedingUITests */,
+				6D29AC9A1F34039C00A17621 /* Products */,
+				D5FCB35F3F3F88FDAA838802 /* Pods */,
+				18A0DA8A73640FF7B97B89F5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6D29AC9A1F34039C00A17621 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D29AC991F34039C00A17621 /* Weding.app */,
+				6D29ACAD1F34039C00A17621 /* WedingTests.xctest */,
+				6D29ACB81F34039C00A17621 /* WedingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D29AC9B1F34039C00A17621 /* Weding */ = {
+			isa = PBXGroup;
+			children = (
+				6D29AC9C1F34039C00A17621 /* AppDelegate.swift */,
+				6D29ACA01F34039C00A17621 /* Main.storyboard */,
+				6D29ACD21F3481F100A17621 /* BaseViewController.swift */,
+				6D29ACCA1F34261500A17621 /* MainViewController.swift */,
+				6DF082CA1F3552AB0073A9BF /* SiginController */,
+				6D29ACD11F3481C300A17621 /* WebView */,
+				6D29ACCE1F3470E900A17621 /* SeconView */,
+				6DF082C91F3552950073A9BF /* NavigationBar */,
+				6D29ACA31F34039C00A17621 /* Assets.xcassets */,
+				6D29ACA51F34039C00A17621 /* LaunchScreen.storyboard */,
+				6D29ACA81F34039C00A17621 /* Info.plist */,
+			);
+			path = Weding;
+			sourceTree = "<group>";
+		};
+		6D29ACB01F34039C00A17621 /* WedingTests */ = {
+			isa = PBXGroup;
+			children = (
+				6D29ACB11F34039C00A17621 /* WedingTests.swift */,
+				6D29ACB31F34039C00A17621 /* Info.plist */,
+			);
+			path = WedingTests;
+			sourceTree = "<group>";
+		};
+		6D29ACBB1F34039C00A17621 /* WedingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6D29ACBC1F34039C00A17621 /* WedingUITests.swift */,
+				6D29ACBE1F34039C00A17621 /* Info.plist */,
+			);
+			path = WedingUITests;
+			sourceTree = "<group>";
+		};
+		6D29ACCE1F3470E900A17621 /* SeconView */ = {
+			isa = PBXGroup;
+			children = (
+				6D29ACCC1F345E8900A17621 /* SecondViewController.swift */,
+				6D29ACCF1F34710F00A17621 /* MessageViewCell.swift */,
+			);
+			name = SeconView;
+			sourceTree = "<group>";
+		};
+		6D29ACD11F3481C300A17621 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				6D29ACD41F34822C00A17621 /* WebViewController.swift */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
+		6DF082C91F3552950073A9BF /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */,
+				6D6228561F34C658000CE328 /* CustomNavigationBar.swift */,
+				6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */,
+				6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */,
+			);
+			name = NavigationBar;
+			sourceTree = "<group>";
+		};
+		6DF082CA1F3552AB0073A9BF /* SiginController */ = {
+			isa = PBXGroup;
+			children = (
+				6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */,
+			);
+			name = SiginController;
+			sourceTree = "<group>";
+		};
+		D5FCB35F3F3F88FDAA838802 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				129EFFA576E8CA79F5403B4E /* Pods-Weding.debug.xcconfig */,
+				33E5B8048A67492F24CCAC1A /* Pods-Weding.release.xcconfig */,
+				4AA48B413161ECED27D30A07 /* Pods-WedingTests.debug.xcconfig */,
+				420399E05782CEB504B10164 /* Pods-WedingTests.release.xcconfig */,
+				2C01A1563FCA4B7F379322FA /* Pods-WedingUITests.debug.xcconfig */,
+				44761337A1FC0665B24D15F1 /* Pods-WedingUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D29AC981F34039C00A17621 /* Weding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D29ACC11F34039C00A17621 /* Build configuration list for PBXNativeTarget "Weding" */;
+			buildPhases = (
+				78F2C1CF614EAE84A9F619B5 /* [CP] Check Pods Manifest.lock */,
+				6D29AC951F34039C00A17621 /* Sources */,
+				6D29AC961F34039C00A17621 /* Frameworks */,
+				6D29AC971F34039C00A17621 /* Resources */,
+				709D8DD094B6FE81A6E23DF3 /* [CP] Embed Pods Frameworks */,
+				D0BD0AFB315F3CC653114260 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Weding;
+			productName = Weding;
+			productReference = 6D29AC991F34039C00A17621 /* Weding.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D29ACAC1F34039C00A17621 /* WedingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D29ACC41F34039C00A17621 /* Build configuration list for PBXNativeTarget "WedingTests" */;
+			buildPhases = (
+				0AAC34623A21EF5E503F71FB /* [CP] Check Pods Manifest.lock */,
+				6D29ACA91F34039C00A17621 /* Sources */,
+				6D29ACAA1F34039C00A17621 /* Frameworks */,
+				6D29ACAB1F34039C00A17621 /* Resources */,
+				C0131D027A9FC653587744BB /* [CP] Embed Pods Frameworks */,
+				18DAE2E276D7202B00BDFC09 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D29ACAF1F34039C00A17621 /* PBXTargetDependency */,
+			);
+			name = WedingTests;
+			productName = WedingTests;
+			productReference = 6D29ACAD1F34039C00A17621 /* WedingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6D29ACB71F34039C00A17621 /* WedingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D29ACC71F34039C00A17621 /* Build configuration list for PBXNativeTarget "WedingUITests" */;
+			buildPhases = (
+				7AF03EF206D8235286268539 /* [CP] Check Pods Manifest.lock */,
+				6D29ACB41F34039C00A17621 /* Sources */,
+				6D29ACB51F34039C00A17621 /* Frameworks */,
+				6D29ACB61F34039C00A17621 /* Resources */,
+				BF3EB68C30B075C7BE851882 /* [CP] Embed Pods Frameworks */,
+				A06247DFC5C6B32AE0ECD867 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D29ACBA1F34039C00A17621 /* PBXTargetDependency */,
+			);
+			name = WedingUITests;
+			productName = WedingUITests;
+			productReference = 6D29ACB81F34039C00A17621 /* WedingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D29AC911F34039C00A17621 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "kien le van";
+				TargetAttributes = {
+					6D29AC981F34039C00A17621 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					6D29ACAC1F34039C00A17621 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6D29AC981F34039C00A17621;
+					};
+					6D29ACB71F34039C00A17621 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6D29AC981F34039C00A17621;
+					};
+				};
+			};
+			buildConfigurationList = 6D29AC941F34039C00A17621 /* Build configuration list for PBXProject "Weding" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6D29AC901F34039C00A17621;
+			productRefGroup = 6D29AC9A1F34039C00A17621 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D29AC981F34039C00A17621 /* Weding */,
+				6D29ACAC1F34039C00A17621 /* WedingTests */,
+				6D29ACB71F34039C00A17621 /* WedingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D29AC971F34039C00A17621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D29ACA71F34039C00A17621 /* LaunchScreen.storyboard in Resources */,
+				6DF082CE1F3552EA0073A9BF /* SecondNavigation.xib in Resources */,
+				6D29ACA41F34039C00A17621 /* Assets.xcassets in Resources */,
+				6D29ACA21F34039C00A17621 /* Main.storyboard in Resources */,
+				6DABE6DF1F34C2FC00053AA3 /* CustomNavigationBar.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D29ACAB1F34039C00A17621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D29ACB61F34039C00A17621 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AAC34623A21EF5E503F71FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		18DAE2E276D7202B00BDFC09 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WedingTests/Pods-WedingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		709D8DD094B6FE81A6E23DF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weding/Pods-Weding-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78F2C1CF614EAE84A9F619B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7AF03EF206D8235286268539 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A06247DFC5C6B32AE0ECD867 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WedingUITests/Pods-WedingUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF3EB68C30B075C7BE851882 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WedingUITests/Pods-WedingUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0131D027A9FC653587744BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WedingTests/Pods-WedingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0BD0AFB315F3CC653114260 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weding/Pods-Weding-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D29AC951F34039C00A17621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D29ACD31F3481F100A17621 /* BaseViewController.swift in Sources */,
+				6D29ACD51F34822C00A17621 /* WebViewController.swift in Sources */,
+				6D29ACD01F34710F00A17621 /* MessageViewCell.swift in Sources */,
+				6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */,
+				6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */,
+				6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */,
+				6D29ACCB1F34261500A17621 /* MainViewController.swift in Sources */,
+				6D29AC9D1F34039C00A17621 /* AppDelegate.swift in Sources */,
+				6D6228571F34C658000CE328 /* CustomNavigationBar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D29ACA91F34039C00A17621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D29ACB21F34039C00A17621 /* WedingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D29ACB41F34039C00A17621 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D29ACBD1F34039C00A17621 /* WedingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D29ACAF1F34039C00A17621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D29AC981F34039C00A17621 /* Weding */;
+			targetProxy = 6D29ACAE1F34039C00A17621 /* PBXContainerItemProxy */;
+		};
+		6D29ACBA1F34039C00A17621 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D29AC981F34039C00A17621 /* Weding */;
+			targetProxy = 6D29ACB91F34039C00A17621 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6D29ACA01F34039C00A17621 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D29ACA11F34039C00A17621 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6D29ACA51F34039C00A17621 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D29ACA61F34039C00A17621 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6D29ACBF1F34039C00A17621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6D29ACC01F34039C00A17621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6D29ACC21F34039C00A17621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 129EFFA576E8CA79F5403B4E /* Pods-Weding.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Weding/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.Weding;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6D29ACC31F34039C00A17621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33E5B8048A67492F24CCAC1A /* Pods-Weding.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Weding/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.Weding;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		6D29ACC51F34039C00A17621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AA48B413161ECED27D30A07 /* Pods-WedingTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WedingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weding.app/Weding";
+			};
+			name = Debug;
+		};
+		6D29ACC61F34039C00A17621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 420399E05782CEB504B10164 /* Pods-WedingTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WedingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weding.app/Weding";
+			};
+			name = Release;
+		};
+		6D29ACC81F34039C00A17621 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C01A1563FCA4B7F379322FA /* Pods-WedingUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = WedingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Weding;
+			};
+			name = Debug;
+		};
+		6D29ACC91F34039C00A17621 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44761337A1FC0665B24D15F1 /* Pods-WedingUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = WedingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Weding;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D29AC941F34039C00A17621 /* Build configuration list for PBXProject "Weding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D29ACBF1F34039C00A17621 /* Debug */,
+				6D29ACC01F34039C00A17621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D29ACC11F34039C00A17621 /* Build configuration list for PBXNativeTarget "Weding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D29ACC21F34039C00A17621 /* Debug */,
+				6D29ACC31F34039C00A17621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D29ACC41F34039C00A17621 /* Build configuration list for PBXNativeTarget "WedingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D29ACC51F34039C00A17621 /* Debug */,
+				6D29ACC61F34039C00A17621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D29ACC71F34039C00A17621 /* Build configuration list for PBXNativeTarget "WedingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D29ACC81F34039C00A17621 /* Debug */,
+				6D29ACC91F34039C00A17621 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D29AC911F34039C00A17621 /* Project object */;
+}

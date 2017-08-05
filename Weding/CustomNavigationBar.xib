@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomNavigationBar" customModule="Weding" customModuleProvider="target">
+            <connections>
+                <outlet property="titleNavigation" destination="a66-Pm-FDH" id="ISD-TE-orn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CustomNavigationBar" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="navigationBar" translatesAutoresizingMaskIntoConstraints="NO" id="kjp-cx-OUO">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_rightButton" translatesAutoresizingMaskIntoConstraints="NO" id="Z6V-v6-SG0">
+                    <rect key="frame" x="322" y="26.5" width="37" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="29" id="i3F-NB-ytK"/>
+                        <constraint firstAttribute="width" constant="37.5" id="mAn-Ph-CXs"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_leftButton" translatesAutoresizingMaskIntoConstraints="NO" id="8XV-cU-GoG">
+                    <rect key="frame" x="16" y="32" width="27" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="jNN-2M-Cdl"/>
+                        <constraint firstAttribute="width" constant="27" id="yxu-vg-xTL"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a66-Pm-FDH">
+                    <rect key="frame" x="166" y="30.5" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dla-iL-qxy">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="tlR-nh-fDo"/>
+                    </constraints>
+                    <connections>
+                        <action selector="pressedLeftItem:" destination="-1" eventType="touchUpInside" id="Z14-hh-Z2f"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ok-Lk-Dif">
+                    <rect key="frame" x="329" y="0.0" width="46" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="EDK-lS-bvh"/>
+                    </constraints>
+                    <connections>
+                        <action selector="pressedRightItem:" destination="-1" eventType="touchUpInside" id="9pk-M8-of8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="8ok-Lk-Dif" secondAttribute="bottom" id="2vA-Ti-rUs"/>
+                <constraint firstItem="Z6V-v6-SG0" firstAttribute="centerY" secondItem="8XV-cU-GoG" secondAttribute="centerY" id="5nd-MT-Qnt"/>
+                <constraint firstAttribute="bottom" secondItem="8XV-cU-GoG" secondAttribute="bottom" constant="14" id="6Vk-nY-aGk"/>
+                <constraint firstItem="8ok-Lk-Dif" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ABS-bS-Yd9"/>
+                <constraint firstAttribute="trailing" secondItem="Z6V-v6-SG0" secondAttribute="trailing" constant="16" id="Deb-3h-Uk3"/>
+                <constraint firstItem="8XV-cU-GoG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Ess-pk-sNW"/>
+                <constraint firstAttribute="trailing" secondItem="8ok-Lk-Dif" secondAttribute="trailing" id="U5k-fN-0PA"/>
+                <constraint firstItem="Dla-iL-qxy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="U6E-we-Sjw"/>
+                <constraint firstItem="a66-Pm-FDH" firstAttribute="centerY" secondItem="8XV-cU-GoG" secondAttribute="centerY" id="YKo-nH-lBo"/>
+                <constraint firstItem="a66-Pm-FDH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mFq-Ip-eou"/>
+                <constraint firstAttribute="bottom" secondItem="Dla-iL-qxy" secondAttribute="bottom" id="mZn-25-s07"/>
+                <constraint firstItem="Dla-iL-qxy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vUR-7S-G5l"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="74" y="-83"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_leftButton" width="27" height="18"/>
+        <image name="ic_rightButton" width="37" height="29"/>
+        <image name="navigationBar" width="667" height="133"/>
+    </resources>
+</document>
