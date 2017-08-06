@@ -13,6 +13,8 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var navigation: SecondNavigation!
     @IBOutlet weak var replyMessageView: UIView!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var manName: UILabel!
+    @IBOutlet weak var womanName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +24,8 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
         
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "navigationBar"), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        manName.text = Constants.sharedInstance.man?.getNameGroom()
+        womanName.text = Constants.sharedInstance.woman?.getNameBride()
         
         replyMessageView.layer.borderColor = UIColor.init(red: 236/255.0, green: 186/255.0, blue: 206/255.0, alpha: 1.0).cgColor
         table.layer.borderColor = UIColor.init(red: 236/255.0, green: 186/255.0, blue: 206/255.0, alpha: 1.0).cgColor

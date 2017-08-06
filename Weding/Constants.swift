@@ -8,15 +8,12 @@
 
 import UIKit
 
+let mainUrl = "http://www.freewed.com.tw/api/GetGuestInfoByMember.aspx"
+
 class Constants: NSObject {
     
-    var checkClickLeftBarButtonMainSreen: Bool! = false
-
-    class func shaareIntance() -> Constants {
-        var instance:Constants? = nil
-        if (instance == nil) {
-            instance = Constants.init()
-        }
-        return instance!
-    }
+    var woman: BrideModel? = nil
+    var man: GroomModel? = nil
+    
+    static let sharedInstance = Constants()
 }

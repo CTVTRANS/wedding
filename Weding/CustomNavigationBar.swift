@@ -14,6 +14,7 @@ class CustomNavigationBar: UIView {
     @IBOutlet weak var leftButton: UIButton!
     
     var callBack = {}
+    var closure: () -> () = {}
     
     override init(frame: CGRect) {
         super.init(frame: frame)

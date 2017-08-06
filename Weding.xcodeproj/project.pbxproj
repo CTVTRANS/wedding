@@ -24,10 +24,12 @@
 		6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */; };
 		6DF082CE1F3552EA0073A9BF /* SecondNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */; };
 		6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */; };
-		6DF0830D1F3576800073A9BF /* BaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0830C1F3576800073A9BF /* BaseNetworkManager.swift */; };
 		6DF083101F3581C50073A9BF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0830F1F3581C50073A9BF /* MenuViewController.swift */; };
 		6DF083121F3581DC0073A9BF /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF083111F3581DC0073A9BF /* MenuViewCell.swift */; };
 		6DF1F25C1F36B54500C595B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1F25B1F36B54500C595B8 /* Constants.swift */; };
+		6DF4A4BA1F3702B900869C38 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4A4B91F3702B900869C38 /* LoginTask.swift */; };
+		6DF4A4BD1F372B0500869C38 /* BrideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4A4BC1F372B0500869C38 /* BrideModel.swift */; };
+		6DF4A4BF1F372CE500869C38 /* GroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4A4BE1F372CE500869C38 /* GroomModel.swift */; };
 		E19E08D17C0560817A4AF853 /* Pods_WedingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */; };
 		E7D2C5B895444686E9A6B648 /* Pods_WedingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,10 +81,12 @@
 		6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondNavigation.xib; sourceTree = "<group>"; };
 		6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondNavigation.swift; sourceTree = "<group>"; };
-		6DF0830C1F3576800073A9BF /* BaseNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNetworkManager.swift; sourceTree = "<group>"; };
 		6DF0830F1F3581C50073A9BF /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6DF083111F3581DC0073A9BF /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		6DF1F25B1F36B54500C595B8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6DF4A4B91F3702B900869C38 /* LoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
+		6DF4A4BC1F372B0500869C38 /* BrideModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrideModel.swift; sourceTree = "<group>"; };
+		6DF4A4BE1F372CE500869C38 /* GroomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroomModel.swift; sourceTree = "<group>"; };
 		75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -151,9 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				6D29AC9C1F34039C00A17621 /* AppDelegate.swift */,
-				6D29ACA01F34039C00A17621 /* Main.storyboard */,
 				6D29ACD21F3481F100A17621 /* BaseViewController.swift */,
-				6D29ACCA1F34261500A17621 /* MainViewController.swift */,
+				6D29ACA01F34039C00A17621 /* Main.storyboard */,
 				6DF0830B1F3575C60073A9BF /* Network */,
 				6DF1F2591F36B46100C595B8 /* Model */,
 				6DF1F25A1F36B47200C595B8 /* Controller */,
@@ -161,7 +164,6 @@
 				6D29ACA31F34039C00A17621 /* Assets.xcassets */,
 				6D29ACA51F34039C00A17621 /* LaunchScreen.storyboard */,
 				6D29ACA81F34039C00A17621 /* Info.plist */,
-				6DF1F25B1F36B54500C595B8 /* Constants.swift */,
 			);
 			path = Weding;
 			sourceTree = "<group>";
@@ -223,7 +225,7 @@
 		6DF0830B1F3575C60073A9BF /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				6DF0830C1F3576800073A9BF /* BaseNetworkManager.swift */,
+				6DF4A4B91F3702B900869C38 /* LoginTask.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -240,6 +242,9 @@
 		6DF1F2591F36B46100C595B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6DF1F25B1F36B54500C595B8 /* Constants.swift */,
+				6DF4A4BC1F372B0500869C38 /* BrideModel.swift */,
+				6DF4A4BE1F372CE500869C38 /* GroomModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -247,12 +252,21 @@
 		6DF1F25A1F36B47200C595B8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6DF4A4BB1F37242500869C38 /* Main */,
 				6DF082CA1F3552AB0073A9BF /* SiginController */,
 				6DF0830E1F3581860073A9BF /* Menu */,
 				6D29ACCE1F3470E900A17621 /* SeconView */,
 				6D29ACD11F3481C300A17621 /* WebView */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		6DF4A4BB1F37242500869C38 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6D29ACCA1F34261500A17621 /* MainViewController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		D5FCB35F3F3F88FDAA838802 /* Pods */ = {
@@ -345,6 +359,8 @@
 				TargetAttributes = {
 					6D29AC981F34039C00A17621 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = A5XAYPR24L;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					6D29ACAC1F34039C00A17621 = {
@@ -551,19 +567,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DF4A4BD1F372B0500869C38 /* BrideModel.swift in Sources */,
 				6D29ACD31F3481F100A17621 /* BaseViewController.swift in Sources */,
 				6D29ACD51F34822C00A17621 /* WebViewController.swift in Sources */,
 				6D29ACD01F34710F00A17621 /* MessageViewCell.swift in Sources */,
-				6DF0830D1F3576800073A9BF /* BaseNetworkManager.swift in Sources */,
 				6DF083101F3581C50073A9BF /* MenuViewController.swift in Sources */,
 				6DF083121F3581DC0073A9BF /* MenuViewCell.swift in Sources */,
 				6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */,
+				6DF4A4BF1F372CE500869C38 /* GroomModel.swift in Sources */,
 				6DF1F25C1F36B54500C595B8 /* Constants.swift in Sources */,
 				6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */,
 				6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */,
 				6D29ACCB1F34261500A17621 /* MainViewController.swift in Sources */,
 				6D29AC9D1F34039C00A17621 /* AppDelegate.swift in Sources */,
 				6D6228571F34C658000CE328 /* CustomNavigationBar.swift in Sources */,
+				6DF4A4BA1F3702B900869C38 /* LoginTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,10 +736,14 @@
 			baseConfigurationReference = 129EFFA576E8CA79F5403B4E /* Pods-Weding.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = A5XAYPR24L;
 				INFOPLIST_FILE = Weding/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.Weding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -731,7 +753,10 @@
 			baseConfigurationReference = 33E5B8048A67492F24CCAC1A /* Pods-Weding.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = A5XAYPR24L;
 				INFOPLIST_FILE = Weding/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.Weding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
