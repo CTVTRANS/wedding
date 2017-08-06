@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomNavigationBar" customModule="Weding" customModuleProvider="target">
             <connections>
+                <outlet property="leftButton" destination="Dla-iL-qxy" id="pa3-HF-YKl"/>
                 <outlet property="titleNavigation" destination="a66-Pm-FDH" id="ISD-TE-orn"/>
             </connections>
         </placeholder>
@@ -40,7 +41,6 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a66-Pm-FDH">
                     <rect key="frame" x="166" y="30.5" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dla-iL-qxy">

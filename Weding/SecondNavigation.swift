@@ -11,6 +11,8 @@ import UIKit
 class SecondNavigation: UIView {
 
     @IBOutlet weak var titleNavigation: UILabel!
+    @IBOutlet weak var leftButton: UIButton!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

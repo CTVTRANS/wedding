@@ -10,17 +10,23 @@ import UIKit
 
 class SecondViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var navigation: SecondNavigation!
     @IBOutlet weak var replyMessageView: UIView!
     @IBOutlet weak var table: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if self.revealViewController() != nil {
+            navigation.leftButton.addTarget(self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)), for: .touchUpInside)
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "navigationBar"), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         replyMessageView.layer.borderColor = UIColor.init(red: 236/255.0, green: 186/255.0, blue: 206/255.0, alpha: 1.0).cgColor
-        
         table.layer.borderColor = UIColor.init(red: 236/255.0, green: 186/255.0, blue: 206/255.0, alpha: 1.0).cgColor
         table.layer.borderWidth = 1
     }

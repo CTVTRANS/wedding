@@ -10,13 +10,19 @@ import UIKit
 
 class MainViewController: BaseViewController {
 
+    @IBOutlet weak var navigation: CustomNavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "navigationBar"), for: .default)
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        if self.revealViewController() != nil {
+            navigation.leftButton.addTarget(self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)), for: .touchUpInside)
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
     }
 
 
+    
     @IBAction func pressedItemRight(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }
@@ -27,6 +33,7 @@ class MainViewController: BaseViewController {
         webVC.url = url
         self.navigationController?.pushViewController(webVC, animated: true)
     }
+    
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }

@@ -10,11 +10,14 @@ import UIKit
 
 class CustomNavigationBar: UIView {
     
-    // MARK: - Initializers
-    
     @IBOutlet weak var titleNavigation: UILabel!
+    @IBOutlet weak var leftButton: UIButton!
+    
+    var callBack = {}
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         setupView()
     }
     
@@ -42,12 +45,12 @@ class CustomNavigationBar: UIView {
         return view
     }
     
-    func setUpTitle(title: String!) {
+    private func setUpTitle(title: String!) {
         titleNavigation.text = title
     }
     
     @IBAction func pressedLeftItem(_ sender: Any) {
-        print("left")
+        self.callBack()
     }
     
     @IBAction func pressedRightItem(_ sender: Any) {
