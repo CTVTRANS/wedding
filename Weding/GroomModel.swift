@@ -13,12 +13,14 @@ class GroomModel: NSObject {
     private var nameGroom: String! = ""
     private var weddingDay: String! = "12"
     private var weddingDayCounter: String! = "3"
-    
-    init(name: String, day: String, dayCounter: String) {
+    private var numberCustomerCount: Int! = 2
+
+    init(name: String, day: String, dayCounter: String, numberCustomer: Int) {
         nameGroom = name
         weddingDay = day
         let dayCounterArray = dayCounter.components(separatedBy: " ")
         weddingDayCounter = dayCounterArray[1]
+        numberCustomerCount = numberCustomer
     }
     
     func getNameGroom() -> String {
@@ -31,6 +33,10 @@ class GroomModel: NSObject {
     
     func getCounterDay() -> String {
         return weddingDayCounter
+    }
+    
+    func getNumberCustomer() -> Int {
+        return numberCustomerCount
     }
 
 }

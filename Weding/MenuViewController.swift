@@ -12,11 +12,11 @@ import SWRevealViewController
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var table: UITableView!
-    var arrayRow = ["row1", "row2", "row3", "row4"]
+    var arrayRow = ["row1", "row2", "row3", "row4", "row5", "row6"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.revealViewController().delegate = self
+//        self.revealViewController().delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,42 +35,30 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        if (arrayRow.count == 4) {
-            switch row {
+        switch row {
             case 0:
-                print("main0")
+                print("0")
             case 1:
-                print("main01")
+                print("1")
             case 2:
-                print("main02")
-            default:
-                print("main03")
-            }
-        }else {
-            switch row {
-            case 0:
-                print("second0")
-            case 1:
-                print("second01")
-            case 2:
-                print("second02")
+                print("2")
             case 3:
-                print("second03")
+                print("3")
             case 4:
-                print("second04")
+                print("4")
             default:
-                print("second05")
-            }
+                print("5")
+
         }
     }
     
-    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
-        let currentNavicontroller = self.revealViewController().frontViewController as! UINavigationController
-        if (currentNavicontroller.topViewController is SecondViewController) {
-            arrayRow = ["row1", "row2", "row3", "row4", "row5", "row6"]
-            table.reloadData()
-        }
-       
-    }
+//    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+//        let currentNavicontroller = self.revealViewController().frontViewController as! UINavigationController
+//        if (currentNavicontroller.topViewController is SecondViewController) {
+//            arrayRow = ["row1", "row2", "row3", "row4"]
+//            table.reloadData()
+//        }
+//       
+//    }
 
 }

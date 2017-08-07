@@ -28,8 +28,14 @@ class MainViewController: BaseViewController {
         }
         manName.text = Constants.sharedInstance.man?.getNameGroom()
         manCounterDay.text = Constants.sharedInstance.man?.getCounterDay()
+        let numberManCustomer = String(Constants.sharedInstance.man!.getNumberCustomer())
+        manNumberClient.text =  numberManCustomer
+        
         womanName.text = Constants.sharedInstance.woman?.getNameBride()
         womanCounterDay.text = Constants.sharedInstance.woman?.getCounterDay()
+        let numberWonmanCustomer = String(Constants.sharedInstance.woman!.getNumberCustomer())
+        womanNumberClient.text = numberWonmanCustomer
+        
         
     }
 
@@ -40,15 +46,12 @@ class MainViewController: BaseViewController {
     }
 
     @IBAction func openWeb(_ sender: Any) {
-        let webVC: WebViewController = self.storyboard?.instantiateViewController(withIdentifier: "Web") as! WebViewController
-        let url = URL(string: "http://www.freewed.com.tw/app/LOVE.aspx?ACCT=ann730204")
-        webVC.url = url
-        self.navigationController?.pushViewController(webVC, animated: true)
+        UIApplication.shared.openURL(URL(string: LINK_WEB)!)
     }
     
     @IBAction func sharePressed(_ sender: Any) {
         let textToShare = "Swift is awesome!  Check out this website about it!"
-        if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+        if let myWebsite = NSURL(string: LINK_DOWNLOAD_APP) {
             let objectsToShare = [textToShare, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             activityVC.popoverPresentationController?.sourceView = sender as? UIView
@@ -56,6 +59,11 @@ class MainViewController: BaseViewController {
         }
     }
    
+    @IBAction func openWedForLogined(_ sender: Any) {
+        UIApplication.shared.openURL(URL(string: LINK_WEB_LOGINED)!)
+    }
+    
+    
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
     }

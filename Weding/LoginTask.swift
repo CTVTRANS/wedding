@@ -25,21 +25,26 @@ class LoginTask: BaseTaskNetwork {
 //            let name = dictionary["NM"] as? String
 //            let nickName = dictionary["NICKNM"] as? String
 //            let mail = dictionary["MAIL"] as? String
+            print("\(response)")
             
             let manName = dictionary["ManNM"] as? String
             let manWeddingDay = dictionary["ENGDTD"] as? String
             let manWeddingCounter = dictionary["ENGDTDCounter"] as? String
+            let manNumberCustomer = dictionary["VIPLETTERCOUNT1"] as? Int
 
             let womanName = dictionary["WomanNM"] as? String
             let womanWeddingDay = dictionary["COUPLEENGDTD"] as? String
             let womanWeddingCounter = dictionary["COUPLEENGDTDCounter"] as? String
+            let womanNumberCustomer = dictionary["VIPLETTERCOUNT2"] as? Int
             
             let woman: BrideModel = BrideModel.init(name: womanName!,
                                                     day: womanWeddingDay!,
-                                                    dayCounter: womanWeddingCounter!)
+                                                    dayCounter: womanWeddingCounter!,
+                                                    numberCustomer:  manNumberCustomer!)
             let man: GroomModel = GroomModel.init(name: manName!,
                                                   day: manWeddingDay!,
-                                                  dayCounter: manWeddingCounter!)
+                                                  dayCounter: manWeddingCounter!,
+                                                  numberCustomer: womanNumberCustomer!)
             Constants.sharedInstance.woman = woman
             Constants.sharedInstance.man = man
         

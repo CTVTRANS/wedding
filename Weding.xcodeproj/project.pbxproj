@@ -19,6 +19,11 @@
 		6D29ACD01F34710F00A17621 /* MessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACCF1F34710F00A17621 /* MessageViewCell.swift */; };
 		6D29ACD31F3481F100A17621 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACD21F3481F100A17621 /* BaseViewController.swift */; };
 		6D29ACD51F34822C00A17621 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D29ACD41F34822C00A17621 /* WebViewController.swift */; };
+		6D34AE4A1F37FF04009D21A5 /* Calibri Bold Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D34AE461F37FF04009D21A5 /* Calibri Bold Italic.ttf */; };
+		6D34AE4B1F37FF04009D21A5 /* Calibri Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D34AE471F37FF04009D21A5 /* Calibri Bold.ttf */; };
+		6D34AE4C1F37FF04009D21A5 /* Calibri Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D34AE481F37FF04009D21A5 /* Calibri Italic.ttf */; };
+		6D34AE4D1F37FF04009D21A5 /* Calibri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D34AE491F37FF04009D21A5 /* Calibri.ttf */; };
+		6D34AE4F1F37FF0D009D21A5 /* SimHei.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D34AE4E1F37FF0D009D21A5 /* SimHei.ttf */; };
 		6D6228571F34C658000CE328 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6228561F34C658000CE328 /* CustomNavigationBar.swift */; };
 		6DABE6DF1F34C2FC00053AA3 /* CustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */; };
 		6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */; };
@@ -76,6 +81,11 @@
 		6D29ACCF1F34710F00A17621 /* MessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewCell.swift; sourceTree = "<group>"; };
 		6D29ACD21F3481F100A17621 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6D29ACD41F34822C00A17621 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		6D34AE461F37FF04009D21A5 /* Calibri Bold Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibri Bold Italic.ttf"; sourceTree = "<group>"; };
+		6D34AE471F37FF04009D21A5 /* Calibri Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibri Bold.ttf"; sourceTree = "<group>"; };
+		6D34AE481F37FF04009D21A5 /* Calibri Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibri Italic.ttf"; sourceTree = "<group>"; };
+		6D34AE491F37FF04009D21A5 /* Calibri.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Calibri.ttf; sourceTree = "<group>"; };
+		6D34AE4E1F37FF0D009D21A5 /* SimHei.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimHei.ttf; sourceTree = "<group>"; };
 		6D6228561F34C658000CE328 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNavigationBar.xib; sourceTree = "<group>"; };
 		6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +173,7 @@
 				6DF082C91F3552950073A9BF /* NavigationBar */,
 				6D29ACA31F34039C00A17621 /* Assets.xcassets */,
 				6D29ACA51F34039C00A17621 /* LaunchScreen.storyboard */,
+				6D34AE451F37FECF009D21A5 /* Util */,
 				6D29ACA81F34039C00A17621 /* Info.plist */,
 			);
 			path = Weding;
@@ -201,6 +212,18 @@
 				6D29ACD41F34822C00A17621 /* WebViewController.swift */,
 			);
 			name = WebView;
+			sourceTree = "<group>";
+		};
+		6D34AE451F37FECF009D21A5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				6D34AE461F37FF04009D21A5 /* Calibri Bold Italic.ttf */,
+				6D34AE471F37FF04009D21A5 /* Calibri Bold.ttf */,
+				6D34AE481F37FF04009D21A5 /* Calibri Italic.ttf */,
+				6D34AE491F37FF04009D21A5 /* Calibri.ttf */,
+				6D34AE4E1F37FF0D009D21A5 /* SimHei.ttf */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		6DF082C91F3552950073A9BF /* NavigationBar */ = {
@@ -400,10 +423,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D34AE4A1F37FF04009D21A5 /* Calibri Bold Italic.ttf in Resources */,
 				6D29ACA71F34039C00A17621 /* LaunchScreen.storyboard in Resources */,
+				6D34AE4C1F37FF04009D21A5 /* Calibri Italic.ttf in Resources */,
+				6D34AE4B1F37FF04009D21A5 /* Calibri Bold.ttf in Resources */,
 				6DF082CE1F3552EA0073A9BF /* SecondNavigation.xib in Resources */,
 				6D29ACA41F34039C00A17621 /* Assets.xcassets in Resources */,
 				6D29ACA21F34039C00A17621 /* Main.storyboard in Resources */,
+				6D34AE4F1F37FF0D009D21A5 /* SimHei.ttf in Resources */,
+				6D34AE4D1F37FF04009D21A5 /* Calibri.ttf in Resources */,
 				6DABE6DF1F34C2FC00053AA3 /* CustomNavigationBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
