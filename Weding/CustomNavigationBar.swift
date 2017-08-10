@@ -14,7 +14,7 @@ class CustomNavigationBar: UIView {
     @IBOutlet weak var leftButton: UIButton!
     
     var callBack = {}
-    var closure: () -> () = {}
+    var closure = {}
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +39,6 @@ class CustomNavigationBar: UIView {
     }
     
     private func viewFromNibForClass() -> UIView {
-        
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView

@@ -10,15 +10,18 @@ import UIKit
 
 class MessageViewCell: UITableViewCell {
 
+    @IBOutlet weak var nameGuest: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var message: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.layer.borderWidth = 1
-//        self.layer.borderColor =  UIColor.init(red: 236/255.0, green: 186/255.0, blue: 206/255.0, alpha: 1.0).cgColor
-//        self.layer.masksToBounds = true
     }
 
-    func binData() {
-        
+    func binData(guest: GuestMessage) {
+        nameGuest.text = guest.getname()
+        time.text = guest.getTime()
+        message.text = guest.getMessge()
     }
 
 }

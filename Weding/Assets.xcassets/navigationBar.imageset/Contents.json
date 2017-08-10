@@ -5,6 +5,20 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 133,
+          "top" : 133,
+          "right" : 666,
+          "left" : 667
+        }
+      },
       "idiom" : "universal",
       "filename" : "navigationBar@2x.png",
       "scale" : "2x"

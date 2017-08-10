@@ -12,6 +12,7 @@ class SecondNavigation: UIView {
 
     @IBOutlet weak var titleNavigation: UILabel!
     @IBOutlet weak var leftButton: UIButton!
+    var callBack = {}
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,7 +36,6 @@ class SecondNavigation: UIView {
     }
     
     private func viewFromNibForClass() -> UIView {
-        
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
@@ -46,4 +46,7 @@ class SecondNavigation: UIView {
         titleNavigation.text = title
     }
 
+    @IBAction func pressRigthBarButton(_ sender: Any) {
+        self.callBack()
+    }
 }

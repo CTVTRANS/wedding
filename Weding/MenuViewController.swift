@@ -9,14 +9,17 @@
 import UIKit
 import SWRevealViewController
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate {
+class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var table: UITableView!
-    var arrayRow = ["row1", "row2", "row3", "row4", "row5", "row6"]
+    var arrayRow = ["檢視邀約平台", "分享邀約平台", "賓客規劃表", "發送即時訊息", "婚禮管家", "桌位圖表發佈賓客"]
+    var swVC:SWRevealViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.revealViewController().delegate = self
+        table.tableFooterView = UIView()
+        self.revealViewController().delegate = self
+        swVC = self.revealViewController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,31 +37,37 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let row = indexPath.row
+        table.deselectRow(at: indexPath, animated: false)
         switch row {
-            case 0:
-                print("0")
-            case 1:
-                print("1")
-            case 2:
-                print("2")
-            case 3:
-                print("3")
-            case 4:
-                print("4")
-            default:
-                print("5")
-
+        case 0:
+            UIApplication.shared.openURL(URL(string: linkWeb)!)
+        case 1:
+            swVC.revealToggle(animated: true)
+            shareApp()
+        case 2:
+            swVC.revealToggle(animated: true)
+            downloadMemberExcel()
+        case 3:
+            showSecondView()
+        case 4:
+            UIApplication.shared.openURL(URL(string: linkWebLogin)!)
+        default:
+            swVC.revealToggle(animated: true)
+            sendImageOfPosition()
         }
     }
     
-//    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
-//        let currentNavicontroller = self.revealViewController().frontViewController as! UINavigationController
-//        if (currentNavicontroller.topViewController is SecondViewController) {
-//            arrayRow = ["row1", "row2", "row3", "row4"]
-//            table.reloadData()
-//        }
-//       
-//    }
+    func showSecondView() {
+        let vc: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
+        let navigationVC: UINavigationController = swVC.frontViewController as! UINavigationController
+        if (navigationVC.topViewController is SecondViewController) {
+            swVC.revealToggle(animated: true)
+            return
+        }
+        navigationVC.pushViewController(vc, animated: false)
+        swVC.pushFrontViewController(navigationVC, animated: true)
 
+    }
 }

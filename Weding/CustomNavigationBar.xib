@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,9 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="navigationBar" translatesAutoresizingMaskIntoConstraints="NO" id="kjp-cx-OUO">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigationBar" translatesAutoresizingMaskIntoConstraints="NO" id="kjp-cx-OUO">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_rightButton" translatesAutoresizingMaskIntoConstraints="NO" id="Z6V-v6-SG0">
                     <rect key="frame" x="322" y="26.5" width="37" height="29"/>
@@ -38,8 +37,8 @@
                         <constraint firstAttribute="width" constant="27" id="yxu-vg-xTL"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a66-Pm-FDH">
-                    <rect key="frame" x="166" y="30.5" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="婚禮籌備平台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a66-Pm-FDH">
+                    <rect key="frame" x="135" y="30.5" width="104" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -54,6 +53,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ok-Lk-Dif">
                     <rect key="frame" x="329" y="0.0" width="46" height="64"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="46" id="EDK-lS-bvh"/>
                     </constraints>
@@ -67,14 +67,18 @@
                 <constraint firstAttribute="bottom" secondItem="8ok-Lk-Dif" secondAttribute="bottom" id="2vA-Ti-rUs"/>
                 <constraint firstItem="Z6V-v6-SG0" firstAttribute="centerY" secondItem="8XV-cU-GoG" secondAttribute="centerY" id="5nd-MT-Qnt"/>
                 <constraint firstAttribute="bottom" secondItem="8XV-cU-GoG" secondAttribute="bottom" constant="14" id="6Vk-nY-aGk"/>
+                <constraint firstAttribute="trailing" secondItem="kjp-cx-OUO" secondAttribute="trailing" id="7Tt-wB-oYZ"/>
                 <constraint firstItem="8ok-Lk-Dif" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ABS-bS-Yd9"/>
                 <constraint firstAttribute="trailing" secondItem="Z6V-v6-SG0" secondAttribute="trailing" constant="16" id="Deb-3h-Uk3"/>
                 <constraint firstItem="8XV-cU-GoG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Ess-pk-sNW"/>
+                <constraint firstItem="kjp-cx-OUO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fkc-k1-lju"/>
                 <constraint firstAttribute="trailing" secondItem="8ok-Lk-Dif" secondAttribute="trailing" id="U5k-fN-0PA"/>
                 <constraint firstItem="Dla-iL-qxy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="U6E-we-Sjw"/>
                 <constraint firstItem="a66-Pm-FDH" firstAttribute="centerY" secondItem="8XV-cU-GoG" secondAttribute="centerY" id="YKo-nH-lBo"/>
+                <constraint firstAttribute="bottom" secondItem="kjp-cx-OUO" secondAttribute="bottom" id="lcV-jE-OkM"/>
                 <constraint firstItem="a66-Pm-FDH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mFq-Ip-eou"/>
                 <constraint firstAttribute="bottom" secondItem="Dla-iL-qxy" secondAttribute="bottom" id="mZn-25-s07"/>
+                <constraint firstItem="kjp-cx-OUO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="q8Q-5v-BCe"/>
                 <constraint firstItem="Dla-iL-qxy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vUR-7S-G5l"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

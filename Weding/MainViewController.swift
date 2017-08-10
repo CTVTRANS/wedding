@@ -9,8 +9,6 @@
 import UIKit
 
 class MainViewController: BaseViewController {
-
-    @IBOutlet weak var navigation: CustomNavigationBar!
     
     @IBOutlet weak var manName: UILabel!
     @IBOutlet weak var womanName: UILabel!
@@ -18,11 +16,12 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var womanCounterDay: UILabel!
     @IBOutlet weak var manNumberClient: UILabel!
     @IBOutlet weak var womanNumberClient: UILabel!
+    @IBOutlet weak var nameFactory: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
-            navigation.leftButton.addTarget(self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)), for: .touchUpInside)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
@@ -35,36 +34,34 @@ class MainViewController: BaseViewController {
         womanCounterDay.text = Constants.sharedInstance.woman?.getCounterDay()
         let numberWonmanCustomer = String(Constants.sharedInstance.woman!.getNumberCustomer())
         womanNumberClient.text = numberWonmanCustomer
-        
-        
-    }
-
-
-    
-    @IBAction func pressedItemRight(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
+        nameFactory.text = Constants.sharedInstance.factory?.getName()
     }
 
     @IBAction func openWeb(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: LINK_WEB)!)
+        UIApplication.shared.openURL(URL(string: linkWeb)!)
     }
     
     @IBAction func sharePressed(_ sender: Any) {
-        let textToShare = "Swift is awesome!  Check out this website about it!"
-        if let myWebsite = NSURL(string: LINK_DOWNLOAD_APP) {
-            let objectsToShare = [textToShare, myWebsite] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = sender as? UIView
-            self.present(activityVC, animated: true, completion: nil)
-        }
+        shareApp()
+    }
+    
+    @IBAction func downloadMemberList(_ sender: Any) {
+        downloadMemberExcel()
     }
    
     @IBAction func openWedForLogined(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: LINK_WEB_LOGINED)!)
+        UIApplication.shared.openURL(URL(string: linkWebLogin)!)
     }
     
+    @IBAction func sendImageOfSeatPosition(_ sender: Any) {
+        sendImageOfPosition()
+    }
     
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
