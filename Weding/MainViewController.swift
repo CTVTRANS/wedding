@@ -38,6 +38,7 @@ class MainViewController: BaseViewController {
     }
 
     @IBAction func openWeb(_ sender: Any) {
+        //get number guest:man+woman = number heart
         UIApplication.shared.openURL(URL(string: linkWeb)!)
     }
     
@@ -50,6 +51,7 @@ class MainViewController: BaseViewController {
     }
    
     @IBAction func openWedForLogined(_ sender: Any) {
+        //get url imag? and wedstep? = numberheart
         UIApplication.shared.openURL(URL(string: linkWebLogin)!)
     }
     
