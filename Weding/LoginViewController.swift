@@ -40,9 +40,6 @@ class LoginViewController: BaseViewController {
             return
         }
         let loginTask:LoginTask = LoginTask(name: name!, pass: pass!)
-        let key = "username=ann730204&password=annie106&key=free123"
-        let keySHA1 = key.sha1()
-        print(keySHA1)
         requestWithTask(task: loginTask, success: { (data) in
             print(data!)
             let vc: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController

@@ -48,28 +48,83 @@ extension UILabel {
             if newValue {
                 let currentFont = self.font
                 var sizeScale: CGFloat = 1
-//                let model = UIDevice.current.model
                 let device = Device()
-                if device == .simulator(.iPhone7) {
-                     sizeScale = 1.2
-                } else if device == .simulator(.iPhone5c) {
-                    sizeScale = 1.5
+                if (device == .simulator(.iPhone7)
+                    || device == .simulator(.iPhone6)
+                    || device == .iPhone6
+                    || device == .iPhone7) {
+                    sizeScale = 1.2
+                } else if (device == .simulator(.iPhone6Plus)
+                    || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus
+                    || device == .iPhone7Plus
+                    || device == .iPhone6s) {
+                    sizeScale = 1.3
                 }
-//                if model == "iPhone 6" {
-//                    sizeScale = 1.3
-//                }
-//                else if model == "iPhone 6 Plus" {
-//                    sizeScale = 1.5
-//                }
-                
                 self.font = currentFont?.withSize((currentFont?.pointSize)! * sizeScale)
             }
         }
-        
         get {
             return false
         }
     }
+}
+
+extension UITextField {
+    var adjustFontToRealIPhoneSize: Bool {
+        set {
+            if newValue {
+                let currentFont = self.font
+                var sizeScale: CGFloat = 1
+                let device = Device()
+                if (device == .simulator(.iPhone7)
+                    || device == .simulator(.iPhone6)
+                    || device == .iPhone6
+                    || device == .iPhone7) {
+                    sizeScale = 1.2
+                } else if (device == .simulator(.iPhone6Plus)
+                    || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus
+                    || device == .iPhone7Plus
+                    || device == .iPhone6s) {
+                    sizeScale = 1.3
+                }
+                self.font = currentFont?.withSize((currentFont?.pointSize)! * sizeScale)
+            }
+        }
+        get {
+            return false
+        }
+    }
+}
+
+extension NSLayoutConstraint {
+    var adjustConstantToRealIPhoneSize: Bool {
+        set {
+            if newValue {
+                let currentConstant = self.constant
+                var sizeScale: CGFloat = 1
+                let device = Device()
+                if (device == .simulator(.iPhone7)
+                    || device == .simulator(.iPhone6)
+                    || device == .iPhone6
+                    || device == .iPhone7) {
+                    sizeScale = 1.2
+                } else if (device == .simulator(.iPhone6Plus)
+                        || device == .simulator(.iPhone7Plus)
+                        || device == .iPhone6Plus
+                        || device == .iPhone7Plus
+                        || device == .iPhone6s) {
+                    sizeScale = 1.3
+                }
+                self.constant = currentConstant * sizeScale
+            }
+        }
+        get {
+            return false
+        }
+    }
+
 }
 
 extension UIButton {
@@ -80,10 +135,17 @@ extension UIButton {
                 var sizeScale: CGFloat = 1
 //                let model = UIDevice.current.model
                 let device = Device()
-                if device == .simulator(.iPhone7) {
+                if (device == .simulator(.iPhone7)
+                    || device == .simulator(.iPhone6)
+                    || device == .iPhone6
+                    || device == .iPhone7) {
                     sizeScale = 1.2
-                } else if device == .simulator(.iPhone5c) {
-                    sizeScale = 1.5
+                } else if (device == .simulator(.iPhone6Plus)
+                    || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus
+                    || device == .iPhone7Plus
+                    || device == .iPhone6s) {
+                    sizeScale = 1.3
                 }
 //                if model == "iPhone 6" {
 //                    sizeScale = 1.3
@@ -100,6 +162,8 @@ extension UIButton {
         }
     }
 }
+
+
 
 /*
 extension UIDevice {

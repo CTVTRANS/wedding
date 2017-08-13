@@ -50,6 +50,12 @@ class MainViewController: BaseViewController {
         downloadMemberExcel()
     }
    
+   
+    @IBAction func openSecondView(_ sender: Any) {
+        let secondVC: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
+        self.navigationController?.pushViewController(secondVC, animated: false)
+    }
+    
     @IBAction func openWedForLogined(_ sender: Any) {
         //get url imag? and wedstep? = numberheart
         UIApplication.shared.openURL(URL(string: linkWebLogin)!)
@@ -57,10 +63,6 @@ class MainViewController: BaseViewController {
     
     @IBAction func sendImageOfSeatPosition(_ sender: Any) {
         sendImageOfPosition()
-    }
-    
-    @IBAction func dismiss(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
     }
     
     deinit {
