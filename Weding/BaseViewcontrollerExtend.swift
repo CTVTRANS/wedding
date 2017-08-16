@@ -14,13 +14,23 @@ class BaseViewcontrollerExtend: NSObject {
 }
 
 extension BaseViewController {
-    func downloadMemberExcel() {
-        let getMemberTask: DowloadMemberList = DowloadMemberList()
+    func downloadMemberExcel(url: String) {
+        let getMemberTask: DowloadMemberList = DowloadMemberList(linkUrl: url)
         downloadFileSuccess(task: getMemberTask, success: { (data) in
             let activityVC: UIActivityViewController = UIActivityViewController.init(activityItems: [data!], applicationActivities: nil)
+            Constants.sharedInstance.man?.filePath = data as! URL
             self.present(activityVC, animated: true, completion: nil)
         }) { (error) in
             
+        }
+    }
+    
+    func uploadExcel(url: URL) {
+        let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url)
+        uploadFileSuccess(task: uploadTask, success: { (data) in
+            print("\(String(describing: data))")
+        }) { (error) in
+            print("\(String(describing: error))")
         }
     }
     
@@ -160,6 +170,12 @@ extension UIButton {
         get {
             return false
         }
+    }
+}
+
+extension UIColor {
+    class func rgb(r: Float, g: Float, b: Float) -> UIColor {
+        return UIColor(colorLiteralRed: r/255.0, green: g/255.0, blue: b/255.0, alpha: 1.0)
     }
 }
 

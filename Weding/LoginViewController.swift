@@ -19,9 +19,10 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userNameTextField.layer.borderColor = UIColor.init(red: 233/255.0, green: 130/255.0, blue: 139/255.0, alpha: 1.0).cgColor
-        passWordTextField.layer.borderColor = UIColor.init(red: 233/255.0, green: 130/255.0, blue: 139/255.0, alpha: 1.0).cgColor
+        userNameTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
+//        userNameTextField.layer.borderColor = UIColor.init(red: 233/255.0, green: 130/255.0, blue: 139/255.0, alpha: 1.0).cgColor
+         passWordTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
+//        passWordTextField.layer.borderColor = UIColor.init(red: 233/255.0, green: 130/255.0, blue: 139/255.0, alpha: 1.0).cgColor
         let getInformationFactoryTask: GetFactoryTask = GetFactoryTask()
         requestWithTask(task: getInformationFactoryTask, success: { (data) in
             self.nameFactory.text = Constants.sharedInstance.factory?.getName()

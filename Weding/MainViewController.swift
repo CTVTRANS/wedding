@@ -18,6 +18,8 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var womanNumberClient: UILabel!
     @IBOutlet weak var nameFactory: UILabel!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
@@ -25,14 +27,14 @@ class MainViewController: BaseViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
-        manName.text = Constants.sharedInstance.man?.getNameGroom()
-        manCounterDay.text = Constants.sharedInstance.man?.getCounterDay()
-        let numberManCustomer = String(Constants.sharedInstance.man!.getNumberCustomer())
+        manName.text = Constants.sharedInstance.man?.name
+        manCounterDay.text = Constants.sharedInstance.man?.counterDay
+        let numberManCustomer = String(Constants.sharedInstance.man!.numberGuest)
         manNumberClient.text =  numberManCustomer
         
-        womanName.text = Constants.sharedInstance.woman?.getNameBride()
-        womanCounterDay.text = Constants.sharedInstance.woman?.getCounterDay()
-        let numberWonmanCustomer = String(Constants.sharedInstance.woman!.getNumberCustomer())
+        womanName.text = Constants.sharedInstance.woman?.name
+        womanCounterDay.text = Constants.sharedInstance.woman?.counterDay
+        let numberWonmanCustomer = String(Constants.sharedInstance.woman!.numberGuest)
         womanNumberClient.text = numberWonmanCustomer
         nameFactory.text = Constants.sharedInstance.factory?.getName()
     }
@@ -47,7 +49,8 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func downloadMemberList(_ sender: Any) {
-        downloadMemberExcel()
+        let excelVC: ExcelController = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as! ExcelController
+        self.navigationController?.pushViewController(excelVC, animated: false)
     }
    
    

@@ -16,8 +16,8 @@ let linkDownloadApp = "http://www.codingexplorer.com/"
 let memberList = "http://gps.transoftvietnam.com/member_list.xlsx"
 
 class Constants {
-    var woman: BrideModel?
-    var man: GroomModel?
+    var woman: Woman?
+    var man: Man?
     var factory: Factory?
     
     static let sharedInstance = Constants()

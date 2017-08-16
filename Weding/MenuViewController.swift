@@ -12,7 +12,7 @@ import SWRevealViewController
 class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var table: UITableView!
-    var arrayRow = ["檢視邀約平台", "分享邀約平台", "賓客規劃表", "發送即時訊息", "婚禮管家", "桌位圖表發佈賓客"]
+    var arrayRow = ["檢視邀約平台", "分享邀約平台", "賓客規劃表", "發送即時訊息", "婚禮管家", "桌位圖表發佈賓客", "回首頁"]
     var swVC:SWRevealViewController!
     
     override func viewDidLoad() {
@@ -47,15 +47,29 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             swVC.revealToggle(animated: true)
             shareApp()
         case 2:
-            swVC.revealToggle(animated: true)
-            downloadMemberExcel()
+            let vc: ExcelController = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as! ExcelController
+            let navigationVC: UINavigationController = swVC.frontViewController as! UINavigationController
+            if (navigationVC.topViewController is ExcelController) {
+                swVC.revealToggle(animated: true)
+                return
+            }
+            navigationVC.pushViewController(vc, animated: false)
+            swVC.pushFrontViewController(navigationVC, animated: true)
         case 3:
             showSecondView()
         case 4:
             UIApplication.shared.openURL(URL(string: linkWebLogin)!)
-        default:
             swVC.revealToggle(animated: true)
             sendImageOfPosition()
+        default:
+            let vc: MainViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") as! MainViewController
+            let navigationVC: UINavigationController = swVC.frontViewController as! UINavigationController
+            if (navigationVC.topViewController is MainViewController) {
+                swVC.revealToggle(animated: true)
+                return
+            }
+            navigationVC.pushViewController(vc, animated: false)
+            swVC.pushFrontViewController(navigationVC, animated: true)
         }
     }
     

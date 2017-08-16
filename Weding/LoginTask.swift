@@ -43,21 +43,24 @@ class LoginTask: BaseTaskNetwork {
             let manWeddingDay = dictionary["ENGDTD"] as? String
             let manWeddingCounter = dictionary["ENGDTDCounter"] as? String
             let manNumberCustomer = dictionary["VIPLETTERCOUNT1"] as? Int
+            let manLLinkExcel = dictionary["MEMBER_DOC_GUESTPLA N_URL"] as? String ?? "abc"
+            
             let womanName = dictionary["WomanNM"] as? String
             let womanWeddingDay = dictionary["COUPLEENGDTD"] as? String
             let womanWeddingCounter = dictionary["COUPLEENGDTDCounter"] as? String
             let womanNumberCustomer = dictionary["VIPLETTERCOUNT2"] as? Int
-            let dayOfWeding = dictionary["Description"] as? String
+            let womanLinkExcel = dictionary["MEMBER_DOC_GUESTPLA N2_URL"] as? String ?? "abc"
             
-            let woman: BrideModel = BrideModel.init(name: womanName!,
-                                                    day: womanWeddingDay!,
-                                                    dayCounter: womanWeddingCounter!,
-                                                    numberCustomer:  manNumberCustomer!,
-                                                    date: dayOfWeding!)
-            let man: GroomModel = GroomModel.init(name: manName!,
-                                                  day: manWeddingDay!,
-                                                  dayCounter: manWeddingCounter!,
-                                                  numberCustomer: womanNumberCustomer!)
+            let woman: Woman = Woman.init(name: womanName!,
+                                          day: womanWeddingDay!,
+                                          dayCounter: womanWeddingCounter!,
+                                          numberGuest:  manNumberCustomer!,
+                                          linkdownloadExcel: womanLinkExcel)
+            let man: Man = Man.init(name: manName!,
+                                    day: manWeddingDay!,
+                                    dayCounter: manWeddingCounter!,
+                                    numberCustomer: womanNumberCustomer!,
+                                    linkDownloadExcel: manLLinkExcel)
             Constants.sharedInstance.woman = woman
             Constants.sharedInstance.man = man
         }

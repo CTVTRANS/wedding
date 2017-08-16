@@ -13,6 +13,7 @@ class MessageViewCell: UITableViewCell {
     @IBOutlet weak var nameGuest: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var message: UILabel!
+    var callBack = {}
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,4 +25,8 @@ class MessageViewCell: UITableViewCell {
         message.text = guest.getMessge()
     }
 
+    @IBAction func PressedReplayMessage(_ sender: Any) {
+//        print(nameGuest)
+        self.callBack()
+    }
 }
