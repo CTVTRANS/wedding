@@ -9,12 +9,16 @@
 import UIKit
 
 class Woman: NSObject {
+    
+    private var _memberURL : String!
     private var _name: String! = ""
     private var _weddingDay: String! = "12"
     private var _weddingDayCounter: String! = "3"
     private var _numberGuest: Int! = 2
     private var _linkDownloadExcel: String!
-    private var _filepathURL: String?
+    private var _filepathURL: URL!
+    private var _tableSeat: String!
+    private var _webStep: String!
     
     init(name: String, day: String, dayCounter: String, numberGuest: Int, linkdownloadExcel: String) {
         self._name = name
@@ -23,11 +27,6 @@ class Woman: NSObject {
         self._weddingDayCounter = dayCounterArray[1]
         self._numberGuest = numberGuest
         self._linkDownloadExcel = linkdownloadExcel
-//        let dayOfWeddingArray = date.components(separatedBy: " ")
-//        let dateOfWedding: String! = dayOfWeddingArray[1]
-//        let index = dateOfWedding.index(dateOfWedding.startIndex, offsetBy: 1)
-//        self._dateOfWedding = dateOfWedding.substring(from: index)
-        
     }
     var name: String {
         get {
@@ -69,12 +68,36 @@ class Woman: NSObject {
             _linkDownloadExcel = newValue
         }
     }
-    var filePath: String {
+    var filePath: URL {
         get {
-            return _filepathURL!
+            return _filepathURL
         }
         set {
             _filepathURL = newValue
+        }
+    }
+    var memberURL: String {
+        get {
+            return _memberURL
+        }
+        set {
+            _memberURL = newValue
+        }
+    }
+    var tableSeat: String {
+        get {
+            return _tableSeat
+        }
+        set {
+            _tableSeat = newValue
+        }
+    }
+    var webStep: String {
+        get {
+            return _webStep
+        }
+        set {
+            _webStep = newValue
         }
     }
 }

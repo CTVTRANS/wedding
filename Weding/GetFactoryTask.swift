@@ -25,6 +25,6 @@ class GetFactoryTask: BaseTaskNetwork {
             let factory: Factory = Factory(name: name!)
             Constants.sharedInstance.factory = factory
         }
-        return response
+        return nil
     }
 }

@@ -14,35 +14,6 @@ class BaseViewcontrollerExtend: NSObject {
 }
 
 extension BaseViewController {
-    func downloadMemberExcel(url: String) {
-        let getMemberTask: DowloadMemberList = DowloadMemberList(linkUrl: url)
-        downloadFileSuccess(task: getMemberTask, success: { (data) in
-            let activityVC: UIActivityViewController = UIActivityViewController.init(activityItems: [data!], applicationActivities: nil)
-            Constants.sharedInstance.man?.filePath = data as! URL
-            self.present(activityVC, animated: true, completion: nil)
-        }) { (error) in
-            
-        }
-    }
-    
-    func uploadExcel(url: URL) {
-        let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url)
-        uploadFileSuccess(task: uploadTask, success: { (data) in
-            print("\(String(describing: data))")
-        }) { (error) in
-            print("\(String(describing: error))")
-        }
-    }
-    
-    func shareApp() {
-        let textToShare = "Swift is awesome!  Check out this website about it!"
-        if let myWebsite = NSURL(string: linkDownloadApp) {
-            let objectsToShare = [textToShare, myWebsite] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            self.present(activityVC, animated: true, completion: nil)
-        }
-        
-    }
     
     func sendImageOfPosition() {
         let alert = UIAlertController(title: "Notification", message: "Send images of seat postition succses", preferredStyle: UIAlertControllerStyle.alert)
@@ -51,6 +22,19 @@ extension BaseViewController {
     }
 }
 
+extension UIAlertController {
+    class func showAlertWith(title: String, message: String, myViewController: UIViewController) {
+        let alertView = UIAlertController(title: title,
+                                          message: message,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK",
+                                   style: UIAlertActionStyle.default) { (UIAlertAction) in
+            alertView.dismiss(animated: true, completion: nil)
+        }
+        alertView.addAction(action)
+        myViewController.present(alertView, animated: true, completion: nil)
+    }
+}
 
 extension UILabel {
     var adjustFontToRealIPhoneSize: Bool {

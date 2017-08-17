@@ -18,15 +18,25 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var womanNumberClient: UILabel!
     @IBOutlet weak var nameFactory: UILabel!
     
-    
+    @IBOutlet weak var numberGuest: UILabel!
+    @IBOutlet weak var numberMessage: UILabel!
+    @IBOutlet weak var numberNotificationSeat: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        }
+        setupWdding()
+        setupNavigation()
+        setupNotification()
+    }
+    
+    func setupNotification() {
+        let myAccount: Account = Account.getAccount()
+        numberGuest.text = String(myAccount.numberGuest)
+        numberNotificationSeat.text = String(myAccount.tableNotification)
+        numberMessage.text = String(myAccount.numberMessage)
+    }
+    
+    func setupWdding() {
         manName.text = Constants.sharedInstance.man?.name
         manCounterDay.text = Constants.sharedInstance.man?.counterDay
         let numberManCustomer = String(Constants.sharedInstance.man!.numberGuest)
@@ -41,7 +51,7 @@ class MainViewController: BaseViewController {
 
     @IBAction func openWeb(_ sender: Any) {
         //get number guest:man+woman = number heart
-        UIApplication.shared.openURL(URL(string: linkWeb)!)
+        UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
     }
     
     @IBAction func sharePressed(_ sender: Any) {

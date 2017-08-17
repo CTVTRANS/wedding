@@ -39,31 +39,47 @@ class LoginTask: BaseTaskNetwork {
     
     override func data(withResponse response: Any!) -> Any! {
         if let dictionary = response as? [String: Any] {
-            let manName = dictionary["ManNM"] as? String
-            let manWeddingDay = dictionary["ENGDTD"] as? String
-            let manWeddingCounter = dictionary["ENGDTDCounter"] as? String
-            let manNumberCustomer = dictionary["VIPLETTERCOUNT1"] as? Int
-            let manLLinkExcel = dictionary["MEMBER_DOC_GUESTPLA N_URL"] as? String ?? "abc"
+            Constants.sharedInstance.woman = parseWoman(dictionary: dictionary)
+            Constants.sharedInstance.man = parseMan(dictionary: dictionary)
             
-            let womanName = dictionary["WomanNM"] as? String
-            let womanWeddingDay = dictionary["COUPLEENGDTD"] as? String
-            let womanWeddingCounter = dictionary["COUPLEENGDTDCounter"] as? String
-            let womanNumberCustomer = dictionary["VIPLETTERCOUNT2"] as? Int
-            let womanLinkExcel = dictionary["MEMBER_DOC_GUESTPLA N2_URL"] as? String ?? "abc"
-            
-            let woman: Woman = Woman.init(name: womanName!,
-                                          day: womanWeddingDay!,
-                                          dayCounter: womanWeddingCounter!,
-                                          numberGuest:  manNumberCustomer!,
-                                          linkdownloadExcel: womanLinkExcel)
-            let man: Man = Man.init(name: manName!,
-                                    day: manWeddingDay!,
-                                    dayCounter: manWeddingCounter!,
-                                    numberCustomer: womanNumberCustomer!,
-                                    linkDownloadExcel: manLLinkExcel)
-            Constants.sharedInstance.woman = woman
-            Constants.sharedInstance.man = man
         }
         return response
     }
+    
+    func parseWoman(dictionary: [String: Any]) -> Woman {
+        let womanName = dictionary["WomanNM"] as? String ?? ""
+        let womanWeddingDay = dictionary["COUPLEENGDTD"] as? String ?? ""
+        let womanWeddingCounter = dictionary["COUPLEENGDTDCounter"] as? String ?? ""
+        let womanNumberCustomer = dictionary["VIPLETTERCOUNT2"] as? Int ?? 0
+        let womanLinkExcel = dictionary["MEMBER_DOC_GUESTPLAN2_URL"] as? String ?? "abc"
+        let accountMemberURL = dictionary["MEMBER_URL"] as? String ?? "abc"
+        let tableSeatLink = dictionary["MEMBER_DOC_TABLE_URL"] as? String ?? ""
+        let webSetpLink = dictionary["MEMBER_DOC_WEDSTEP_URL"] as? String ?? ""
+        
+        let woman: Woman = Woman.init(name: womanName,
+                                      day: womanWeddingDay,
+                                      dayCounter: womanWeddingCounter,
+                                      numberGuest:  womanNumberCustomer,
+                                      linkdownloadExcel: womanLinkExcel)
+        woman.memberURL = accountMemberURL
+        woman.tableSeat = tableSeatLink
+        woman.webStep = webSetpLink
+        return woman
+    }
+    
+    func parseMan(dictionary: [String: Any]) -> Man {
+        let manName = dictionary["ManNM"] as? String ?? ""
+        let manWeddingDay = dictionary["ENGDTD"] as? String ?? ""
+        let manWeddingCounter = dictionary["ENGDTDCounter"] as? String ?? ""
+        let manNumberCustomer = dictionary["VIPLETTERCOUNT1"] as? Int ?? 0
+        let manLLinkExcel = dictionary["MEMBER_DOC_GUESTPLAN_URL"] as? String ?? "abc"
+        
+        let man: Man = Man.init(name: manName,
+                                day: manWeddingDay,
+                                dayCounter: manWeddingCounter,
+                                numberCustomer: manNumberCustomer,
+                                linkDownloadExcel: manLLinkExcel)
+        return man
+    }
+    
 }

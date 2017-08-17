@@ -72,19 +72,21 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "IMG_09082017_113731_0-2.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "app_icon _ipad@2x.png",
+      "filename" : "IMG_09082017_113731_0.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "IMG_09082017_113731_0-1.png",
       "scale" : "2x"
     }
   ],

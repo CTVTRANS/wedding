@@ -16,13 +16,7 @@ class ExcelController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_rightButton"), style: .plain, target: nil, action: nil)
-            navigationItem.title = "婚禮籌備平台"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        }
+        setupNavigation()
         nameFactory.text = Constants.sharedInstance.factory?.getName()
         manView.layer.borderColor = UIColor.rgb(r: 188, g: 123, b: 7).cgColor
         womwnView.layer.borderColor = UIColor.rgb(r: 188, g: 123, b: 7).cgColor
@@ -30,7 +24,7 @@ class ExcelController: BaseViewController {
     
     @IBAction func manDownloadExcel(_ sender: Any) {
         let url = Constants.sharedInstance.man?.excelUrl
-        downloadMemberExcel(url: url!)
+        downloadMemberExcel(byHuman: "man", url: url!)
     }
 
     @IBAction func manUploadEcel(_ sender: Any) {
@@ -39,11 +33,15 @@ class ExcelController: BaseViewController {
     }
     @IBAction func womanDownloadExcel(_ sender: Any) {
         let url = Constants.sharedInstance.woman?.excelUrl
-        downloadMemberExcel(url: url!)
+        downloadMemberExcel(byHuman: "woman", url: url!)
     }
     @IBAction func wonmanUploadExcel(_ sender: Any) {
-        let filePtah = Constants.sharedInstance.man?.filePath
+        let filePtah = Constants.sharedInstance.woman?.filePath
         uploadExcel(url: filePtah!)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }

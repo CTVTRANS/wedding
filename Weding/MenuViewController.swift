@@ -32,55 +32,58 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MenuViewCell = table.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuViewCell
-        cell.binData(name: arrayRow[indexPath.row])
+        cell.binData(name: arrayRow[indexPath.row], index: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let row = indexPath.row
         table.deselectRow(at: indexPath, animated: false)
+        let navigationVC: UINavigationController = swVC.frontViewController as! UINavigationController
+        var vc: UIViewController? = nil
         switch row {
         case 0:
-            UIApplication.shared.openURL(URL(string: linkWeb)!)
+            UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
+            swVC.revealToggle(animated: false)
+            return
         case 1:
             swVC.revealToggle(animated: true)
             shareApp()
+            return
         case 2:
-            let vc: ExcelController = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as! ExcelController
-            let navigationVC: UINavigationController = swVC.frontViewController as! UINavigationController
             if (navigationVC.topViewController is ExcelController) {
                 swVC.revealToggle(animated: true)
                 return
             }
-            navigationVC.pushViewController(vc, animated: false)
-            swVC.pushFrontViewController(navigationVC, animated: true)
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as! ExcelController
         case 3:
-            showSecondView()
+            if (navigationVC.topViewController is SecondViewController) {
+                swVC.revealToggle(animated: true)
+                return
+            }
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
         case 4:
             UIApplication.shared.openURL(URL(string: linkWebLogin)!)
+            swVC.revealToggle(animated: false)
+            return
+        case 5:
             swVC.revealToggle(animated: true)
             sendImageOfPosition()
+            return
         default:
-            let vc: MainViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") as! MainViewController
-            let navigationVC: UINavigationController = swVC.frontViewController as! UINavigationController
             if (navigationVC.topViewController is MainViewController) {
                 swVC.revealToggle(animated: true)
                 return
             }
-            navigationVC.pushViewController(vc, animated: false)
-            swVC.pushFrontViewController(navigationVC, animated: true)
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "MainView") as! MainViewController
         }
+        let navigationController: UINavigationController = UINavigationController.init(rootViewController: vc!)
+        swVC.pushFrontViewController(navigationController, animated: true)
     }
     
     func showSecondView() {
         let vc: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
-        let navigationVC: UINavigationController = swVC.frontViewController as! UINavigationController
-        if (navigationVC.topViewController is SecondViewController) {
-            swVC.revealToggle(animated: true)
-            return
-        }
-        navigationVC.pushViewController(vc, animated: false)
+        let navigationVC: UINavigationController = UINavigationController.init(rootViewController: vc)
         swVC.pushFrontViewController(navigationVC, animated: true)
 
     }

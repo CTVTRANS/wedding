@@ -10,7 +10,6 @@ import UIKit
 
 class SecondViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
 
-
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var manName: UILabel!
     @IBOutlet weak var womanName: UILabel!
@@ -22,26 +21,24 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var replyMessageText: UITextView!
     var tap: UITapGestureRecognizer?
     
-    
-    
-    var arr: [GuestMessage] = []
+    var arr = [GuestMessage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpWedding()
         setupListMessage()
         setUpReplyMessageView()
+        setupNavigation()
         
-        if self.revealViewController() != nil {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        }
         let guest1 = GuestMessage(name: "Tom", message: "alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo", timeSend: "2017/6/23")
         let guest2 = GuestMessage(name: "Michael", message: "hi", timeSend: "2017/6/4")
         let guest3 = GuestMessage(name: "Jane", message: "hello", timeSend: "2017/6/25")
         let guest4 = GuestMessage(name: "South", message: "ahihi", timeSend: "2017/6/26")
-        arr = [guest1, guest2, guest3, guest4]
+//        arr = [guest1, guest2, guest3, guest4]
+        arr.append(guest1)
+        arr.append(guest2)
+        arr.append(guest3)
+        arr.append(guest4)
         
     }
     
@@ -81,10 +78,10 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MessageViewCell = table.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageViewCell
-        cell.callBack = {
-            self.replyMessageText.becomeFirstResponder()
-            let guest = self.arr[indexPath.row]
-            print(guest.getname())
+        cell.callBack = { [weak self] in
+            self?.replyMessageText.becomeFirstResponder()
+            let guest = self?.arr[indexPath.row]
+            print(guest?.getname() ?? "")
         }
         cell.binData(guest: arr[indexPath.row])
         return cell

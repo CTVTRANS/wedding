@@ -840,6 +840,9 @@
                         <outlet property="manName" destination="rIw-wD-s7V" id="qw5-ls-87K"/>
                         <outlet property="manNumberClient" destination="IG6-Nz-YHw" id="9pR-Je-l2h"/>
                         <outlet property="nameFactory" destination="D1W-95-Yp0" id="q7S-rO-l2r"/>
+                        <outlet property="numberGuest" destination="9m2-0D-wgX" id="iDz-oM-58K"/>
+                        <outlet property="numberMessage" destination="rJZ-4u-HRO" id="LJF-iU-Z8i"/>
+                        <outlet property="numberNotificationSeat" destination="A6Y-Cn-drT" id="xtV-fM-xTG"/>
                         <outlet property="womanCounterDay" destination="FNd-CM-VUc" id="ekz-Qf-eZ9"/>
                         <outlet property="womanName" destination="7Kj-HT-dvr" id="Tne-fo-Yr4"/>
                         <outlet property="womanNumberClient" destination="B81-CJ-d9E" id="j8c-c4-Ist"/>
@@ -870,7 +873,11 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_excel" translatesAutoresizingMaskIntoConstraints="NO" id="axr-0V-3ew">
                                         <rect key="frame" x="3" y="3" width="31" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="eLk-NW-oW7"/>
+                                            <constraint firstAttribute="height" constant="31" id="eLk-NW-oW7">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
                                             <constraint firstAttribute="width" constant="31" id="uM9-Dj-Qkm">
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
@@ -907,11 +914,10 @@
                                     <constraint firstAttribute="trailing" secondItem="lQJ-g2-B7f" secondAttribute="trailing" id="D33-Xu-eED"/>
                                     <constraint firstItem="bMl-oc-Hpl" firstAttribute="leading" secondItem="axr-0V-3ew" secondAttribute="trailing" constant="5" id="Ffz-IM-sqn"/>
                                     <constraint firstItem="axr-0V-3ew" firstAttribute="leading" secondItem="7cG-AV-KSV" secondAttribute="leading" constant="3" id="GTB-62-qLs"/>
+                                    <constraint firstItem="axr-0V-3ew" firstAttribute="centerY" secondItem="7cG-AV-KSV" secondAttribute="centerY" id="LJR-0y-KAA"/>
                                     <constraint firstAttribute="trailing" secondItem="bMl-oc-Hpl" secondAttribute="trailing" id="Now-h3-c4b"/>
-                                    <constraint firstItem="axr-0V-3ew" firstAttribute="top" secondItem="7cG-AV-KSV" secondAttribute="top" constant="3" id="bkL-bx-zV9"/>
                                     <constraint firstItem="bMl-oc-Hpl" firstAttribute="top" secondItem="7cG-AV-KSV" secondAttribute="top" id="c4p-o5-KPO"/>
                                     <constraint firstAttribute="bottom" secondItem="bMl-oc-Hpl" secondAttribute="bottom" id="lzy-sR-t8t"/>
-                                    <constraint firstAttribute="bottom" secondItem="axr-0V-3ew" secondAttribute="bottom" constant="3" id="nEg-f4-da2"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -984,7 +990,11 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </constraint>
-                                            <constraint firstAttribute="height" constant="31" id="zAw-KE-8Qf"/>
+                                            <constraint firstAttribute="height" constant="31" id="zAw-KE-8Qf">
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </constraint>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJO-7r-WoL">
@@ -1006,20 +1016,19 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="FJO-7r-WoL" secondAttribute="bottom" id="34B-3n-0tS"/>
-                                    <constraint firstAttribute="bottom" secondItem="pb0-EW-ABk" secondAttribute="bottom" constant="3" id="3Wl-Sf-JN6"/>
                                     <constraint firstItem="pb0-EW-ABk" firstAttribute="leading" secondItem="McN-3B-Gj5" secondAttribute="leading" constant="3" id="7zE-rW-aEc"/>
                                     <constraint firstItem="Ifu-ae-7ln" firstAttribute="leading" secondItem="McN-3B-Gj5" secondAttribute="leading" id="8wj-iu-Ilt"/>
                                     <constraint firstAttribute="trailing" secondItem="FJO-7r-WoL" secondAttribute="trailing" id="Gjq-67-FcK"/>
                                     <constraint firstItem="Ifu-ae-7ln" firstAttribute="top" secondItem="McN-3B-Gj5" secondAttribute="top" id="Hhw-ql-Cmu"/>
                                     <constraint firstItem="FJO-7r-WoL" firstAttribute="top" secondItem="McN-3B-Gj5" secondAttribute="top" id="LTY-MM-I3i"/>
                                     <constraint firstAttribute="trailing" secondItem="Ifu-ae-7ln" secondAttribute="trailing" id="LdH-ax-U2C"/>
+                                    <constraint firstItem="pb0-EW-ABk" firstAttribute="centerY" secondItem="McN-3B-Gj5" secondAttribute="centerY" id="O7O-Mn-ZD5"/>
                                     <constraint firstItem="FJO-7r-WoL" firstAttribute="leading" secondItem="pb0-EW-ABk" secondAttribute="trailing" constant="5" id="Xqb-M2-f4m"/>
                                     <constraint firstAttribute="height" constant="37" id="bcI-Il-uSQ">
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </constraint>
-                                    <constraint firstItem="pb0-EW-ABk" firstAttribute="top" secondItem="McN-3B-Gj5" secondAttribute="top" constant="3" id="hYw-59-SbD"/>
                                     <constraint firstAttribute="bottom" secondItem="Ifu-ae-7ln" secondAttribute="bottom" id="oPg-md-6H2"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1221,7 +1230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U6r-gj-chJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4848.75" y="1623.5915492957747"/>
+            <point key="canvasLocation" x="5647.5" y="955.9859154929577"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="VbQ-Ex-VuD">
@@ -1273,29 +1282,51 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-RQ-IVh">
-                                                    <rect key="frame" x="54" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="50" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="cGV-rH-hyz">
-                                                    <rect key="frame" x="38" y="18" width="8" height="8"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOD-qI-JOT">
+                                                    <rect key="frame" x="30" y="16" width="12" height="12"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="x8x-ME-3jZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y99-BW-Hbb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
+                                                            <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="8" id="3WZ-YU-3ij"/>
-                                                        <constraint firstAttribute="width" constant="8" id="jcX-Xs-yDr"/>
+                                                        <constraint firstItem="Y99-BW-Hbb" firstAttribute="leading" secondItem="qOD-qI-JOT" secondAttribute="leading" id="5Fd-1u-gvn"/>
+                                                        <constraint firstItem="Y99-BW-Hbb" firstAttribute="top" secondItem="qOD-qI-JOT" secondAttribute="top" id="APn-OG-9OP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="x8x-ME-3jZ" secondAttribute="trailing" id="DF8-vv-fvD"/>
+                                                        <constraint firstAttribute="height" constant="12" id="My6-Vu-1FT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Y99-BW-Hbb" secondAttribute="trailing" id="Njn-Kq-SlC"/>
+                                                        <constraint firstAttribute="width" constant="12" id="Sw0-LA-8EG"/>
+                                                        <constraint firstItem="x8x-ME-3jZ" firstAttribute="top" secondItem="qOD-qI-JOT" secondAttribute="top" id="TZg-2h-OFb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="x8x-ME-3jZ" secondAttribute="bottom" id="WDZ-fI-fdr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Y99-BW-Hbb" secondAttribute="bottom" id="fm4-He-sf9"/>
+                                                        <constraint firstItem="x8x-ME-3jZ" firstAttribute="leading" secondItem="qOD-qI-JOT" secondAttribute="leading" id="mT2-Cp-ANj"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cGV-rH-hyz" firstAttribute="centerY" secondItem="d5D-t2-lVm" secondAttribute="centerY" id="5GD-u8-U2z"/>
-                                                <constraint firstItem="6bF-RQ-IVh" firstAttribute="leading" secondItem="cGV-rH-hyz" secondAttribute="trailing" constant="8" id="PDt-Qt-Iar"/>
+                                                <constraint firstItem="6bF-RQ-IVh" firstAttribute="leading" secondItem="qOD-qI-JOT" secondAttribute="trailing" constant="8" id="ES5-kN-bAP"/>
                                                 <constraint firstItem="6bF-RQ-IVh" firstAttribute="centerY" secondItem="d5D-t2-lVm" secondAttribute="centerY" id="Yki-4F-4HY"/>
-                                                <constraint firstItem="cGV-rH-hyz" firstAttribute="leading" secondItem="d5D-t2-lVm" secondAttribute="leadingMargin" constant="30" id="gdH-sU-Urt"/>
+                                                <constraint firstItem="qOD-qI-JOT" firstAttribute="centerY" secondItem="d5D-t2-lVm" secondAttribute="centerY" id="fVf-bY-51P"/>
+                                                <constraint firstItem="qOD-qI-JOT" firstAttribute="leading" secondItem="d5D-t2-lVm" secondAttribute="leading" constant="30" id="pxu-La-vRj"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="nameRow" destination="6bF-RQ-IVh" id="JxU-WB-BKx"/>
+                                            <outlet property="numberNotification" destination="Y99-BW-Hbb" id="ZnK-bQ-u2I"/>
+                                            <outlet property="viewNotification" destination="qOD-qI-JOT" id="z6g-Dw-IoO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1323,7 +1354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkq-m1-gqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2258" y="223"/>
+            <point key="canvasLocation" x="2257.5" y="222.88732394366198"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eRA-id-sMj">
@@ -1352,14 +1383,14 @@
                         <viewControllerLayoutGuide type="bottom" id="g3d-Mp-Qjf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="d9G-Oq-fQP">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundGlobal" translatesAutoresizingMaskIntoConstraints="NO" id="bT2-wy-kKF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="cpl-zC-2yl">
-                                <rect key="frame" x="147" y="44" width="25" height="23"/>
+                                <rect key="frame" x="147" y="64" width="25" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="BaH-QB-D0d">
                                         <userDefinedRuntimeAttributes>
@@ -1374,7 +1405,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wedding Party" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edg-zI-yGq">
-                                <rect key="frame" x="110" y="79" width="101.5" height="21"/>
+                                <rect key="frame" x="110" y="99" width="101.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.18039215689999999" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1383,7 +1414,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgA-5f-r0t">
-                                <rect key="frame" x="112.5" y="47" width="17" height="17"/>
+                                <rect key="frame" x="112.5" y="67" width="17" height="17"/>
                                 <fontDescription key="fontDescription" name="SimHei" family="SimHei" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1392,7 +1423,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0c-EL-tMu">
-                                <rect key="frame" x="190.5" y="47" width="17" height="17"/>
+                                <rect key="frame" x="190.5" y="67" width="17" height="17"/>
                                 <fontDescription key="fontDescription" name="SimHei" family="SimHei" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1401,7 +1432,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second_Heart" translatesAutoresizingMaskIntoConstraints="NO" id="LxZ-J2-Tip">
-                                <rect key="frame" x="50" y="108" width="220" height="200"/>
+                                <rect key="frame" x="50" y="128" width="220" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="hkl-B8-Q0v">
                                         <userDefinedRuntimeAttributes>
@@ -1416,7 +1447,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018/12/30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfc-ub-0nb">
-                                <rect key="frame" x="79" y="162" width="162.5" height="41"/>
+                                <rect key="frame" x="79.5" y="182" width="162.5" height="41.5"/>
                                 <fontDescription key="fontDescription" name="Calibri-Bold" family="Calibri" pointSize="33"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1425,7 +1456,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-DE-oJo">
-                                <rect key="frame" x="110" y="206" width="100" height="21"/>
+                                <rect key="frame" x="110" y="226.5" width="100" height="21"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 : 30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j80-a5-nqc">
                                         <rect key="frame" x="53" y="0.0" width="47" height="22"/>
@@ -1466,7 +1497,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新人即時訊息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ8-Nc-XMb">
-                                <rect key="frame" x="121" y="324" width="78" height="16"/>
+                                <rect key="frame" x="46" y="344" width="78" height="16"/>
                                 <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1475,7 +1506,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Ra-Jd-uza">
-                                <rect key="frame" x="46" y="348" width="228" height="140"/>
+                                <rect key="frame" x="46" y="368" width="228" height="184"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="SV6-Nz-K3a" customClass="MessageViewCell" customModule="Weding" customModuleProvider="target">
@@ -1601,7 +1632,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增即訊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6m-ev-pfc">
-                                <rect key="frame" x="222" y="324" width="52" height="16"/>
+                                <rect key="frame" x="222" y="344" width="52" height="16"/>
                                 <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="13"/>
                                 <color key="textColor" red="1" green="0.1803921568627451" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1610,7 +1641,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="secondSeat" translatesAutoresizingMaskIntoConstraints="NO" id="64B-E4-SLA">
-                                <rect key="frame" x="141" y="232" width="38" height="8"/>
+                                <rect key="frame" x="141" y="252.5" width="38" height="8"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="8" id="Bdv-lh-5iw">
@@ -1626,7 +1657,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AhP-U1-EvZ">
-                                <rect key="frame" x="120" y="250" width="80" height="20"/>
+                                <rect key="frame" x="120" y="270.5" width="80" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="婚禮倒數" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOL-JX-8qQ">
                                         <rect key="frame" x="0.0" y="0.0" width="44" height="20"/>
@@ -1686,7 +1717,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ng-kh-abo">
-                                <rect key="frame" x="8" y="304" width="304" height="200"/>
+                                <rect key="frame" x="8" y="368" width="304" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1b7-hj-CHY">
                                         <rect key="frame" x="59.5" y="16" width="35.5" height="17"/>
@@ -1805,7 +1836,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MZ8-Nc-XMb" firstAttribute="centerX" secondItem="d9G-Oq-fQP" secondAttribute="centerX" id="2TK-kI-xJt"/>
                             <constraint firstItem="cpl-zC-2yl" firstAttribute="leading" secondItem="lgA-5f-r0t" secondAttribute="trailing" constant="18" id="5HU-U2-BAa">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
@@ -1829,6 +1859,7 @@
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="4Ng-kh-abo" secondAttribute="trailing" constant="8" id="93P-jB-b7B"/>
                             <constraint firstItem="AhP-U1-EvZ" firstAttribute="centerX" secondItem="d9G-Oq-fQP" secondAttribute="centerX" id="9ph-oH-9Xy"/>
+                            <constraint firstItem="bT2-wy-kKF" firstAttribute="top" secondItem="d9G-Oq-fQP" secondAttribute="top" id="AGB-Ep-rD3"/>
                             <constraint firstItem="7Ra-Jd-uza" firstAttribute="top" secondItem="B6m-ev-pfc" secondAttribute="bottom" constant="8" id="DFL-TR-MH3">
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
@@ -1877,8 +1908,17 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </constraint>
+                            <constraint firstItem="MZ8-Nc-XMb" firstAttribute="leading" secondItem="d9G-Oq-fQP" secondAttribute="leading" constant="46" id="jNR-EO-ipW">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="g3d-Mp-Qjf" firstAttribute="top" secondItem="4Ng-kh-abo" secondAttribute="bottom" id="ote-hB-EdN"/>
-                            <constraint firstAttribute="trailing" secondItem="B6m-ev-pfc" secondAttribute="trailing" constant="46" id="pZw-l1-nD8"/>
+                            <constraint firstAttribute="trailing" secondItem="B6m-ev-pfc" secondAttribute="trailing" constant="46" id="pZw-l1-nD8">
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </constraint>
                             <constraint firstItem="LxZ-J2-Tip" firstAttribute="centerX" secondItem="d9G-Oq-fQP" secondAttribute="centerX" id="qXj-ok-lII"/>
                             <constraint firstItem="g3d-Mp-Qjf" firstAttribute="top" secondItem="bT2-wy-kKF" secondAttribute="bottom" id="rDM-tE-Av6"/>
                             <constraint firstItem="MZ8-Nc-XMb" firstAttribute="top" secondItem="LxZ-J2-Tip" secondAttribute="bottom" constant="16" id="sm4-FA-YJo">
@@ -1888,7 +1928,6 @@
                             </constraint>
                             <constraint firstItem="edg-zI-yGq" firstAttribute="centerX" secondItem="d9G-Oq-fQP" secondAttribute="centerX" id="tYv-i0-tLR"/>
                             <constraint firstAttribute="trailing" secondItem="bT2-wy-kKF" secondAttribute="trailing" id="ugz-6x-i7E"/>
-                            <constraint firstItem="bT2-wy-kKF" firstAttribute="top" secondItem="d9G-Oq-fQP" secondAttribute="top" id="wWW-ge-k96"/>
                             <constraint firstItem="g3d-Mp-Qjf" firstAttribute="top" secondItem="7Ra-Jd-uza" secondAttribute="bottom" constant="16" id="zwI-Lu-0x3"/>
                         </constraints>
                     </view>
@@ -1910,12 +1949,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MjS-yJ-Haf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4848.75" y="955.9859154929577"/>
+            <point key="canvasLocation" x="3932" y="958"/>
         </scene>
         <!--婚禮籌備平台-->
         <scene sceneID="rC1-qq-3lL">
             <objects>
-                <viewController id="FBv-lz-Rki" customClass="LoginViewController" customModule="Weding" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="FBv-lz-Rki" customClass="LoginViewController" customModule="Weding" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Pb-7U-0AE"/>
                         <viewControllerLayoutGuide type="bottom" id="2AB-u1-ojV"/>
@@ -2051,8 +2090,8 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFontToRealIPhoneSize" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="若您尚未註冊或忘記帳密 -&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auj-49-UNV">
-                                        <rect key="frame" x="8" y="159.5" width="139.5" height="13.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="若您尚未註冊或忘記帳密    -&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auj-49-UNV">
+                                        <rect key="frame" x="8" y="159.5" width="149" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.9137254901960784" green="0.50980392156862742" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2061,7 +2100,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-ht-1a0">
-                                        <rect key="frame" x="174" y="159" width="46" height="15"/>
+                                        <rect key="frame" x="174" y="159.5" width="46" height="15"/>
                                         <color key="backgroundColor" red="0.5490196078431373" green="0.75686274509803919" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="6or-DG-YA6">
@@ -2249,23 +2288,23 @@
             </objects>
             <point key="canvasLocation" x="-540" y="957"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="b3f-fZ-eCx">
+        <!--Splash View Controller-->
+        <scene sceneID="DYf-EH-5AN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6YG-NI-TWV" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="1sD-cY-i3y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="LXO-Ii-IJG" kind="relationship" relationship="rootViewController" id="dwa-PS-tin"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rLD-yd-Iut" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="aYW-cI-v7v" customClass="SplashViewController" customModule="Weding" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9y8-Ea-UoM"/>
+                        <viewControllerLayoutGuide type="bottom" id="lyO-bN-lhm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P2N-SU-NLS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASa-km-qy8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3851.25" y="955.9859154929577"/>
+            <point key="canvasLocation" x="-1354" y="959"/>
         </scene>
     </scenes>
     <resources>

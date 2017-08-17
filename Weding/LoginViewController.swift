@@ -20,9 +20,7 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
-//        userNameTextField.layer.borderColor = UIColor.init(red: 233/255.0, green: 130/255.0, blue: 139/255.0, alpha: 1.0).cgColor
          passWordTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
-//        passWordTextField.layer.borderColor = UIColor.init(red: 233/255.0, green: 130/255.0, blue: 139/255.0, alpha: 1.0).cgColor
         let getInformationFactoryTask: GetFactoryTask = GetFactoryTask()
         requestWithTask(task: getInformationFactoryTask, success: { (data) in
             self.nameFactory.text = Constants.sharedInstance.factory?.getName()
@@ -35,28 +33,43 @@ class LoginViewController: BaseViewController {
         let name: String? = userNameTextField.text
         let pass: String? = passWordTextField.text
         if (name == "" || pass == "" ) {
-            let alert: UIAlertController = UIAlertController(title: "Warnning", message: "user name or password can't emty", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            _ = UIAlertController.showAlertWith(title: "Notification",
+                                                message: "user name or password can't emty",
+                                                myViewController: self)
             return
         }
         let loginTask:LoginTask = LoginTask(name: name!, pass: pass!)
         requestWithTask(task: loginTask, success: { (data) in
             print(data!)
-            let vc: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-            self.present(vc, animated: false, completion: nil)
+            let numberGuest =
+                (Constants.sharedInstance.man?.numberGuest)! + (Constants.sharedInstance.woman?.numberGuest)!
+            let numberMessage = Int(5)
+            let memberURL = Constants.sharedInstance.woman?.memberURL
+            let linkTable = Constants.sharedInstance.woman?.tableSeat
+            let linkWedStep = Constants.sharedInstance.woman?.webStep
+            var numberNotificationOfSeat: Int = 0
+            if ((linkTable?.characters.count)! > 0) {
+                numberNotificationOfSeat += 1
+            } else if ((linkWedStep?.characters.count)! > 0){
+                numberNotificationOfSeat += 1
+            }
+            let myAccount = Account(name: name!, numberGuest: numberGuest, numberMessage: numberMessage, memberURL: memberURL!, seat: numberNotificationOfSeat)
+            Account.saveAccount(myAccount: myAccount)
+            self.showmainMenu()
         }) { (error) in
-            let alert:UIAlertController
             if let dictionary = error as? [String: Any] {
                 if let message: String = dictionary["ErrMsg"] as? String {
-                    alert = UIAlertController(title: "Warnning", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    _ = UIAlertController.showAlertWith(title: "Warnning", message: message, myViewController: self)
                 } else {
                     let message: String = (dictionary["RtnCode"] as? String)!
-                    alert = UIAlertController(title: "Warnning", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    _ = UIAlertController.showAlertWith(title: "Warnning", message: message, myViewController: self)
                 }
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
             }
         }
+    }
+
+    func showmainMenu() {
+        let vc: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(vc, animated: false, completion: nil)
     }
 }

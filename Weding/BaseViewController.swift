@@ -17,6 +17,17 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    func setupNavigation() {
+        if self.revealViewController() != nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_rightButton"), style: .plain, target: nil, action: nil)
+            navigationItem.title = "婚禮籌備平台"
+            self.navigationController?.navigationBar.isTranslucent = false
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        }
+    }
+    
     func requestWithTask(task: BaseTaskNetwork, success: @escaping BlockSuccess, failure: @escaping BlockFailure) {
         task.request(blockSucess: { (data) in
             success(data)
@@ -40,4 +51,49 @@ class BaseViewController: UIViewController {
             failure(error)
         }
     }
+    
+    func downloadMemberExcel(byHuman: String, url: String) {
+        let getMemberTask: DowloadMemberList = DowloadMemberList(linkUrl: url)
+        downloadFileSuccess(task: getMemberTask, success: { (data) in
+            let activityVC: UIActivityViewController =
+                UIActivityViewController.init(activityItems: [data!], applicationActivities: nil)
+            if (byHuman == "man") {
+                Constants.sharedInstance.man?.filePath = data as! URL
+            } else {
+                Constants.sharedInstance.woman?.filePath = data as! URL
+            }
+            self.present(activityVC, animated: true, completion: nil)
+        }) { (error) in
+            
+        }
+    }
+    
+    func uploadExcel(url: URL) {
+        let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url)
+        uploadFileSuccess(task: uploadTask, success: { (data) in
+            _ = UIAlertController.showAlertWith(title: "Notification",
+                                                message: data as! String,
+                                                myViewController: self)
+        }) { (error) in
+            if let dictionary = error as? [String: Any] {
+                let mesage: String = (dictionary["ErrMsg"] as? String)!
+                _ = UIAlertController.showAlertWith(title: "Notification",
+                                                    message: mesage,
+                                                    myViewController: self)
+            }
+        }
+    }
+    
+    func shareApp() {
+        let myAccount: Account = Account.getAccount()
+        let memberURL = myAccount.memberURL
+        let textToShare = "洪世瑋＆張鈞萍 宴客邀約平台\r\n \(memberURL)\r\n請進入 \"貴賓回函\" \r\n回覆參加人數，期待您的出席\r\n"
+        if let myWebsite = NSURL(string: memberURL) {
+            let objectsToShare = [textToShare, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+
+    
 }

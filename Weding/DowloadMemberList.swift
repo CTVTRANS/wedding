@@ -10,6 +10,7 @@ import UIKit
 import LCNetwork
 
 class DowloadMemberList: BaseTaskNetwork {
+    
     private var urlExcel:String
     
     init(linkUrl: String) {
@@ -17,8 +18,8 @@ class DowloadMemberList: BaseTaskNetwork {
     }
     
     override func path() -> String! {
-        return memberList
-//        return urlExcel
+//        return memberList
+        return urlExcel
     }
     
     override func method() -> String! {
