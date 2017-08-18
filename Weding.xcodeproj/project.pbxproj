@@ -43,6 +43,9 @@
 		6DF4A4BF1F372CE500869C38 /* Man.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4A4BE1F372CE500869C38 /* Man.swift */; };
 		6DF535841F43435000305D12 /* UploadMemberTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF535831F43435000305D12 /* UploadMemberTask.swift */; };
 		6DF6A8D91F4534F000A19212 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF6A8D81F4534F000A19212 /* Account.swift */; };
+		6DF8535C1F46E10300C76D83 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535B1F46E10300C76D83 /* ChatViewController.swift */; };
+		6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */; };
+		6DF853621F46E8B900C76D83 /* MyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF853611F46E8B900C76D83 /* MyViewCell.swift */; };
 		E19E08D17C0560817A4AF853 /* Pods_WedingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */; };
 		E7D2C5B895444686E9A6B648 /* Pods_WedingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +116,9 @@
 		6DF4A4BE1F372CE500869C38 /* Man.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Man.swift; sourceTree = "<group>"; };
 		6DF535831F43435000305D12 /* UploadMemberTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadMemberTask.swift; sourceTree = "<group>"; };
 		6DF6A8D81F4534F000A19212 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		6DF8535B1F46E10300C76D83 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GusetViewCell.swift; sourceTree = "<group>"; };
+		6DF853611F46E8B900C76D83 /* MyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewCell.swift; sourceTree = "<group>"; };
 		75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -312,6 +318,7 @@
 				6DF0830E1F3581860073A9BF /* Menu */,
 				6D29ACCE1F3470E900A17621 /* SeconView */,
 				6D29ACD11F3481C300A17621 /* ManagerExcel */,
+				6DF8535A1F46E0E300C76D83 /* Chat */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -322,6 +329,16 @@
 				6D29ACCA1F34261500A17621 /* MainViewController.swift */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		6DF8535A1F46E0E300C76D83 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				6DF8535B1F46E10300C76D83 /* ChatViewController.swift */,
+				6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */,
+				6DF853611F46E8B900C76D83 /* MyViewCell.swift */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		D5FCB35F3F3F88FDAA838802 /* Pods */ = {
@@ -627,6 +644,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DF853621F46E8B900C76D83 /* MyViewCell.swift in Sources */,
 				58F5E9021F3BFBD700D32A7F /* BaseViewcontrollerExtend.swift in Sources */,
 				6DF6A8D91F4534F000A19212 /* Account.swift in Sources */,
 				58E166B81F39A2B500E59DE2 /* Factory.swift in Sources */,
@@ -637,6 +655,7 @@
 				58E166BC1F39C9DB00E59DE2 /* DowloadMemberList.swift in Sources */,
 				6D29ACD01F34710F00A17621 /* MessageViewCell.swift in Sources */,
 				6DF083101F3581C50073A9BF /* MenuViewController.swift in Sources */,
+				6DF8535C1F46E10300C76D83 /* ChatViewController.swift in Sources */,
 				6D3174031F43E1A4001E19B6 /* ExcelController.swift in Sources */,
 				6DF083121F3581DC0073A9BF /* MenuViewCell.swift in Sources */,
 				6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */,
@@ -649,6 +668,7 @@
 				6DF535841F43435000305D12 /* UploadMemberTask.swift in Sources */,
 				6D29AC9D1F34039C00A17621 /* AppDelegate.swift in Sources */,
 				6D6228571F34C658000CE328 /* CustomNavigationBar.swift in Sources */,
+				6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */,
 				6DF4A4BA1F3702B900869C38 /* LoginTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
