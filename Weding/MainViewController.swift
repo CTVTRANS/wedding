@@ -31,9 +31,17 @@ class MainViewController: BaseViewController {
     
     func setupNotification() {
         let myAccount: Account = Account.getAccount()
-        numberGuest.text = String(myAccount.numberGuest)
+        if (myAccount.numberGuest > 9) {
+             numberGuest.text = "9"
+        } else {
+             numberGuest.text = String(myAccount.numberGuest)
+        }
+        if (myAccount.numberMessage > 9) {
+            numberMessage.text = "9"
+        } else {
+            numberMessage.text = String(myAccount.numberMessage)
+        }
         numberNotificationSeat.text = String(myAccount.tableNotification)
-        numberMessage.text = String(myAccount.numberMessage)
     }
     
     func setupWdding() {
@@ -50,7 +58,6 @@ class MainViewController: BaseViewController {
     }
 
     @IBAction func openWeb(_ sender: Any) {
-        //get number guest:man+woman = number heart
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
     }
     
@@ -70,7 +77,6 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
-        //get url imag? and wedstep? = numberheart
         UIApplication.shared.openURL(URL(string: linkWebLogin)!)
     }
     

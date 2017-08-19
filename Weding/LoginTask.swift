@@ -11,6 +11,7 @@ import LCNetwork
 import CryptoSwift
 
 class LoginTask: BaseTaskNetwork {
+    
     let useName: String!
     let passWord: String!
     
@@ -22,6 +23,7 @@ class LoginTask: BaseTaskNetwork {
     func getKey() -> String {
         let key = "username=" + useName + "&password=" + passWord + "&key=" + loginKey
         let keySHA1 = key.sha1()
+        Constants.sharedInstance.keyAccount = keySHA1
         return keySHA1
     }
     

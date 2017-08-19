@@ -25,7 +25,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var replyMessageText: UITextView!
 
     var tap: UITapGestureRecognizer?
-    
+    var hightConstant: CGFloat!
     var arr = [GuestMessage]()
 
     override func viewDidLoad() {
@@ -59,16 +59,14 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func setUpReplyMessageView() {
+        hightConstant = replyMessageText.frame.size.height
         replyView.isHidden = true
         replyMessageText.isHidden = true
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
-//        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-//        view.addGestureRecognizer(tap!)
         replyMessageText.delegate = self
-        replyMessageText.layoutIfNeeded()
     }
     
     func dismissKeyboard() {
@@ -88,20 +86,23 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
         let vc: ChatViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func sendMeesage(_ sender: Any) {
-        let message = replyMessageText.text
+        let message: String = replyMessageText.text
         if (message == "") {
             replyMessageText.resignFirstResponder()
             return
         }
-        let alert = UIAlertController(title: "Notification", message: "Send message succses", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        replyMessageText.resignFirstResponder()
-        self.present(alert, animated: true) { 
+        let sendMessageTask: SendMessageTask = SendMessageTask(name: "m01,m02,m03", contentMessage: message)
+        requestWithTask(task: sendMessageTask, success: { (data) in
+            print(data!)
             self.replyMessageText.text = ""
+            self.replyMessageText.resignFirstResponder()
+            let _ = UIAlertController.showAlertWith(title: "Notification", message: data as! String, myViewController: self)
+        }) { (error) in
+            print(error!)
         }
     }
  
@@ -138,6 +139,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
                 contrainsReplayView.constant = 0.0
                 contraintTextMessage.constant = 0.0
                 contrainsTop.constant = 44.0
+                hightOfTextView.constant = hightConstant
             } else {
                 self.navigationItem.leftBarButtonItem?.isEnabled = false
                 self.navigationItem.rightBarButtonItem?.isEnabled = false
@@ -160,6 +162,4 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
 //            })
         }
     }
-
-
 }

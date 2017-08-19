@@ -24,12 +24,18 @@ class MenuViewCell: UITableViewCell {
         let numberGest = myAccount.numberGuest
         let numberMessage = myAccount.numberMessage
         let numberSeat = myAccount.tableNotification
-        if (index == 0 && numberGest > 0) {
+        if (index == 0 && numberGest > 0 && numberGest <= 9) {
             viewNotification.isHidden = false
             numberNotification.text = String(numberGest)
-        } else if (index == 3 && numberMessage > 0){
+        } else if (index == 0 && numberGest > 9){
+            viewNotification.isHidden = false
+            numberNotification.text = "9"
+        } else if (index == 3 && numberMessage > 0 && numberMessage <= 9){
             viewNotification.isHidden = false
             numberNotification.text = String(numberMessage)
+        } else if (index == 3 && numberMessage > 9) {
+            viewNotification.isHidden = false
+            numberNotification.text = "9"
         } else if (index == 4 && numberSeat > 0) {
             viewNotification.isHidden = false
             numberNotification.text = String(numberSeat)
