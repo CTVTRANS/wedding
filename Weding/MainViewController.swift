@@ -21,27 +21,48 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var numberGuest: UILabel!
     @IBOutlet weak var numberMessage: UILabel!
     @IBOutlet weak var numberNotificationSeat: UILabel!
+    @IBOutlet weak var viewNumberGuest: UIView!
+    @IBOutlet weak var viewNumberMessage: UIView!
+    @IBOutlet weak var viewNumberSeat: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWdding()
         setupNavigation()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadNumberNotification(notification:)), name: NSNotification.Name(rawValue: "refreshNotification"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupNotification()
     }
     
     func setupNotification() {
-        let myAccount: Account = Account.getAccount()
-        if (myAccount.numberGuest > 9) {
+        let numberGestNotification: Int = Constants.sharedInstance.currentNotificationGuest!
+        let numberMessageNotification: Int = Constants.sharedInstance.currentNotificationMessage!
+        let numberSeatNotification: Int = Constants.sharedInstance.currentNotificationSeat!
+
+        if numberGestNotification > 9 {
              numberGuest.text = "9"
+        } else if (numberGestNotification == 0){
+             viewNumberGuest.isHidden = true
         } else {
-             numberGuest.text = String(myAccount.numberGuest)
+            numberGuest.text = String(numberGestNotification)
         }
-        if (myAccount.numberMessage > 9) {
+
+        if (numberMessageNotification > 9) {
             numberMessage.text = "9"
+        } else if (numberMessageNotification == 0) {
+            viewNumberMessage.isHidden = true
         } else {
-            numberMessage.text = String(myAccount.numberMessage)
+            numberMessage.text = String(numberMessageNotification)
         }
-        numberNotificationSeat.text = String(myAccount.tableNotification)
+        
+        if (numberSeatNotification > 0) {
+             numberNotificationSeat.text = String(numberSeatNotification)
+        } else {
+            viewNumberSeat.isHidden = true
+        }
     }
     
     func setupWdding() {
@@ -59,6 +80,8 @@ class MainViewController: BaseViewController {
 
     @IBAction func openWeb(_ sender: Any) {
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
+        viewNumberGuest.isHidden = true
+        Constants.sharedInstance.currentNotificationGuest = 0
     }
     
     @IBAction func sharePressed(_ sender: Any) {
@@ -73,11 +96,15 @@ class MainViewController: BaseViewController {
    
     @IBAction func openSecondView(_ sender: Any) {
         let secondVC: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
+        viewNumberMessage.isHidden = true
+        Constants.sharedInstance.currentNotificationMessage = 0
         self.navigationController?.pushViewController(secondVC, animated: false)
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
         UIApplication.shared.openURL(URL(string: linkWebLogin)!)
+        viewNumberSeat.isHidden = true
+        Constants.sharedInstance.currentNotificationSeat = 0
     }
     
     @IBAction func sendImageOfSeatPosition(_ sender: Any) {
@@ -86,5 +113,20 @@ class MainViewController: BaseViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func reloadNumberNotification(notification: Notification) {
+       let name = notification.object as! String
+        switch name {
+        case "guest":
+            viewNumberGuest.isHidden = true
+            Constants.sharedInstance.currentNotificationGuest = 0
+        case "message":
+            viewNumberGuest.isHidden = true
+            Constants.sharedInstance.currentNotificationGuest = 0
+        default:
+            viewNumberSeat.isHidden = true
+            Constants.sharedInstance.currentNotificationSeat = 0
+        }
     }
 }

@@ -14,16 +14,18 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var table: UITableView!
     var arrayRow = ["檢視邀約平台", "分享邀約平台", "賓客規劃表", "發送即時訊息", "婚禮管家", "桌位圖表發佈賓客", "回首頁"]
     var swVC:SWRevealViewController!
-    
+    let notificationName = Notification.Name("refreshNotification")
     override func viewDidLoad() {
         super.viewDidLoad()
         table.tableFooterView = UIView()
         self.revealViewController().delegate = self
         swVC = self.revealViewController()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        table.reloadData()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,6 +47,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         case 0:
             UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
             swVC.revealToggle(animated: false)
+            Constants.sharedInstance.currentNotificationGuest = 0
+            NotificationCenter.default.post(name: notificationName, object: "guest")
             return
         case 1:
             swVC.revealToggle(animated: true)
@@ -61,10 +65,14 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 swVC.revealToggle(animated: true)
                 return
             }
+            NotificationCenter.default.post(name: notificationName, object: "message")
+            Constants.sharedInstance.currentNotificationMessage = 0
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
         case 4:
             UIApplication.shared.openURL(URL(string: linkWebLogin)!)
             swVC.revealToggle(animated: false)
+            NotificationCenter.default.post(name: notificationName, object: "seat")
+            Constants.sharedInstance.currentNotificationSeat = 0
             return
         case 5:
             swVC.revealToggle(animated: true)
@@ -85,6 +93,5 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let vc: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
         let navigationVC: UINavigationController = UINavigationController.init(rootViewController: vc)
         swVC.pushFrontViewController(navigationVC, animated: true)
-
     }
 }

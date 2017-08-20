@@ -10,13 +10,15 @@ import UIKit
 
 class Account: NSObject, NSCoding {
     private var accountName: String!
+    private var passWord: String!
     private var linkMember: String!
     private var totalGuest: Int!
     private var totalMessage: Int!
     private var tableSeat: Int!
     
-    init(name: String, numberGuest: Int, numberMessage: Int, memberURL: String, seat: Int) {
+    init(name: String, pass: String, numberGuest: Int, numberMessage: Int, memberURL: String, seat: Int) {
         accountName = name
+        passWord = pass
         totalGuest = numberGuest
         totalMessage = numberMessage
         linkMember = memberURL
@@ -25,6 +27,7 @@ class Account: NSObject, NSCoding {
     
     required init(coder decoder: NSCoder) {
         accountName = decoder.decodeObject(forKey: "accountName") as! String
+        passWord = decoder.decodeObject(forKey: "passWord") as! String
         linkMember = decoder.decodeObject(forKey: "linkMember") as! String
         totalGuest = decoder.decodeObject(forKey: "totalGuest") as! Int
         totalMessage = decoder.decodeObject(forKey: "totalMessage") as! Int
@@ -33,6 +36,7 @@ class Account: NSObject, NSCoding {
     
     func encode(with coder: NSCoder) {
         coder.encode(accountName, forKey: "accountName")
+        coder.encode(passWord, forKey: "passWord")
         coder.encode(linkMember, forKey: "linkMember")
         coder.encode(totalGuest, forKey: "totalGuest")
         coder.encode(totalMessage, forKey: "totalMessage")
@@ -54,12 +58,27 @@ class Account: NSObject, NSCoding {
         }
     }
     
+    class func isAuthentic() -> Bool {
+        if UserDefaults.standard.data(forKey: "myAccount") != nil {
+            return true
+        } else {
+            return false
+        }
+    }
     var name: String {
         get {
             return accountName
         }
         set {
             accountName = newValue
+        }
+    }
+    var pass: String {
+        get {
+            return passWord
+        }
+        set {
+            passWord = newValue
         }
     }
     var numberGuest: Int {

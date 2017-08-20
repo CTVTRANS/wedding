@@ -20,17 +20,17 @@ class MenuViewCell: UITableViewCell {
     }
     
     func binData(name: String, index: Int) {
-        let myAccount = Account.getAccount()
-        let numberGest = myAccount.numberGuest
-        let numberMessage = myAccount.numberMessage
-        let numberSeat = myAccount.tableNotification
+        let numberGest: Int = Constants.sharedInstance.currentNotificationGuest!
+        let numberMessage: Int = Constants.sharedInstance.currentNotificationMessage!
+        let numberSeat: Int = Constants.sharedInstance.currentNotificationSeat!
+        nameRow.text = name
         if (index == 0 && numberGest > 0 && numberGest <= 9) {
             viewNotification.isHidden = false
-            numberNotification.text = String(numberGest)
+            numberNotification.text = String(numberMessage)
         } else if (index == 0 && numberGest > 9){
             viewNotification.isHidden = false
             numberNotification.text = "9"
-        } else if (index == 3 && numberMessage > 0 && numberMessage <= 9){
+        } else if (index == 3 && numberMessage > 0 && numberMessage <= 9) {
             viewNotification.isHidden = false
             numberNotification.text = String(numberMessage)
         } else if (index == 3 && numberMessage > 9) {
@@ -39,7 +39,8 @@ class MenuViewCell: UITableViewCell {
         } else if (index == 4 && numberSeat > 0) {
             viewNotification.isHidden = false
             numberNotification.text = String(numberSeat)
+        } else {
+            viewNotification.isHidden = true
         }
-        nameRow.text = name
     }
 }

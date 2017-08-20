@@ -63,7 +63,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         replyView.isHidden = true
         replyMessageText.isHidden = true
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               selector: #selector(self.keyboardNotification(notification1:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
         replyMessageText.delegate = self
@@ -107,6 +107,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     }
  
     @IBAction func prssedSendAll(_ sender: Any) {
+        replyMessageText.becomeFirstResponder()
         replyView.isHidden = false
         replyMessageText.isHidden = false
     }
@@ -122,8 +123,8 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func keyboardNotification(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
+    @objc func keyboardNotification(notification1: NSNotification) {
+        if let userInfo = notification1.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
@@ -134,7 +135,6 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
                 replyView.isHidden = true
                 replyMessageText.isHidden = true
-                
                 view.removeGestureRecognizer(tap!)
                 contrainsReplayView.constant = 0.0
                 contraintTextMessage.constant = 0.0

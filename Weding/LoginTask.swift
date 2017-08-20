@@ -41,6 +41,10 @@ class LoginTask: BaseTaskNetwork {
     
     override func data(withResponse response: Any!) -> Any! {
         if let dictionary = response as? [String: Any] {
+            let name = dictionary["COMPANYNM"] as? String
+            let factory: Factory = Factory(name: name!)
+            Constants.sharedInstance.factory = factory
+
             Constants.sharedInstance.woman = parseWoman(dictionary: dictionary)
             Constants.sharedInstance.man = parseMan(dictionary: dictionary)
             
@@ -62,7 +66,7 @@ class LoginTask: BaseTaskNetwork {
                                       day: womanWeddingDay,
                                       dayCounter: womanWeddingCounter,
                                       numberGuest:  womanNumberCustomer,
-                                      linkdownloadExcel: womanLinkExcel)
+                                      linkdownloadExcel: womanLinkExcel, filePath: "123")
         woman.memberURL = accountMemberURL
         woman.tableSeat = tableSeatLink
         woman.webStep = webSetpLink
@@ -80,7 +84,7 @@ class LoginTask: BaseTaskNetwork {
                                 day: manWeddingDay,
                                 dayCounter: manWeddingCounter,
                                 numberCustomer: manNumberCustomer,
-                                linkDownloadExcel: manLLinkExcel)
+                                linkDownloadExcel: manLLinkExcel, filePath: "123")
         return man
     }
     

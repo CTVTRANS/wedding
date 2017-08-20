@@ -38,6 +38,7 @@
 		6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */; };
 		6DF083101F3581C50073A9BF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0830F1F3581C50073A9BF /* MenuViewController.swift */; };
 		6DF083121F3581DC0073A9BF /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF083111F3581DC0073A9BF /* MenuViewCell.swift */; };
+		6DF0BE641F49609700D426CD /* MemberMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0BE631F49609700D426CD /* MemberMessage.swift */; };
 		6DF1F25C1F36B54500C595B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF1F25B1F36B54500C595B8 /* Constants.swift */; };
 		6DF4A4BA1F3702B900869C38 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4A4B91F3702B900869C38 /* LoginTask.swift */; };
 		6DF4A4BD1F372B0500869C38 /* Woman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4A4BC1F372B0500869C38 /* Woman.swift */; };
@@ -112,6 +113,7 @@
 		6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondNavigation.swift; sourceTree = "<group>"; };
 		6DF0830F1F3581C50073A9BF /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6DF083111F3581DC0073A9BF /* MenuViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
+		6DF0BE631F49609700D426CD /* MemberMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberMessage.swift; sourceTree = "<group>"; };
 		6DF1F25B1F36B54500C595B8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6DF4A4B91F3702B900869C38 /* LoginTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		6DF4A4BC1F372B0500869C38 /* Woman.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Woman.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				58F5E8FE1F3AF69400D32A7F /* GuestMessage.swift */,
 				58E166B71F39A2B500E59DE2 /* Factory.swift */,
 				6DF6A8D81F4534F000A19212 /* Account.swift */,
+				6DF0BE631F49609700D426CD /* MemberMessage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				6D8143BA1F47E6C30005AD8B /* SendMessageTask.swift in Sources */,
 				6D3174031F43E1A4001E19B6 /* ExcelController.swift in Sources */,
 				6DF083121F3581DC0073A9BF /* MenuViewCell.swift in Sources */,
+				6DF0BE641F49609700D426CD /* MemberMessage.swift in Sources */,
 				6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */,
 				58E166BA1F39A37400E59DE2 /* GetFactoryTask.swift in Sources */,
 				6DF4A4BF1F372CE500869C38 /* Man.swift in Sources */,

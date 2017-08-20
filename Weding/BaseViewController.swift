@@ -64,20 +64,22 @@ class BaseViewController: UIViewController {
             }
             self.present(activityVC, animated: true, completion: nil)
         }) { (error) in
-            
+                _ = UIAlertController.showAlertWith(title: "Failure",
+                                                message: "Can't download file",
+                                                myViewController: self)
         }
     }
     
     func uploadExcel(url: URL) {
         let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url)
         uploadFileSuccess(task: uploadTask, success: { (data) in
-            _ = UIAlertController.showAlertWith(title: "Notification",
+            _ = UIAlertController.showAlertWith(title: "Success",
                                                 message: data as! String,
                                                 myViewController: self)
         }) { (error) in
             if let dictionary = error as? [String: Any] {
                 let mesage: String = (dictionary["ErrMsg"] as? String)!
-                _ = UIAlertController.showAlertWith(title: "Notification",
+                _ = UIAlertController.showAlertWith(title: "Failure",
                                                     message: mesage,
                                                     myViewController: self)
             }
@@ -95,5 +97,30 @@ class BaseViewController: UIViewController {
         }
     }
 
+    func processNumberNotification(name: String, pass: String) {
+        let myAccount = Account.getAccount()
+        let newNumberGuest = (Constants.sharedInstance.man?.numberGuest)! + (Constants.sharedInstance.woman?.numberGuest)!
+        let newNumberMessage = Int(5)
+        let linkTable = Constants.sharedInstance.woman?.tableSeat
+        let linkWedStep = Constants.sharedInstance.woman?.webStep
+        var newNumberNotificationOfSeat: Int = 0
+        if ((linkTable?.characters.count)! > 0) {
+            newNumberNotificationOfSeat += 1
+        } else if ((linkWedStep?.characters.count)! > 0){
+            newNumberNotificationOfSeat += 1
+        }
+        
+        let guestNotification = newNumberGuest - myAccount.numberGuest
+        Constants.sharedInstance.currentNotificationGuest = guestNotification
+        let messageNotification = newNumberMessage - myAccount.numberMessage
+        Constants.sharedInstance.currentNotificationMessage = messageNotification
+        let seatNotification = newNumberNotificationOfSeat - myAccount.tableNotification
+        Constants.sharedInstance.currentNotificationSeat = seatNotification
+        
+        myAccount.numberGuest = newNumberGuest
+        myAccount.numberMessage = newNumberMessage
+        myAccount.tableNotification = newNumberNotificationOfSeat
+        Account.saveAccount(myAccount: myAccount)
+    }
     
 }

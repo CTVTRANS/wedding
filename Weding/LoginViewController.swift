@@ -15,18 +15,10 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var nameFactory: UILabel!
     
-    let urlToRequest = "http://www.freewed.com.tw/api/GetMemberSearch.aspx"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         userNameTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
-         passWordTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
-        let getInformationFactoryTask: GetFactoryTask = GetFactoryTask()
-        requestWithTask(task: getInformationFactoryTask, success: { (data) in
-            self.nameFactory.text = Constants.sharedInstance.factory?.getName()
-        }) { (error) in
-            
-        }
+        passWordTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
     }
 
     @IBAction func sigInPressed(_ sender: Any) {
@@ -41,19 +33,29 @@ class LoginViewController: BaseViewController {
         let loginTask:LoginTask = LoginTask(name: name!, pass: pass!)
         requestWithTask(task: loginTask, success: { (data) in
             print(data!)
-            let numberGuest =
-                (Constants.sharedInstance.man?.numberGuest)! + (Constants.sharedInstance.woman?.numberGuest)!
-            let numberMessage = Int(5)
             let memberURL = Constants.sharedInstance.woman?.memberURL
+            let myAccount = Account(name: name!, pass: pass!, numberGuest: 0, numberMessage: 0, memberURL: memberURL!, seat: 0)
+            let newNumberGuest = (Constants.sharedInstance.man?.numberGuest)! + (Constants.sharedInstance.woman?.numberGuest)!
+            let newNumberMessage = Int(5)
             let linkTable = Constants.sharedInstance.woman?.tableSeat
             let linkWedStep = Constants.sharedInstance.woman?.webStep
-            var numberNotificationOfSeat: Int = 0
+            var newNumberNotificationOfSeat: Int = 0
             if ((linkTable?.characters.count)! > 0) {
-                numberNotificationOfSeat += 1
+                newNumberNotificationOfSeat += 1
             } else if ((linkWedStep?.characters.count)! > 0){
-                numberNotificationOfSeat += 1
+                newNumberNotificationOfSeat += 1
             }
-            let myAccount = Account(name: name!, numberGuest: numberGuest, numberMessage: numberMessage, memberURL: memberURL!, seat: numberNotificationOfSeat)
+            
+            let guestNotification = newNumberGuest - myAccount.numberGuest
+            Constants.sharedInstance.currentNotificationGuest = guestNotification
+            let messageNotification = newNumberMessage - myAccount.numberMessage
+            Constants.sharedInstance.currentNotificationMessage = messageNotification
+            let seatNotification = newNumberNotificationOfSeat - myAccount.tableNotification
+            Constants.sharedInstance.currentNotificationSeat = seatNotification
+
+            myAccount.numberGuest = newNumberGuest
+            myAccount.numberMessage = newNumberMessage
+            myAccount.tableNotification = newNumberNotificationOfSeat
             Account.saveAccount(myAccount: myAccount)
             self.showmainMenu()
         }) { (error) in

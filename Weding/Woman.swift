@@ -20,13 +20,14 @@ class Woman: NSObject {
     private var _tableSeat: String!
     private var _webStep: String!
     
-    init(name: String, day: String, dayCounter: String, numberGuest: Int, linkdownloadExcel: String) {
+    init(name: String, day: String, dayCounter: String, numberGuest: Int, linkdownloadExcel: String, filePath: String) {
         self._name = name
         self._weddingDay = day
         let dayCounterArray = dayCounter.components(separatedBy: " ")
         self._weddingDayCounter = dayCounterArray[1]
         self._numberGuest = numberGuest
         self._linkDownloadExcel = linkdownloadExcel
+        self._filepathURL = URL(fileURLWithPath: filePath)
     }
     var name: String {
         get {

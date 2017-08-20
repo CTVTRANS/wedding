@@ -28,16 +28,18 @@ class ExcelController: BaseViewController {
     }
 
     @IBAction func manUploadEcel(_ sender: Any) {
-        let filePtah = Constants.sharedInstance.man?.filePath
-        uploadExcel(url: filePtah!)
+        let filePath = Constants.sharedInstance.man?.filePath
+        uploadExcel(url: filePath!)
     }
+    
     @IBAction func womanDownloadExcel(_ sender: Any) {
         let url = Constants.sharedInstance.woman?.excelUrl
         downloadMemberExcel(byHuman: "woman", url: url!)
     }
+    
     @IBAction func wonmanUploadExcel(_ sender: Any) {
-        let filePtah = Constants.sharedInstance.woman?.filePath
-        uploadExcel(url: filePtah!)
+        let filePath = Constants.sharedInstance.woman?.filePath
+        uploadExcel(url: filePath!)
     }
     
     deinit {
