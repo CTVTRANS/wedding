@@ -17,6 +17,7 @@ class Constants {
     var woman: Woman?
     var man: Man?
     var factory: Factory?
+    var token: String?
     var keyAccount: String?
     var currentNotificationGuest: Int?
     var currentNotificationMessage: Int?

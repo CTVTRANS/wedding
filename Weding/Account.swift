@@ -18,6 +18,8 @@ class Account: NSObject, NSCoding {
     private var _currentGuestNumberBadge: Int!
     private var _currentMessageNumberBadge: Int!
     private var _currentSeatNumberBadge: Int!
+    private var _keyAccess: String!
+    private var _token: String!
     
     init(name: String, pass: String, numberGuest: Int, numberMessage: Int, memberURL: String, seat: Int) {
         accountName = name
@@ -38,6 +40,8 @@ class Account: NSObject, NSCoding {
         _currentGuestNumberBadge = decoder.decodeObject(forKey: "currentGuestNumberBadge") as! Int
         _currentMessageNumberBadge = decoder.decodeObject(forKey: "currentMessageNumberBadge") as! Int
         _currentSeatNumberBadge = decoder.decodeObject(forKey: "currentSeatNumberBadge") as! Int
+        _keyAccess = decoder.decodeObject(forKey: "keyAccess") as! String
+        _token = decoder.decodeObject(forKey: "token") as! String
     }
     
     func encode(with coder: NSCoder) {
@@ -50,6 +54,8 @@ class Account: NSObject, NSCoding {
         coder.encode(_currentGuestNumberBadge, forKey: "currentGuestNumberBadge")
         coder.encode(_currentMessageNumberBadge, forKey: "currentMessageNumberBadge")
         coder.encode(_currentSeatNumberBadge, forKey: "currentSeatNumberBadge")
+        coder.encode(_keyAccess, forKey: "keyAccess")
+        coder.encode(_token, forKey: "token")
     }
     
     class func saveAccount(myAccount: Account) {
@@ -146,5 +152,20 @@ class Account: NSObject, NSCoding {
             _currentSeatNumberBadge = newValue
         }
     }
-
+    var keyAccess: String {
+        get {
+            return _keyAccess
+        }
+        set {
+            _keyAccess = newValue
+        }
+    }
+    var token: String {
+        get {
+            return _token
+        }
+        set {
+            _token = newValue
+        }
+    }
 }

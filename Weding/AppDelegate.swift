@@ -96,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let token = tokenParts.joined()
+        Constants.sharedInstance.token = token
         print("Device Token: \(token)")
     }
     

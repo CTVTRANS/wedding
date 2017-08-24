@@ -16,9 +16,11 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var replyTextView: UITextView!
     @IBOutlet weak var hightOfTextView: NSLayoutConstraint!
     @IBOutlet weak var constraintBotView: NSLayoutConstraint!
-    
     var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
+    
+    var guestMessge: GuestMessage?
+    var arr = [GuestMessage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +28,12 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         hightConstant = replyTextView.frame.size.height
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
+        arr.append(guestMessge!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationItem.title = "Guest Name"
+        self.navigationItem.title = guestMessge?.getname()
     }
     
     func setUpReplyMessageView() {
@@ -53,25 +56,29 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         }
         let sendMessageTask: SendMessageTask = SendMessageTask(name: "m01", contentMessage: message)
         requestWithTask(task: sendMessageTask, success: { (data) in
-            print(data!)
+            let newguest = GuestMessage(name: "", message: message, timeSend: "8/24 16:04")
+            self.arr.append(newguest)
             self.replyTextView.text = ""
             self.replyTextView.resignFirstResponder()
             let _ = UIAlertController.showAlertWith(title: "Notification", message: data as! String, myViewController: self)
+            self.table.reloadData()
         }) { (error) in
             print(error!)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return arr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) {
             let cell: GusetViewCell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as! GusetViewCell
+            cell.binData(guestMessage: self.guestMessge!)
             return cell
         }
         let cell: MyViewCell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as! MyViewCell
+        cell.binData(myMessage: arr[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

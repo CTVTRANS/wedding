@@ -34,6 +34,7 @@
 		6DABE6DF1F34C2FC00053AA3 /* CustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */; };
 		6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */; };
 		6DEDBD511F45836600526AD0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEDBD501F45836600526AD0 /* SplashViewController.swift */; };
+		6DEF9B821F4EAB5A0004BC31 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEF9B811F4EAB5A0004BC31 /* Guest.swift */; };
 		6DF082CE1F3552EA0073A9BF /* SecondNavigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */; };
 		6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */; };
 		6DF083101F3581C50073A9BF /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0830F1F3581C50073A9BF /* MenuViewController.swift */; };
@@ -45,6 +46,7 @@
 		6DF4A4BF1F372CE500869C38 /* Man.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4A4BE1F372CE500869C38 /* Man.swift */; };
 		6DF535841F43435000305D12 /* UploadMemberTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF535831F43435000305D12 /* UploadMemberTask.swift */; };
 		6DF6A8D91F4534F000A19212 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF6A8D81F4534F000A19212 /* Account.swift */; };
+		6DF7DEAF1F4E850F004D6719 /* SendToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF7DEAE1F4E850F004D6719 /* SendToken.swift */; };
 		6DF8535C1F46E10300C76D83 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535B1F46E10300C76D83 /* ChatViewController.swift */; };
 		6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */; };
 		6DF853621F46E8B900C76D83 /* MyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF853611F46E8B900C76D83 /* MyViewCell.swift */; };
@@ -110,6 +112,7 @@
 		6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6DECCBDB1F4D1E640097AE52 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
 		6DEDBD501F45836600526AD0 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		6DEF9B811F4EAB5A0004BC31 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondNavigation.xib; sourceTree = "<group>"; };
 		6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondNavigation.swift; sourceTree = "<group>"; };
 		6DF0830F1F3581C50073A9BF /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +124,7 @@
 		6DF4A4BE1F372CE500869C38 /* Man.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Man.swift; sourceTree = "<group>"; };
 		6DF535831F43435000305D12 /* UploadMemberTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadMemberTask.swift; sourceTree = "<group>"; };
 		6DF6A8D81F4534F000A19212 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		6DF7DEAE1F4E850F004D6719 /* SendToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendToken.swift; sourceTree = "<group>"; };
 		6DF8535B1F46E10300C76D83 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GusetViewCell.swift; sourceTree = "<group>"; };
 		6DF853611F46E8B900C76D83 /* MyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewCell.swift; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				58E166BB1F39C9DB00E59DE2 /* DowloadMemberList.swift */,
 				6DF535831F43435000305D12 /* UploadMemberTask.swift */,
 				6D8143B91F47E6C20005AD8B /* SendMessageTask.swift */,
+				6DF7DEAE1F4E850F004D6719 /* SendToken.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				6DF1F25B1F36B54500C595B8 /* Constants.swift */,
 				6DF4A4BC1F372B0500869C38 /* Woman.swift */,
 				6DF4A4BE1F372CE500869C38 /* Man.swift */,
+				6DEF9B811F4EAB5A0004BC31 /* Guest.swift */,
 				58F5E8FE1F3AF69400D32A7F /* GuestMessage.swift */,
 				58E166B71F39A2B500E59DE2 /* Factory.swift */,
 				6DF6A8D81F4534F000A19212 /* Account.swift */,
@@ -674,8 +680,10 @@
 				6DF083121F3581DC0073A9BF /* MenuViewCell.swift in Sources */,
 				6DF0BE641F49609700D426CD /* MemberMessage.swift in Sources */,
 				6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */,
+				6DF7DEAF1F4E850F004D6719 /* SendToken.swift in Sources */,
 				58E166BA1F39A37400E59DE2 /* GetFactoryTask.swift in Sources */,
 				6DF4A4BF1F372CE500869C38 /* Man.swift in Sources */,
+				6DEF9B821F4EAB5A0004BC31 /* Guest.swift in Sources */,
 				6DF1F25C1F36B54500C595B8 /* Constants.swift in Sources */,
 				6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */,
 				6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */,

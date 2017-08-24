@@ -35,10 +35,10 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         setUpReplyMessageView()
         setupNavigation()
         
-        let guest1 = GuestMessage(name: "Tom", message: "alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo", timeSend: "2017/6/23")
-        let guest2 = GuestMessage(name: "Michael", message: "hi", timeSend: "2017/6/4")
-        let guest3 = GuestMessage(name: "Jane", message: "hello", timeSend: "2017/6/25")
-        let guest4 = GuestMessage(name: "South", message: "ahihi", timeSend: "2017/6/26")
+        let guest1 = GuestMessage(name: "Tom", message: "alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo", timeSend: "8/24 14:34s")
+        let guest2 = GuestMessage(name: "Michael", message: "hi", timeSend: "8/13 8:10")
+        let guest3 = GuestMessage(name: "Jane", message: "hello", timeSend: "8/15 13:35")
+        let guest4 = GuestMessage(name: "South", message: "ahihi", timeSend: "8/15 23:56")
         arr.append(guest1)
         arr.append(guest2)
         arr.append(guest3)
@@ -86,6 +86,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
         let vc: ChatViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        vc.guestMessge = arr[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

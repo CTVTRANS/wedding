@@ -41,9 +41,19 @@ class LoginViewController: BaseViewController {
             myAccount.currentGuestNumberBadge = Constants.sharedInstance.currentNotificationGuest!
             myAccount.currentMessageNumberBadge =  Constants.sharedInstance.currentNotificationMessage!
             myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat!
+            myAccount.token = Constants.sharedInstance.token ?? ""
+            myAccount.keyAccess = Constants.sharedInstance.keyAccount!
             Account.saveAccount(myAccount: myAccount)
             self.processNumberNotification()
             self.showmainMenu()
+            
+            let sendToken: SendToken = SendToken()
+            self.requestWithTask(task: sendToken, success: { (data) in
+                print(data!)
+            }, failure: { (error) in
+                
+            })
+            
         }) { (error) in
             if let dictionary = error as? [String: Any] {
                 if let message: String = dictionary["ErrMsg"] as? String {
