@@ -12,11 +12,17 @@ class GuestMessage: NSObject {
     private var nameGuest: String?
     private var messageBoby: String?
     private var time: String?
+    private var image: UIImage?
     
-    init(name: String, message: String, timeSend: String) {
+    init(name: String, message: String, timeSend: String, avatar: UIImage) {
         nameGuest = name
         messageBoby = message
         time = timeSend
+        image = avatar
+    }
+    
+    func getImage() -> UIImage {
+        return image!
     }
     
     func getname() -> String {

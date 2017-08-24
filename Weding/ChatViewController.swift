@@ -56,7 +56,13 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         }
         let sendMessageTask: SendMessageTask = SendMessageTask(name: "m01", contentMessage: message)
         requestWithTask(task: sendMessageTask, success: { (data) in
-            let newguest = GuestMessage(name: "", message: message, timeSend: "8/24 16:04")
+            let dateFormatter : DateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd HH:mm"
+            let date = Date()
+            let dateString = dateFormatter.string(from: date)
+            let index = dateString.index(dateString.startIndex, offsetBy: 1)
+            let time = dateString.substring(from: index)
+            let newguest = GuestMessage(name: "", message: message, timeSend: time, avatar: #imageLiteral(resourceName: "logo mess 2"))
             self.arr.append(newguest)
             self.replyTextView.text = ""
             self.replyTextView.resignFirstResponder()

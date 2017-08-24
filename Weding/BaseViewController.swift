@@ -64,8 +64,8 @@ class BaseViewController: UIViewController {
             }
             self.present(activityVC, animated: true, completion: nil)
         }) { (error) in
-                _ = UIAlertController.showAlertWith(title: "Failure",
-                                                message: "Can't download file",
+                _ = UIAlertController.showAlertWith(title: "",
+                                                message: "不能下載賓客規劃表",
                                                 myViewController: self)
         }
     }
@@ -73,13 +73,13 @@ class BaseViewController: UIViewController {
     func uploadExcel(url: URL) {
         let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url)
         uploadFileSuccess(task: uploadTask, success: { (data) in
-            _ = UIAlertController.showAlertWith(title: "Success",
+            _ = UIAlertController.showAlertWith(title: "",
                                                 message: data as! String,
                                                 myViewController: self)
         }) { (error) in
             if let dictionary = error as? [String: Any] {
                 let mesage: String = (dictionary["ErrMsg"] as? String)!
-                _ = UIAlertController.showAlertWith(title: "Failure",
+                _ = UIAlertController.showAlertWith(title: "",
                                                     message: mesage,
                                                     myViewController: self)
             }

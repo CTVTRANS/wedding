@@ -12,10 +12,12 @@ class GusetViewCell: UITableViewCell {
 
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var timeMessage: UILabel!
-
+    @IBOutlet weak var avatar: UIImageView!
+    
     func binData(guestMessage: GuestMessage) {
         message.text = guestMessage.getMessge()
         timeMessage.text = guestMessage.getTime()
+        avatar.image = guestMessage.getImage()
     }
 
 }

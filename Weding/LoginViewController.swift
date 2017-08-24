@@ -66,6 +66,10 @@ class LoginViewController: BaseViewController {
         }
     }
 
+    @IBAction func pressedOpenWeb(_ sender: Any) {
+         UIApplication.shared.openURL(URL(string: "http://www.freewed.com.tw/app/index0.aspx?todo=loginmb")!)
+    }
+    
     func showmainMenu() {
         let vc: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
         self.present(vc, animated: false, completion: nil)

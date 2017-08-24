@@ -16,7 +16,7 @@ class BaseViewcontrollerExtend: NSObject {
 extension BaseViewController {
     
     func sendImageOfPosition() {
-        let alert = UIAlertController(title: "Notification", message: "Send images of seat postition succses", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: nil, message: "桌位圖發佈賓客成功", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
