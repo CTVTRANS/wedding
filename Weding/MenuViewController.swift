@@ -15,12 +15,13 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     var arrayRow = ["檢視邀約平台", "分享邀約平台", "賓客規劃表", "發送即時訊息", "婚禮管家", "桌位圖表發佈賓客", "回首頁"]
     var swVC:SWRevealViewController!
     let notificationName = Notification.Name("refreshNotification")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         table.tableFooterView = UIView()
         self.revealViewController().delegate = self
         swVC = self.revealViewController()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "requestToServer"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
             swVC.revealToggle(animated: false)
             Constants.sharedInstance.currentNotificationGuest = 0
+            let myAccount = Account.getAccount()
+            myAccount.currentGuestNumberBadge = 0
+            Account.saveAccount(myAccount: myAccount)
             NotificationCenter.default.post(name: notificationName, object: "guest")
             return
         case 1:
@@ -67,12 +71,18 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }
             NotificationCenter.default.post(name: notificationName, object: "message")
             Constants.sharedInstance.currentNotificationMessage = 0
+            let myAccount = Account.getAccount()
+            myAccount.currentMessageNumberBadge = 0
+            Account.saveAccount(myAccount: myAccount)
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
         case 4:
             UIApplication.shared.openURL(URL(string: linkWebLogin)!)
             swVC.revealToggle(animated: false)
             NotificationCenter.default.post(name: notificationName, object: "seat")
             Constants.sharedInstance.currentNotificationSeat = 0
+            let myAccount = Account.getAccount()
+            myAccount.currentSeatNumberBadge = 0
+            Account.saveAccount(myAccount: myAccount)
             return
         case 5:
             swVC.revealToggle(animated: true)
@@ -93,5 +103,15 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let vc: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
         let navigationVC: UINavigationController = UINavigationController.init(rootViewController: vc)
         swVC.pushFrontViewController(navigationVC, animated: true)
+    }
+    
+    func requestToServer(notification: Notification) {
+        let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
+        requestWithTask(task: request, success: { (data) in
+            self.processNumberNotification()
+            self.table.reloadData()
+        }) { (error) in
+        
+        }
     }
 }

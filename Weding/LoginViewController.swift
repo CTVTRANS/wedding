@@ -33,30 +33,16 @@ class LoginViewController: BaseViewController {
         let loginTask:LoginTask = LoginTask(name: name!, pass: pass!)
         requestWithTask(task: loginTask, success: { (data) in
             print(data!)
+            Constants.sharedInstance.currentNotificationGuest = 0
+            Constants.sharedInstance.currentNotificationMessage = 0
+            Constants.sharedInstance.currentNotificationSeat = 0
             let memberURL = Constants.sharedInstance.woman?.memberURL
             let myAccount = Account(name: name!, pass: pass!, numberGuest: 0, numberMessage: 0, memberURL: memberURL!, seat: 0)
-            let newNumberGuest = (Constants.sharedInstance.man?.numberGuest)! + (Constants.sharedInstance.woman?.numberGuest)!
-            let newNumberMessage = Int(5)
-            let linkTable = Constants.sharedInstance.woman?.tableSeat
-            let linkWedStep = Constants.sharedInstance.woman?.webStep
-            var newNumberNotificationOfSeat: Int = 0
-            if ((linkTable?.characters.count)! > 0) {
-                newNumberNotificationOfSeat += 1
-            } else if ((linkWedStep?.characters.count)! > 0){
-                newNumberNotificationOfSeat += 1
-            }
-            
-            let guestNotification = newNumberGuest - myAccount.numberGuest
-            Constants.sharedInstance.currentNotificationGuest = guestNotification
-            let messageNotification = newNumberMessage - myAccount.numberMessage
-            Constants.sharedInstance.currentNotificationMessage = messageNotification
-            let seatNotification = newNumberNotificationOfSeat - myAccount.tableNotification
-            Constants.sharedInstance.currentNotificationSeat = seatNotification
-
-            myAccount.numberGuest = newNumberGuest
-            myAccount.numberMessage = newNumberMessage
-            myAccount.tableNotification = newNumberNotificationOfSeat
+            myAccount.currentGuestNumberBadge = Constants.sharedInstance.currentNotificationGuest!
+            myAccount.currentMessageNumberBadge =  Constants.sharedInstance.currentNotificationMessage!
+            myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat!
             Account.saveAccount(myAccount: myAccount)
+            self.processNumberNotification()
             self.showmainMenu()
         }) { (error) in
             if let dictionary = error as? [String: Any] {

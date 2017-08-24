@@ -30,6 +30,7 @@ class MainViewController: BaseViewController {
         setupWdding()
         setupNavigation()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadNumberNotification(notification:)), name: NSNotification.Name(rawValue: "refreshNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "requestToServer"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +83,9 @@ class MainViewController: BaseViewController {
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
         viewNumberGuest.isHidden = true
         Constants.sharedInstance.currentNotificationGuest = 0
+        let myAccount = Account.getAccount()
+        myAccount.currentGuestNumberBadge = 0
+        Account.saveAccount(myAccount: myAccount)
     }
     
     @IBAction func sharePressed(_ sender: Any) {
@@ -98,6 +102,9 @@ class MainViewController: BaseViewController {
         let secondVC: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
         viewNumberMessage.isHidden = true
         Constants.sharedInstance.currentNotificationMessage = 0
+        let myAccount = Account.getAccount()
+        myAccount.currentMessageNumberBadge = 0
+        Account.saveAccount(myAccount: myAccount)
         self.navigationController?.pushViewController(secondVC, animated: false)
     }
     
@@ -105,6 +112,9 @@ class MainViewController: BaseViewController {
         UIApplication.shared.openURL(URL(string: linkWebLogin)!)
         viewNumberSeat.isHidden = true
         Constants.sharedInstance.currentNotificationSeat = 0
+        let myAccount = Account.getAccount()
+        myAccount.currentSeatNumberBadge = 0
+        Account.saveAccount(myAccount: myAccount)
     }
     
     @IBAction func sendImageOfSeatPosition(_ sender: Any) {
@@ -127,6 +137,16 @@ class MainViewController: BaseViewController {
         default:
             viewNumberSeat.isHidden = true
             Constants.sharedInstance.currentNotificationSeat = 0
+        }
+    }
+    
+    func requestToServer(notification: Notification) {
+        let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
+        requestWithTask(task: request, success: { (data) in
+            self.processNumberNotification()
+            self.setupNotification()
+        }) { (error) in
+            
         }
     }
 }

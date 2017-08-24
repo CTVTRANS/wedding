@@ -97,7 +97,7 @@ class BaseViewController: UIViewController {
         }
     }
 
-    func processNumberNotification(name: String, pass: String) {
+    func processNumberNotification() {
         let myAccount = Account.getAccount()
         let newNumberGuest = (Constants.sharedInstance.man?.numberGuest)! + (Constants.sharedInstance.woman?.numberGuest)!
         let newNumberMessage = Int(5)
@@ -111,15 +111,19 @@ class BaseViewController: UIViewController {
         }
         
         let guestNotification = newNumberGuest - myAccount.numberGuest
-        Constants.sharedInstance.currentNotificationGuest = guestNotification
+        
+        Constants.sharedInstance.currentNotificationGuest = guestNotification + myAccount.currentGuestNumberBadge
         let messageNotification = newNumberMessage - myAccount.numberMessage
-        Constants.sharedInstance.currentNotificationMessage = messageNotification
+        Constants.sharedInstance.currentNotificationMessage = messageNotification +  myAccount.currentMessageNumberBadge
         let seatNotification = newNumberNotificationOfSeat - myAccount.tableNotification
-        Constants.sharedInstance.currentNotificationSeat = seatNotification
+        Constants.sharedInstance.currentNotificationSeat = seatNotification + myAccount.currentSeatNumberBadge
         
         myAccount.numberGuest = newNumberGuest
         myAccount.numberMessage = newNumberMessage
         myAccount.tableNotification = newNumberNotificationOfSeat
+        myAccount.currentGuestNumberBadge =  Constants.sharedInstance.currentNotificationGuest!
+        myAccount.currentMessageNumberBadge = Constants.sharedInstance.currentNotificationMessage!
+        myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat!
         Account.saveAccount(myAccount: myAccount)
     }
     

@@ -15,6 +15,9 @@ class Account: NSObject, NSCoding {
     private var totalGuest: Int!
     private var totalMessage: Int!
     private var tableSeat: Int!
+    private var _currentGuestNumberBadge: Int!
+    private var _currentMessageNumberBadge: Int!
+    private var _currentSeatNumberBadge: Int!
     
     init(name: String, pass: String, numberGuest: Int, numberMessage: Int, memberURL: String, seat: Int) {
         accountName = name
@@ -32,6 +35,9 @@ class Account: NSObject, NSCoding {
         totalGuest = decoder.decodeObject(forKey: "totalGuest") as! Int
         totalMessage = decoder.decodeObject(forKey: "totalMessage") as! Int
         tableSeat = decoder.decodeObject(forKey: "tableSeat") as! Int
+        _currentGuestNumberBadge = decoder.decodeObject(forKey: "currentGuestNumberBadge") as! Int
+        _currentMessageNumberBadge = decoder.decodeObject(forKey: "currentMessageNumberBadge") as! Int
+        _currentSeatNumberBadge = decoder.decodeObject(forKey: "currentSeatNumberBadge") as! Int
     }
     
     func encode(with coder: NSCoder) {
@@ -41,6 +47,9 @@ class Account: NSObject, NSCoding {
         coder.encode(totalGuest, forKey: "totalGuest")
         coder.encode(totalMessage, forKey: "totalMessage")
         coder.encode(tableSeat, forKey: "tableSeat")
+        coder.encode(_currentGuestNumberBadge, forKey: "currentGuestNumberBadge")
+        coder.encode(_currentMessageNumberBadge, forKey: "currentMessageNumberBadge")
+        coder.encode(_currentSeatNumberBadge, forKey: "currentSeatNumberBadge")
     }
     
     class func saveAccount(myAccount: Account) {
@@ -111,6 +120,30 @@ class Account: NSObject, NSCoding {
         }
         set {
             tableSeat = newValue
+        }
+    }
+    var currentGuestNumberBadge: Int {
+        get {
+            return _currentGuestNumberBadge
+        }
+        set {
+            _currentGuestNumberBadge = newValue
+        }
+    }
+    var  currentMessageNumberBadge: Int {
+        get {
+            return _currentMessageNumberBadge
+        }
+        set {
+            _currentMessageNumberBadge = newValue
+        }
+    }
+    var currentSeatNumberBadge: Int {
+        get {
+            return _currentSeatNumberBadge
+        }
+        set {
+            _currentSeatNumberBadge = newValue
         }
     }
 

@@ -108,6 +108,7 @@
 		6D8143B91F47E6C20005AD8B /* SendMessageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageTask.swift; sourceTree = "<group>"; };
 		6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNavigationBar.xib; sourceTree = "<group>"; };
 		6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6DECCBDB1F4D1E640097AE52 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
 		6DEDBD501F45836600526AD0 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6DF082CD1F3552EA0073A9BF /* SecondNavigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondNavigation.xib; sourceTree = "<group>"; };
 		6DF082CF1F3555A60073A9BF /* SecondNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondNavigation.swift; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 		6D29AC9B1F34039C00A17621 /* Weding */ = {
 			isa = PBXGroup;
 			children = (
+				6DECCBDB1F4D1E640097AE52 /* Weding.entitlements */,
 				58F5E9001F3BFBAC00D32A7F /* Extendtion */,
 				6D29AC9C1F34039C00A17621 /* AppDelegate.swift */,
 				6D29ACD21F3481F100A17621 /* BaseViewController.swift */,
@@ -440,6 +442,11 @@
 						DevelopmentTeam = HDNMHL7M4Y;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					6D29ACAC1F34039C00A17621 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -833,6 +840,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Weding/Weding.entitlements;
 				DEVELOPMENT_TEAM = HDNMHL7M4Y;
 				INFOPLIST_FILE = Weding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -850,6 +858,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Weding/Weding.entitlements;
 				DEVELOPMENT_TEAM = HDNMHL7M4Y;
 				INFOPLIST_FILE = Weding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
