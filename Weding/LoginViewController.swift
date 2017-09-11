@@ -17,6 +17,9 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.setValue("123", forKey: "man")
+        UserDefaults.standard.setValue("1234", forKey: "woman")
+        
         userNameTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
         passWordTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
     }
@@ -44,6 +47,7 @@ class LoginViewController: BaseViewController {
             myAccount.token = Constants.sharedInstance.token ?? ""
             myAccount.keyAccess = Constants.sharedInstance.keyAccount!
             Account.saveAccount(myAccount: myAccount)
+            
             self.processNumberNotification()
             self.showmainMenu()
             

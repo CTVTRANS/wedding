@@ -109,7 +109,8 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: linkWebLogin)!)
+        let webLogined = linkWebLogin + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
+        UIApplication.shared.openURL(URL(string: webLogined)!)
         viewNumberSeat.isHidden = true
         Constants.sharedInstance.currentNotificationSeat = 0
         let myAccount = Account.getAccount()

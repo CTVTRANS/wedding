@@ -20,7 +20,7 @@ class SendMessageTask: BaseTaskNetwork {
     }
     
     override func path() -> String! {
-        return sendMessage + "id=" + Account.getAccount().name + "&k=" + Constants.sharedInstance.keyAccount!
+        return sendData + "id=" + Account.getAccount().name + "&k=" + Constants.sharedInstance.keyAccount!
     }
 
     override func method() -> String! {

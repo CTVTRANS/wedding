@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FileBrowser
 
 class ExcelController: BaseViewController {
 
@@ -23,23 +24,25 @@ class ExcelController: BaseViewController {
     }
     
     @IBAction func manDownloadExcel(_ sender: Any) {
-        let url = Constants.sharedInstance.man?.excelUrl
-        downloadMemberExcel(byHuman: "man", url: url!)
+        downloadMemberExcel(objectID: "1")
     }
 
     @IBAction func manUploadEcel(_ sender: Any) {
-        let filePath = Constants.sharedInstance.man?.filePath
-        uploadExcel(url: filePath!)
+//        let filePath = Constants.sharedInstance.man?.filePath
+        let filePathMan = UserDefaults.standard.string(forKey: "man")
+        let filePath: URL = URL(string: filePathMan!)!
+        uploadExcel(url: filePath)
     }
     
     @IBAction func womanDownloadExcel(_ sender: Any) {
-        let url = Constants.sharedInstance.woman?.excelUrl
-        downloadMemberExcel(byHuman: "woman", url: url!)
+        downloadMemberExcel(objectID: "2")
     }
     
     @IBAction func wonmanUploadExcel(_ sender: Any) {
-        let filePath = Constants.sharedInstance.woman?.filePath
-        uploadExcel(url: filePath!)
+//        let filePath = Constants.sharedInstance.woman?.filePath
+        let filePathWoman = UserDefaults.standard.string(forKey: "woman")
+        let filePath: URL = URL(string: filePathWoman!)!
+        uploadExcel(url:  filePath)
     }
     
     deinit {

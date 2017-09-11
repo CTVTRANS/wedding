@@ -11,15 +11,14 @@ import LCNetwork
 
 class DowloadMemberList: BaseTaskNetwork {
     
-    private var urlExcel:String
+    private var _object: String
     
-    init(linkUrl: String) {
-        self.urlExcel = linkUrl
+    init(object: String) {
+        _object = object
     }
     
     override func path() -> String! {
-//        return memberList
-        return urlExcel
+        return downloadExcel + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess + "&g=" + _object
     }
     
     override func method() -> String! {

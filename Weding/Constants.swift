@@ -10,8 +10,10 @@ import UIKit
 
 let loginKey = "free123"
 let login = "http://www.freewed.com.tw/api/GetMemberInfo.aspx"
-let linkWebLogin = "http://www.freewed.com.tw/app/index0.aspx?todo=logined#logined"
-let sendMessage = "http://www.freewed.com.tw/api/UpdateData.aspx?"
+let linkWebLogin = "http://www.freewed.com.tw/app/index0.aspx?"
+//let linkWebLogin = "http://www.freewed.com.tw/app/index0.aspx?todo=logined#logined"
+let sendData = "http://www.freewed.com.tw/api/UpdateData.aspx?"
+let downloadExcel = "http://www.freewed.com.tw/api/GetGuestPlanDoc.aspx?"
 
 class Constants {
     var woman: Woman?

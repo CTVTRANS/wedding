@@ -22,7 +22,7 @@ class UploadMemberTask: BaseTaskNetwork {
     }
     
     override func path() -> String! {
-        return "http://www.freewed.com.tw/api/UpdateData.aspx?id=ann730204&k=1b7937b482b41432bf2168725ef78c212cb92360"
+        return  sendData + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
     }
     
     override func parameters() -> [AnyHashable : Any]! {

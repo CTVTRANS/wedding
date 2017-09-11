@@ -8,6 +8,7 @@ target 'Weding' do
 	pod 'SWRevealViewController'
   	pod 'CryptoSwift'
  	pod 'DeviceKit', '~> 1.0'
+  pod 'FileBrowser', '~> 0.3'
   # Pods for Weding
 
   target 'WedingTests' do

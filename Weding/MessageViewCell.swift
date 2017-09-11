@@ -14,14 +14,17 @@ class MessageViewCell: UITableViewCell {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var hightOffAvatar: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        avatar.layer.cornerRadius = hightOffAvatar.constant / 2
     }
 
     func binData(guest: GuestMessage) {
         nameGuest.text = guest.getname()
-        time.text = guest.getTime()
+        let date = guest.getTime().components(separatedBy: " ")
+        time.text = date[0]
         message.text = guest.getMessge()
         avatar.image = guest.getImage()
     }

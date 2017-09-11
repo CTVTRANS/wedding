@@ -52,12 +52,12 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func downloadMemberExcel(byHuman: String, url: String) {
-        let getMemberTask: DowloadMemberList = DowloadMemberList(linkUrl: url)
+    func downloadMemberExcel(objectID: String) {
+        let getMemberTask: DowloadMemberList = DowloadMemberList(object: objectID)
         downloadFileSuccess(task: getMemberTask, success: { (data) in
             let activityVC: UIActivityViewController =
                 UIActivityViewController.init(activityItems: [data!], applicationActivities: nil)
-            if (byHuman == "man") {
+            if (objectID == "1") {
                 Constants.sharedInstance.man?.filePath = data as! URL
             } else {
                 Constants.sharedInstance.woman?.filePath = data as! URL

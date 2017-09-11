@@ -76,7 +76,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             Account.saveAccount(myAccount: myAccount)
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
         case 4:
-            UIApplication.shared.openURL(URL(string: linkWebLogin)!)
+            let webLogined = linkWebLogin + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
+            UIApplication.shared.openURL(URL(string: webLogined)!)
             swVC.revealToggle(animated: false)
             NotificationCenter.default.post(name: notificationName, object: "seat")
             Constants.sharedInstance.currentNotificationSeat = 0

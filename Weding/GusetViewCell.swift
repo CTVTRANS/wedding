@@ -13,6 +13,12 @@ class GusetViewCell: UITableViewCell {
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var timeMessage: UILabel!
     @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var hightOfAvatar: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatar.layer.cornerRadius = hightOfAvatar.constant / 2
+    }
     
     func binData(guestMessage: GuestMessage) {
         message.text = guestMessage.getMessge()

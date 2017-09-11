@@ -11,11 +11,10 @@ import UIKit
 class ChatViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var constraintTop: NSLayoutConstraint!
     @IBOutlet weak var constraintBotTextView: NSLayoutConstraint!
     @IBOutlet weak var replyTextView: UITextView!
-    @IBOutlet weak var hightOfTextView: NSLayoutConstraint!
     @IBOutlet weak var constraintBotView: NSLayoutConstraint!
+    @IBOutlet weak var moreButotn: UIButton!
     var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
     
@@ -24,16 +23,11 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = "婚禮籌備平台"
-        hightConstant = replyTextView.frame.size.height
+        setupNavigation()
+        moreButotn.layer.borderColor = UIColor.blue.cgColor
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
         arr.append(guestMessge!)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.navigationItem.title = guestMessge?.getname()
     }
     
     func setUpReplyMessageView() {
@@ -42,6 +36,15 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
         replyTextView.delegate = self
+    }
+    
+    func scrollLastMessage(){
+        let contensizeHight = self.table.contentSize.height
+        let frameHight = self.table.frame.size.height
+        if (contensizeHight > frameHight) {
+            let offset = CGPoint(x: 0, y: contensizeHight - frameHight)
+            self.table.setContentOffset(offset, animated: false)
+        }
     }
     
     func dismissKeyboard() {
@@ -68,6 +71,7 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
             self.replyTextView.resignFirstResponder()
             let _ = UIAlertController.showAlertWith(title: "Notification", message: data as! String, myViewController: self)
             self.table.reloadData()
+            self.scrollLastMessage()
         }) { (error) in
             print(error!)
         }
@@ -91,13 +95,6 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         return UITableViewAutomaticDimension
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        let fixedWidth = replyTextView.frame.size.width
-        replyTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        let newSize = replyTextView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        hightOfTextView.constant = newSize.height
-    }
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -110,26 +107,30 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
+                self.navigationItem.leftBarButtonItem?.isEnabled = true
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
                 view.removeGestureRecognizer(tap!)
                 constraintBotView.constant = 0.0
                 constraintBotTextView.constant = 0.0
-                constraintTop.constant = 0.0
-                hightOfTextView.constant = hightConstant
             } else {
                 tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
                 view.addGestureRecognizer(tap!)
+                self.navigationItem.leftBarButtonItem?.isEnabled = false
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
                 constraintBotView.constant = (endFrame?.size.height)!
                 constraintBotTextView.constant = (endFrame?.size.height)!
-                constraintTop.constant = -(endFrame?.size.height)!
             }
             UIView.animate(withDuration: duration,
                            delay: TimeInterval(0),
                            options: animationCurve,
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
-            //            DispatchQueue.main.async(execute: {
-            //                self.scrollLastMessage()
-            //            })
+            DispatchQueue.main.async(execute: {
+                self.scrollLastMessage()
+            })
         }
+    }
+    @IBAction func pressedBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
