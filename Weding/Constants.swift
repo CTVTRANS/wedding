@@ -8,12 +8,12 @@
 
 import UIKit
 
+let baseURL = "http://www.freewed.com.tw/"
 let loginKey = "free123"
-let login = "http://www.freewed.com.tw/api/GetMemberInfo.aspx"
-let linkWebLogin = "http://www.freewed.com.tw/app/index0.aspx?"
-//let linkWebLogin = "http://www.freewed.com.tw/app/index0.aspx?todo=logined#logined"
-let sendData = "http://www.freewed.com.tw/api/UpdateData.aspx?"
-let downloadExcel = "http://www.freewed.com.tw/api/GetGuestPlanDoc.aspx?"
+let login =  baseURL + "api/GetMemberInfo.aspx"
+let linkWebLogin = baseURL + "app/index0.aspx?"
+let sendData = baseURL + "api/UpdateData.aspx?"
+let downloadExcel = baseURL + "api/GetGuestPlanDoc.aspx?"
 
 class Constants {
     var woman: Woman?

@@ -57,11 +57,12 @@ class BaseViewController: UIViewController {
         downloadFileSuccess(task: getMemberTask, success: { (data) in
             let activityVC: UIActivityViewController =
                 UIActivityViewController.init(activityItems: [data!], applicationActivities: nil)
-            if (objectID == "1") {
-                Constants.sharedInstance.man?.filePath = data as! URL
-            } else {
-                Constants.sharedInstance.woman?.filePath = data as! URL
-            }
+            activityVC.popoverPresentationController?.sourceView = self.view
+//            if (objectID == "1") {
+//                Constants.sharedInstance.man?.filePath = data as! URL
+//            } else {
+//                Constants.sharedInstance.woman?.filePath = data as! URL
+//            }
             self.present(activityVC, animated: true, completion: nil)
         }) { (error) in
                 _ = UIAlertController.showAlertWith(title: "",
@@ -70,9 +71,15 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func uploadExcel(url: URL) {
-        let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url)
+    func uploadExcel(url: URL, object: String, nameFile: String) {
+        let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url, todo: object, name: nameFile)
         uploadFileSuccess(task: uploadTask, success: { (data) in
+            let fileManager: FileManager = FileManager.default
+            do {
+                try fileManager.removeItem(at: url)
+            } catch {
+                
+            }
             _ = UIAlertController.showAlertWith(title: "",
                                                 message: data as! String,
                                                 myViewController: self)

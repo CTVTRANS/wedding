@@ -28,10 +28,8 @@ class ExcelController: BaseViewController {
     }
 
     @IBAction func manUploadEcel(_ sender: Any) {
-//        let filePath = Constants.sharedInstance.man?.filePath
-        let filePathMan = UserDefaults.standard.string(forKey: "man")
-        let filePath: URL = URL(string: filePathMan!)!
-        uploadExcel(url: filePath)
+        let filePath = Constants.sharedInstance.man?.filePath
+        uploadExcel(url: filePath!, object: "MemberAddGuestPlanDoc", nameFile: "GUESTPLAN-ann730204.xlsx")
     }
     
     @IBAction func womanDownloadExcel(_ sender: Any) {
@@ -39,10 +37,8 @@ class ExcelController: BaseViewController {
     }
     
     @IBAction func wonmanUploadExcel(_ sender: Any) {
-//        let filePath = Constants.sharedInstance.woman?.filePath
-        let filePathWoman = UserDefaults.standard.string(forKey: "woman")
-        let filePath: URL = URL(string: filePathWoman!)!
-        uploadExcel(url:  filePath)
+        let filePath = Constants.sharedInstance.woman?.filePath
+        uploadExcel(url:  filePath!, object: "MemberAddGuestPlanDoc2", nameFile: "GUESTPLAN2-ann730204.xlsx")
     }
     
     deinit {

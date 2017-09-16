@@ -113,21 +113,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
             let stringPath = String(describing: directoryContents[0])
-            let index = stringPath.index(stringPath.startIndex, offsetBy: 108)
+            let index = stringPath.index(stringPath.startIndex, offsetBy: 101)
             let charrac = stringPath.substring(to: index)
-            print(charrac)
-            let myURL = UserDefaults.standard.string(forKey: "man")
-            if myURL == "123"{
-                let stringPath = String(describing: directoryContents[0])
-                let index = stringPath.index(stringPath.startIndex, offsetBy: 108)
-                let charrac = stringPath.substring(to: index)
-
-                let man = charrac + "GUESTPLAN-ann730204.xlsx"
-                UserDefaults.standard.setValue(man, forKey: "man")
-                let woman = charrac + "GUESTPLAN2-ann730204.xlsx"
-                UserDefaults.standard.setValue(woman, forKey: "woman")
-            }
-            print(directoryContents)
+            Constants.sharedInstance.man?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN-ann730204.xlsx")!
+            Constants.sharedInstance.woman?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN2-ann730204.xlsx")!
         } catch let error as NSError {
             print(error.localizedDescription)
         }

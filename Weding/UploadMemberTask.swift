@@ -12,13 +12,21 @@ import LCNetwork
 class UploadMemberTask: BaseTaskNetwork {
     
     private var filePath: URL?
+    private var _todo: String!
+    private var _name: String!
     
-    init(fileUrl: URL) {
+    init(fileUrl: URL, todo: String, name: String) {
         self.filePath = fileUrl
+        _todo = todo
+        _name = name
     }
     
     override func fileURL() -> URL! {
         return self.filePath
+    }
+    
+    override func nameFile() -> String! {
+        return _name
     }
     
     override func path() -> String! {
@@ -26,7 +34,7 @@ class UploadMemberTask: BaseTaskNetwork {
     }
     
     override func parameters() -> [AnyHashable : Any]! {
-        return ["todo": "MemberAddGuestPlanDoc2"]
+        return ["todo": _todo]
     }
     
     override func method() -> String! {
