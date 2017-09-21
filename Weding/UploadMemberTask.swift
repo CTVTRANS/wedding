@@ -43,7 +43,7 @@ class UploadMemberTask: BaseTaskNetwork {
     
     override func data(withResponse response: Any!) -> Any! {
         if let dictionary = response as? [String: Any] {
-            let mesage:String = (dictionary["ErrMsg"] as? String)!
+            let mesage: String = (dictionary["ErrMsg"] as? String)!
             return mesage
         }
         return nil

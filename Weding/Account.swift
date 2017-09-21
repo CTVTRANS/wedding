@@ -31,17 +31,17 @@ class Account: NSObject, NSCoding {
     }
     
     required init(coder decoder: NSCoder) {
-        accountName = decoder.decodeObject(forKey: "accountName") as! String
-        passWord = decoder.decodeObject(forKey: "passWord") as! String
-        linkMember = decoder.decodeObject(forKey: "linkMember") as! String
-        totalGuest = decoder.decodeObject(forKey: "totalGuest") as! Int
-        totalMessage = decoder.decodeObject(forKey: "totalMessage") as! Int
-        tableSeat = decoder.decodeObject(forKey: "tableSeat") as! Int
-        _currentGuestNumberBadge = decoder.decodeObject(forKey: "currentGuestNumberBadge") as! Int
-        _currentMessageNumberBadge = decoder.decodeObject(forKey: "currentMessageNumberBadge") as! Int
-        _currentSeatNumberBadge = decoder.decodeObject(forKey: "currentSeatNumberBadge") as! Int
-        _keyAccess = decoder.decodeObject(forKey: "keyAccess") as! String
-        _token = decoder.decodeObject(forKey: "token") as! String
+        accountName = decoder.decodeObject(forKey: "accountName") as? String
+        passWord = decoder.decodeObject(forKey: "passWord") as? String
+        linkMember = decoder.decodeObject(forKey: "linkMember") as? String
+        totalGuest = decoder.decodeObject(forKey: "totalGuest") as? Int
+        totalMessage = decoder.decodeObject(forKey: "totalMessage") as? Int
+        tableSeat = decoder.decodeObject(forKey: "tableSeat") as? Int
+        _currentGuestNumberBadge = decoder.decodeObject(forKey: "currentGuestNumberBadge") as? Int
+        _currentMessageNumberBadge = decoder.decodeObject(forKey: "currentMessageNumberBadge") as? Int
+        _currentSeatNumberBadge = decoder.decodeObject(forKey: "currentSeatNumberBadge") as? Int
+        _keyAccess = decoder.decodeObject(forKey: "keyAccess") as? String
+        _token = decoder.decodeObject(forKey: "token") as? String
     }
     
     func encode(with coder: NSCoder) {

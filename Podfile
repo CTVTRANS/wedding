@@ -9,6 +9,7 @@ target 'Weding' do
   	pod 'CryptoSwift'
  	pod 'DeviceKit', '~> 1.0'
   pod 'FileBrowser', '~> 0.3'
+  pod 'SwiftLint'
   # Pods for Weding
 
   target 'WedingTests' do

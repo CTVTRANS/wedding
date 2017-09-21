@@ -58,13 +58,8 @@ class BaseViewController: UIViewController {
             let activityVC: UIActivityViewController =
                 UIActivityViewController.init(activityItems: [data!], applicationActivities: nil)
             activityVC.popoverPresentationController?.sourceView = self.view
-//            if (objectID == "1") {
-//                Constants.sharedInstance.man?.filePath = data as! URL
-//            } else {
-//                Constants.sharedInstance.woman?.filePath = data as! URL
-//            }
             self.present(activityVC, animated: true, completion: nil)
-        }) { (error) in
+        }) { (_) in
                 _ = UIAlertController.showAlertWith(title: "",
                                                 message: "不能下載賓客規劃表",
                                                 myViewController: self)
@@ -81,7 +76,7 @@ class BaseViewController: UIViewController {
                 
             }
             _ = UIAlertController.showAlertWith(title: "",
-                                                message: data as! String,
+                                                message: (data as? String)!,
                                                 myViewController: self)
         }) { (error) in
             if let dictionary = error as? [String: Any] {
@@ -111,9 +106,9 @@ class BaseViewController: UIViewController {
         let linkTable = Constants.sharedInstance.woman?.tableSeat
         let linkWedStep = Constants.sharedInstance.woman?.webStep
         var newNumberNotificationOfSeat: Int = 0
-        if ((linkTable?.characters.count)! > 0) {
+        if (linkTable?.characters.count)! > 0 {
             newNumberNotificationOfSeat += 1
-        } else if ((linkWedStep?.characters.count)! > 0){
+        } else if (linkWedStep?.characters.count)! > 0 {
             newNumberNotificationOfSeat += 1
         }
         

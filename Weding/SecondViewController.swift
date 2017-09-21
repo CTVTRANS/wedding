@@ -41,7 +41,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func setupListMessage() {
         table.layer.borderWidth = 0.5
-        table.layer.borderColor = UIColor.rgb(r: 236, g: 186, b: 206).cgColor
+        table.layer.borderColor = UIColor.rgb(red: 236, green: 186, blue: 206).cgColor
     }
     
     func setUpReplyMessageView() {
@@ -64,9 +64,9 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:MessageViewCell = table.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageViewCell
-        cell.binData(guest: arr[indexPath.row])
-        return cell
+        let cell = table.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as? MessageViewCell
+        cell?.binData(guest: arr[indexPath.row])
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -75,14 +75,14 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
-        let vc: ChatViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        vc.guestMessge = arr[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController
+        vc?.guestMessge = arr[indexPath.row]
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func sendMeesage(_ sender: Any) {
         let message: String = replyMessageText.text
-        if (message == "") {
+        if message == "" {
             replyMessageText.resignFirstResponder()
             return
         }
@@ -91,7 +91,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             print(data!)
             self.replyMessageText.text = ""
             self.replyMessageText.resignFirstResponder()
-            let _ = UIAlertController.showAlertWith(title: "Notification", message: data as! String, myViewController: self)
+            _ = UIAlertController.showAlertWith(title: "Notification", message: (data as? String)!, myViewController: self)
         }) { (error) in
             print(error!)
         }
@@ -118,10 +118,10 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     @objc func keyboardNotification(notification1: NSNotification) {
         if let userInfo = notification1.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
-            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
                 self.navigationItem.leftBarButtonItem?.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.isEnabled = true

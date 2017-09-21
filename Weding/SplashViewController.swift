@@ -13,23 +13,21 @@ class SplashViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (Account.isAuthentic()) {
-            let loginTask:LoginTask = LoginTask(name: Account.getAccount().name,
+        if Account.isAuthentic() {
+            let loginTask: LoginTask = LoginTask(name: Account.getAccount().name,
                                                 pass: Account.getAccount().pass)
             requestWithTask(task: loginTask, success: { (data) in
                 print(data!)
                 self.processNumberNotification()
-                
-                let vc: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-                self.present(vc, animated: false, completion: nil)
-            }) { (error) in
-                let _ = UIAlertController.showAlertWith(title: "Warnning", message: "", myViewController: self)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as? SWRevealViewController
+                self.present(vc!, animated: false, completion: nil)
+            }) { (_) in
+                _ = UIAlertController.showAlertWith(title: "Warnning", message: "", myViewController: self)
                 return
             }
         } else {
-            let vc: UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as! UINavigationController
-//            self.navigationController?.present(vc, animated: false, completion: nil)
-            self.present(vc, animated: false, completion: { 
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? UINavigationController
+            self.present(vc!, animated: false, completion: { 
                 print("ok")
             })
         }

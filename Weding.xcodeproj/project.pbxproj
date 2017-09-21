@@ -387,6 +387,7 @@
 				6D29AC971F34039C00A17621 /* Resources */,
 				709D8DD094B6FE81A6E23DF3 /* [CP] Embed Pods Frameworks */,
 				D0BD0AFB315F3CC653114260 /* [CP] Copy Pods Resources */,
+				6D026C841F6D99F300F1498B /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -561,6 +562,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WedingTests/Pods-WedingTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6D026C841F6D99F300F1498B /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		709D8DD094B6FE81A6E23DF3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

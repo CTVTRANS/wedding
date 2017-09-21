@@ -17,20 +17,20 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
-        passWordTextField.layer.borderColor = UIColor.rgb(r: 233, g: 130, b: 139).cgColor
+        userNameTextField.layer.borderColor = UIColor.rgb(red: 233, green: 130, blue: 139).cgColor
+        passWordTextField.layer.borderColor = UIColor.rgb(red: 233, green: 130, blue: 139).cgColor
     }
 
     @IBAction func sigInPressed(_ sender: Any) {
         let name: String? = userNameTextField.text
         let pass: String? = passWordTextField.text
-        if (name == "" || pass == "" ) {
+        if name == "" || pass == "" {
             _ = UIAlertController.showAlertWith(title: "Notification",
                                                 message: "user name or password can't emty",
                                                 myViewController: self)
             return
         }
-        let loginTask:LoginTask = LoginTask(name: name!, pass: pass!)
+        let loginTask: LoginTask = LoginTask(name: name!, pass: pass!)
         requestWithTask(task: loginTask, success: { (data) in
             print(data!)
             Constants.sharedInstance.currentNotificationGuest = 0
@@ -50,7 +50,9 @@ class LoginViewController: BaseViewController {
             self.requestWithTask(task: sendToken, success: { (data) in
                 print(data!)
             }, failure: { (error) in
-                
+                _ = UIAlertController(title: "",
+                                      message: error as? String,
+                                      preferredStyle: .alert)
             })
             
         }) { (error) in
@@ -70,7 +72,7 @@ class LoginViewController: BaseViewController {
     }
     
     func showmainMenu() {
-        let vc: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-        self.present(vc, animated: false, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as? SWRevealViewController
+        self.present(vc!, animated: false, completion: nil)
     }
 }

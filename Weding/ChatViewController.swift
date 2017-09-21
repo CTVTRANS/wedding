@@ -38,10 +38,10 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         replyTextView.delegate = self
     }
     
-    func scrollLastMessage(){
+    func scrollLastMessage() {
         let contensizeHight = self.table.contentSize.height
         let frameHight = self.table.frame.size.height
-        if (contensizeHight > frameHight) {
+        if contensizeHight > frameHight {
             let offset = CGPoint(x: 0, y: contensizeHight - frameHight)
             self.table.setContentOffset(offset, animated: false)
         }
@@ -53,13 +53,13 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
 
     @IBAction func pressedReplyButton(_ sender: Any) {
         let message: String = replyTextView.text
-        if (message == "") {
+        if message == "" {
             replyTextView.resignFirstResponder()
             return
         }
         let sendMessageTask: SendMessageTask = SendMessageTask(name: "m01", contentMessage: message)
         requestWithTask(task: sendMessageTask, success: { (data) in
-            let dateFormatter : DateFormatter = DateFormatter()
+            let dateFormatter: DateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd HH:mm"
             let date = Date()
             let dateString = dateFormatter.string(from: date)
@@ -69,7 +69,7 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
             self.arr.append(newguest)
             self.replyTextView.text = ""
             self.replyTextView.resignFirstResponder()
-            let _ = UIAlertController.showAlertWith(title: "Notification", message: data as! String, myViewController: self)
+            _ = UIAlertController.showAlertWith(title: "Notification", message: (data as? String)!, myViewController: self)
             self.table.reloadData()
             self.scrollLastMessage()
         }) { (error) in
@@ -82,14 +82,14 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row == 0) {
-            let cell: GusetViewCell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as! GusetViewCell
-            cell.binData(guestMessage: self.guestMessge!)
-            return cell
+        if indexPath.row == 0 {
+            let cell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as? GusetViewCell
+            cell?.binData(guestMessage: self.guestMessge!)
+            return cell!
         }
-        let cell: MyViewCell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as! MyViewCell
-        cell.binData(myMessage: arr[indexPath.row])
-        return cell
+        let cell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as? MyViewCell
+        cell?.binData(myMessage: arr[indexPath.row])
+        return cell!
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
@@ -102,10 +102,10 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
-            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
                 self.navigationItem.leftBarButtonItem?.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.isEnabled = true

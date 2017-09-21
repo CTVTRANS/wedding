@@ -10,7 +10,7 @@ import UIKit
 
 class Woman: NSObject {
     
-    private var _memberURL : String!
+    private var _memberURL: String!
     private var _name: String! = ""
     private var _weddingDay: String! = "12"
     private var _weddingDayCounter: String! = "3"

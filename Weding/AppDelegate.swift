@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().setBackgroundImage(#imageLiteral(resourceName: "navigationBar"), for: .default)
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.rgb(r: 105, g: 85, b: 80)]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.rgb(red: 105, green: 85, blue: 80)]
         registerForPushNotifications()
         
         if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
-            let aps = notification["aps"] as! [String: AnyObject]
-            print(aps)
+            let aps = notification["aps"] as? [String: AnyObject]
+            print(aps!)
         }
 
         if #available(iOS 10.0, *) {
@@ -46,8 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let notificationName = Notification.Name("requestToServer")
         NotificationCenter.default.post(name: notificationName, object: nil)
-        let aps = userInfo["aps"] as! [String: AnyObject]
-        print(aps)
+        let aps = userInfo["aps"] as? [String: AnyObject]
+        print(aps!)
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -56,10 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func registerForPushNotifications() {
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-                (granted, error) in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, _) in
                 print("Permission granted: \(granted)")
-                
                 guard granted else { return }
                 self.getNotificationSettings()
             }

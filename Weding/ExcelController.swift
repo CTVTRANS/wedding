@@ -19,8 +19,8 @@ class ExcelController: BaseViewController {
         super.viewDidLoad()
         setupNavigation()
         nameFactory.text = Constants.sharedInstance.factory?.getName()
-        manView.layer.borderColor = UIColor.rgb(r: 188, g: 123, b: 7).cgColor
-        womwnView.layer.borderColor = UIColor.rgb(r: 188, g: 123, b: 7).cgColor
+        manView.layer.borderColor = UIColor.rgb(red: 188, green: 123, blue: 7).cgColor
+        womwnView.layer.borderColor = UIColor.rgb(red: 188, green: 123, blue: 7).cgColor
     }
     
     @IBAction func manDownloadExcel(_ sender: Any) {

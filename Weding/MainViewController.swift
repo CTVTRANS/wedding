@@ -45,21 +45,21 @@ class MainViewController: BaseViewController {
 
         if numberGestNotification > 9 {
              numberGuest.text = "9"
-        } else if (numberGestNotification == 0){
+        } else if numberGestNotification == 0 {
              viewNumberGuest.isHidden = true
         } else {
             numberGuest.text = String(numberGestNotification)
         }
 
-        if (numberMessageNotification > 9) {
+        if numberMessageNotification > 9 {
             numberMessage.text = "9"
-        } else if (numberMessageNotification == 0) {
+        } else if numberMessageNotification == 0 {
             viewNumberMessage.isHidden = true
         } else {
             numberMessage.text = String(numberMessageNotification)
         }
         
-        if (numberSeatNotification > 0) {
+        if numberSeatNotification > 0 {
              numberNotificationSeat.text = String(numberSeatNotification)
         } else {
             viewNumberSeat.isHidden = true
@@ -93,19 +93,18 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func downloadMemberList(_ sender: Any) {
-        let excelVC: ExcelController = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as! ExcelController
-        self.navigationController?.pushViewController(excelVC, animated: false)
+        let excelVC = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as? ExcelController
+        self.navigationController?.pushViewController(excelVC!, animated: false)
     }
    
-   
     @IBAction func openSecondView(_ sender: Any) {
-        let secondVC: SecondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as! SecondViewController
+        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
         viewNumberMessage.isHidden = true
         Constants.sharedInstance.currentNotificationMessage = 0
         let myAccount = Account.getAccount()
         myAccount.currentMessageNumberBadge = 0
         Account.saveAccount(myAccount: myAccount)
-        self.navigationController?.pushViewController(secondVC, animated: false)
+        self.navigationController?.pushViewController(secondVC!, animated: false)
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
@@ -127,7 +126,7 @@ class MainViewController: BaseViewController {
     }
     
     func reloadNumberNotification(notification: Notification) {
-       let name = notification.object as! String
+       let name = (notification.object as? String)!
         switch name {
         case "guest":
             viewNumberGuest.isHidden = true
@@ -143,11 +142,13 @@ class MainViewController: BaseViewController {
     
     func requestToServer(notification: Notification) {
         let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
-        requestWithTask(task: request, success: { (data) in
+        requestWithTask(task: request, success: { (_) in
             self.processNumberNotification()
             self.setupNotification()
         }) { (error) in
-            
+            _ = UIAlertController(title: "",
+                                  message: error as? String,
+                                  preferredStyle: .alert)
         }
     }
 }
