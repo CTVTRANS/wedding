@@ -19,8 +19,8 @@ class MyViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func binData(myMessage: GuestMessage) {
-        message.text = myMessage.getMessge()
+    func binData(myMessage: Message) {
+        message.text = myMessage.getMessage()
         time.text = myMessage.getTime()
     }
 

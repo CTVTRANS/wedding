@@ -43,16 +43,13 @@ extension UILabel {
                 let currentFont = self.font
                 var sizeScale: CGFloat = 1
                 let device = Device()
-                if device == .simulator(.iPhone7)
-                    || device == .simulator(.iPhone6)
-                    || device == .iPhone6
-                    || device == .iPhone7 {
+                if device == .simulator(.iPhone7) || device == .simulator(.iPhone6) || device == .iPhone6
+                    || device == .iPhone6s || device == .iPhone7 || device == .simulator(.iPhone8)
+                    || device == .iPhone8 {
                     sizeScale = 1.2
-                } else if device == .simulator(.iPhone6Plus)
-                    || device == .simulator(.iPhone7Plus)
-                    || device == .iPhone6Plus
-                    || device == .iPhone7Plus
-                    || device == .iPhone6s {
+                } else if device == .simulator(.iPhone6Plus) || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus || device == .iPhone7Plus || device == .simulator(.iPhone8Plus)
+                    || device == .iPhone8Plus {
                     sizeScale = 1.3
                 }
                 self.font = currentFont?.withSize((currentFont?.pointSize)! * sizeScale)
@@ -71,16 +68,13 @@ extension UITextField {
                 let currentFont = self.font
                 var sizeScale: CGFloat = 1
                 let device = Device()
-                if device == .simulator(.iPhone7)
-                    || device == .simulator(.iPhone6)
-                    || device == .iPhone6
-                    || device == .iPhone7 {
+                if device == .simulator(.iPhone7) || device == .simulator(.iPhone6) || device == .iPhone6
+                    || device == .iPhone6s || device == .iPhone7 || device == .simulator(.iPhone8)
+                    || device == .iPhone8 {
                     sizeScale = 1.2
-                } else if device == .simulator(.iPhone6Plus)
-                    || device == .simulator(.iPhone7Plus)
-                    || device == .iPhone6Plus
-                    || device == .iPhone7Plus
-                    || device == .iPhone6s {
+                } else if device == .simulator(.iPhone6Plus) || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus || device == .iPhone7Plus || device == .simulator(.iPhone8Plus)
+                    || device == .iPhone8Plus {
                     sizeScale = 1.3
                 }
                 self.font = currentFont?.withSize((currentFont?.pointSize)! * sizeScale)
@@ -99,16 +93,13 @@ extension NSLayoutConstraint {
                 let currentConstant = self.constant
                 var sizeScale: CGFloat = 1
                 let device = Device()
-                if device == .simulator(.iPhone7)
-                    || device == .simulator(.iPhone6)
-                    || device == .iPhone6
-                    || device == .iPhone7 {
+                if device == .simulator(.iPhone7) || device == .simulator(.iPhone6) || device == .iPhone6
+                    || device == .iPhone6s || device == .iPhone7 || device == .simulator(.iPhone8)
+                    || device == .iPhone8 {
                     sizeScale = 1.2
-                } else if device == .simulator(.iPhone6Plus)
-                        || device == .simulator(.iPhone7Plus)
-                        || device == .iPhone6Plus
-                        || device == .iPhone7Plus
-                        || device == .iPhone6s {
+                } else if device == .simulator(.iPhone6Plus) || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus || device == .iPhone7Plus || device == .simulator(.iPhone8Plus)
+                    || device == .iPhone8Plus {
                     sizeScale = 1.3
                 }
                 self.constant = currentConstant * sizeScale
@@ -118,7 +109,7 @@ extension NSLayoutConstraint {
             return false
         }
     }
-
+    
 }
 
 extension UIButton {
@@ -127,26 +118,23 @@ extension UIButton {
             if newValue {
                 let currentFont = self.titleLabel?.font
                 var sizeScale: CGFloat = 1
-//                let model = UIDevice.current.model
+                //                let model = UIDevice.current.model
                 let device = Device()
-                if device == .simulator(.iPhone7)
-                    || device == .simulator(.iPhone6)
-                    || device == .iPhone6
-                    || device == .iPhone7 {
+                if device == .simulator(.iPhone7) || device == .simulator(.iPhone6)  || device == .iPhone6s
+                    || device == .iPhone6 || device == .iPhone7 || device == .simulator(.iPhone8)
+                    || device == .iPhone8 {
                     sizeScale = 1.2
-                } else if device == .simulator(.iPhone6Plus)
-                    || device == .simulator(.iPhone7Plus)
-                    || device == .iPhone6Plus
-                    || device == .iPhone7Plus
-                    || device == .iPhone6s {
+                } else if device == .simulator(.iPhone6Plus) || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus || device == .iPhone7Plus || device == .simulator(.iPhone8Plus)
+                    || device == .iPhone8Plus {
                     sizeScale = 1.3
                 }
-//                if model == "iPhone 6" {
-//                    sizeScale = 1.3
-//                }
-//                else if model == "iPhone 6 Plus" {
-//                    sizeScale = 1.5
-//                }
+                //                if model == "iPhone 6" {
+                //                    sizeScale = 1.3
+                //                }
+                //                else if model == "iPhone 6 Plus" {
+                //                    sizeScale = 1.5
+                //                }
                 self.titleLabel?.font = currentFont?.withSize((currentFont?.pointSize)! * sizeScale)
             }
         }
@@ -158,7 +146,7 @@ extension UIButton {
 }
 
 extension UIColor {
-    class func rgb(red: Float, green: Float, blue: Float) -> UIColor {
+    static func rgb(_ red: Float, _ green: Float, _ blue: Float) -> UIColor {
         return UIColor(colorLiteralRed: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0)
     }
 }

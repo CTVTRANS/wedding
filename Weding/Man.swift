@@ -11,8 +11,8 @@ import UIKit
 class Man: NSObject {
     
     private var _name: String! = ""
-    private var _weddingDay: String! = "12"
-    private var _weddingDayCounter: String! = "3"
+    private var _weddingDay: String! = ""
+    private var _weddingDayCounter: String! = ""
     private var _numberGuest: Int! = 2
     private var _linkDownloadExcel: String!
     private var _filepathURL: URL!

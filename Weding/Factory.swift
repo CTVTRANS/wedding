@@ -10,7 +10,7 @@ import UIKit
 
 class Factory: NSObject {
     
-    var nameFactory: String! = "abc"
+    var nameFactory: String! = ""
     
     init(name: String) {
         nameFactory = name

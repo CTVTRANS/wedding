@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import FileBrowser
 
 class ExcelController: BaseViewController {
 
+    @IBOutlet weak var supportView: UIView!
     @IBOutlet weak var manView: UIView!
     @IBOutlet weak var womwnView: UIView!
     @IBOutlet weak var nameFactory: UILabel!
@@ -19,8 +19,9 @@ class ExcelController: BaseViewController {
         super.viewDidLoad()
         setupNavigation()
         nameFactory.text = Constants.sharedInstance.factory?.getName()
-        manView.layer.borderColor = UIColor.rgb(red: 188, green: 123, blue: 7).cgColor
-        womwnView.layer.borderColor = UIColor.rgb(red: 188, green: 123, blue: 7).cgColor
+        manView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor
+        womwnView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor
+        supportView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor
     }
     
     @IBAction func manDownloadExcel(_ sender: Any) {
@@ -38,9 +39,14 @@ class ExcelController: BaseViewController {
     
     @IBAction func wonmanUploadExcel(_ sender: Any) {
         let filePath = Constants.sharedInstance.woman?.filePath
-        uploadExcel(url:  filePath!, object: "MemberAddGuestPlanDoc2", nameFile: "GUESTPLAN2-ann730204.xlsx")
+        uploadExcel(url: filePath!, object: "MemberAddGuestPlanDoc2", nameFile: "GUESTPLAN2-ann730204.xlsx")
     }
     
+    @IBAction func pressedShowsupport(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SupportExcelViewController") as? SupportExcelViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
+    }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

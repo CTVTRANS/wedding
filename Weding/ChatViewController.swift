@@ -18,8 +18,9 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
     
-    var guestMessge: GuestMessage?
-    var arr = [GuestMessage]()
+    var guest: Guest?
+    var arr = [Message]()
+    var pager = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,13 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         moreButotn.layer.borderColor = UIColor.blue.cgColor
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
-        arr.append(guestMessge!)
+        getMessage()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
+    }
+    
+    func popNavigation() {
+        navigationController?.popViewController(animated: false)
     }
     
     func setUpReplyMessageView() {
@@ -36,6 +43,16 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
         replyTextView.delegate = self
+    }
+    
+    func getMessage() {
+        let getMessageGuest = GetMessageWithGuest(page: pager, limit: 20)
+        requestWithTask(task: getMessageGuest) { (listMessage) in
+            if let listMessage = listMessage as? [Message] {
+                self.arr += listMessage
+                self.table.reloadData()
+            }
+        }
     }
     
     func scrollLastMessage() {
@@ -54,26 +71,13 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     @IBAction func pressedReplyButton(_ sender: Any) {
         let message: String = replyTextView.text
         if message == "" {
-            replyTextView.resignFirstResponder()
             return
         }
-        let sendMessageTask: SendMessageTask = SendMessageTask(name: "m01", contentMessage: message)
-        requestWithTask(task: sendMessageTask, success: { (data) in
-            let dateFormatter: DateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd HH:mm"
-            let date = Date()
-            let dateString = dateFormatter.string(from: date)
-            let index = dateString.index(dateString.startIndex, offsetBy: 1)
-            let time = dateString.substring(from: index)
-            let newguest = GuestMessage(name: "", message: message, timeSend: time, avatar: #imageLiteral(resourceName: "logo mess 2"))
-            self.arr.append(newguest)
-            self.replyTextView.text = ""
-            self.replyTextView.resignFirstResponder()
-            _ = UIAlertController.showAlertWith(title: "Notification", message: (data as? String)!, myViewController: self)
+        let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
+        requestWithTask(task: sendMessageTask) { (_) in
+            self.getMessage()
             self.table.reloadData()
             self.scrollLastMessage()
-        }) { (error) in
-            print(error!)
         }
     }
     
@@ -82,14 +86,16 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as? GusetViewCell
-            cell?.binData(guestMessage: self.guestMessge!)
-            return cell!
+        let guestCell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as? GusetViewCell
+        let myCell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as? MyViewCell
+        let message = arr[indexPath.row]
+        if message.getOwner() == 1 {
+            guestCell?.binData(guestMessage: message)
+            return guestCell!
+        } else {
+            myCell?.binData(myMessage: message)
+            return myCell!
         }
-        let cell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as? MyViewCell
-        cell?.binData(myMessage: arr[indexPath.row])
-        return cell!
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension

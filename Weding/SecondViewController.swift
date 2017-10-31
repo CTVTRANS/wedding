@@ -20,7 +20,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     
     var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
-    var arr = [GuestMessage]()
+    var arrGuest: [Guest] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +28,11 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         setUpReplyMessageView()
         setupNavigation()
         table.estimatedRowHeight = 140
-        
-        let guest1 = GuestMessage(name: "Tom", message: "alo ", timeSend: "8/24 14:34", avatar: #imageLiteral(resourceName: "logo mess"))
-        let guest2 = GuestMessage(name: "Michael", message: "hi", timeSend: "8/13 8:10", avatar: #imageLiteral(resourceName: "logo mess 2"))
-        let guest3 = GuestMessage(name: "Jane", message: "hello", timeSend: "8/15 13:35", avatar: #imageLiteral(resourceName: "logo mess 3"))
-        let guest4 = GuestMessage(name: "South", message: "ahihi", timeSend: "8/15 23:56", avatar: #imageLiteral(resourceName: "logo mess 4"))
-        arr.append(guest1)
-        arr.append(guest2)
-        arr.append(guest3)
-        arr.append(guest4)
     }
     
     func setupListMessage() {
         table.layer.borderWidth = 0.5
-        table.layer.borderColor = UIColor.rgb(red: 236, green: 186, blue: 206).cgColor
+        table.layer.borderColor = UIColor.rgb(236, 186, 206).cgColor
     }
     
     func setUpReplyMessageView() {
@@ -60,12 +51,12 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
+        return arrGuest.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as? MessageViewCell
-        cell?.binData(guest: arr[indexPath.row])
+        cell?.binData(guest: arrGuest[indexPath.row])
         return cell!
     }
     
@@ -76,7 +67,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController
-        vc?.guestMessge = arr[indexPath.row]
+        vc?.guest = arrGuest[indexPath.row]
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -87,13 +78,11 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             return
         }
         let sendMessageTask: SendMessageTask = SendMessageTask(name: "m01,m02,m03", contentMessage: message)
-        requestWithTask(task: sendMessageTask, success: { (data) in
+        requestWithTask(task: sendMessageTask) { (data) in
             print(data!)
             self.replyMessageText.text = ""
             self.replyMessageText.resignFirstResponder()
-            _ = UIAlertController.showAlertWith(title: "Notification", message: (data as? String)!, myViewController: self)
-        }) { (error) in
-            print(error!)
+            _ = UIAlertController.showAlertWith(title: "", message: (data as? String)!, myViewController: self)
         }
     }
  

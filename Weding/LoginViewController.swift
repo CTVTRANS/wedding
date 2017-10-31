@@ -17,21 +17,20 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameTextField.layer.borderColor = UIColor.rgb(red: 233, green: 130, blue: 139).cgColor
-        passWordTextField.layer.borderColor = UIColor.rgb(red: 233, green: 130, blue: 139).cgColor
+        userNameTextField.layer.borderColor = UIColor.rgb(233, 130, 139).cgColor
+        passWordTextField.layer.borderColor = UIColor.rgb(233, 130, 139).cgColor
     }
 
     @IBAction func sigInPressed(_ sender: Any) {
         let name: String? = userNameTextField.text
         let pass: String? = passWordTextField.text
         if name == "" || pass == "" {
-            _ = UIAlertController.showAlertWith(title: "Notification",
-                                                message: "user name or password can't emty",
-                                                myViewController: self)
+            UIAlertController.showAlertWith(title: "Notification", message: "user name or password can't emty",
+                                            myViewController: self)
             return
         }
         let loginTask: LoginTask = LoginTask(name: name!, pass: pass!)
-        requestWithTask(task: loginTask, success: { (data) in
+        requestWithTask(task: loginTask) { (data) in
             print(data!)
             Constants.sharedInstance.currentNotificationGuest = 0
             Constants.sharedInstance.currentNotificationMessage = 0
@@ -46,23 +45,10 @@ class LoginViewController: BaseViewController {
             Account.saveAccount(myAccount: myAccount)
             self.processNumberNotification()
             self.showmainMenu()
-            let sendToken: SendToken = SendToken()
-            self.requestWithTask(task: sendToken, success: { (data) in
-                print(data!)
-            }, failure: { (error) in
-                _ = UIAlertController(title: "",
-                                      message: error as? String,
-                                      preferredStyle: .alert)
-            })
             
-        }) { (error) in
-            if let dictionary = error as? [String: Any] {
-                if let message: String = dictionary["ErrMsg"] as? String {
-                    _ = UIAlertController.showAlertWith(title: "Warnning", message: message, myViewController: self)
-                } else {
-                    let message: String = (dictionary["RtnCode"] as? String)!
-                    _ = UIAlertController.showAlertWith(title: "Warnning", message: message, myViewController: self)
-                }
+            let sendToken: SendToken = SendToken()
+            self.requestWithTask(task: sendToken) { (_) in
+
             }
         }
     }

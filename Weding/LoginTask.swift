@@ -27,7 +27,7 @@ class LoginTask: BaseTaskNetwork {
         return keySHA1
     }
     
-    override func parameters() -> [AnyHashable : Any]! {
+    override func parameters() -> [AnyHashable: Any]! {
         return ["id": useName, "k": getKey()]
     }
     
@@ -57,16 +57,16 @@ class LoginTask: BaseTaskNetwork {
         let womanWeddingDay = dictionary["COUPLEENGDTD"] as? String ?? ""
         let womanWeddingCounter = dictionary["COUPLEENGDTDCounter"] as? String ?? ""
         let womanNumberCustomer = dictionary["VIPLETTERCOUNT2"] as? Int ?? 0
-        let womanLinkExcel = dictionary["MEMBER_DOC_GUESTPLAN2_URL"] as? String ?? "abc"
-        let accountMemberURL = dictionary["MEMBER_URL"] as? String ?? "abc"
+        let womanLinkExcel = dictionary["MEMBER_DOC_GUESTPLAN2_URL"] as? String ?? ""
+        let accountMemberURL = dictionary["MEMBER_URL"] as? String ?? ""
         let tableSeatLink = dictionary["MEMBER_DOC_TABLE_URL"] as? String ?? ""
         let webSetpLink = dictionary["MEMBER_DOC_WEDSTEP_URL"] as? String ?? ""
         
         let woman: Woman = Woman.init(name: womanName,
                                       day: womanWeddingDay,
                                       dayCounter: womanWeddingCounter,
-                                      numberGuest:  womanNumberCustomer,
-                                      linkdownloadExcel: womanLinkExcel, filePath: "123")
+                                      numberGuest: womanNumberCustomer,
+                                      linkdownloadExcel: womanLinkExcel, filePath: "")
         woman.memberURL = accountMemberURL
         woman.tableSeat = tableSeatLink
         woman.webStep = webSetpLink
@@ -78,13 +78,13 @@ class LoginTask: BaseTaskNetwork {
         let manWeddingDay = dictionary["ENGDTD"] as? String ?? ""
         let manWeddingCounter = dictionary["ENGDTDCounter"] as? String ?? ""
         let manNumberCustomer = dictionary["VIPLETTERCOUNT1"] as? Int ?? 0
-        let manLLinkExcel = dictionary["MEMBER_DOC_GUESTPLAN_URL"] as? String ?? "abc"
+        let manLLinkExcel = dictionary["MEMBER_DOC_GUESTPLAN_URL"] as? String ?? ""
         
         let man: Man = Man.init(name: manName,
                                 day: manWeddingDay,
                                 dayCounter: manWeddingCounter,
                                 numberCustomer: manNumberCustomer,
-                                linkDownloadExcel: manLLinkExcel, filePath: "123")
+                                linkDownloadExcel: manLLinkExcel, filePath: "0")
         return man
     }
     

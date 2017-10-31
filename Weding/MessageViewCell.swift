@@ -21,11 +21,17 @@ class MessageViewCell: UITableViewCell {
         avatar.layer.cornerRadius = hightOffAvatar.constant / 2
     }
 
-    func binData(guest: GuestMessage) {
-        nameGuest.text = guest.getname()
-        let date = guest.getTime().components(separatedBy: " ")
-        time.text = date[0]
-        message.text = guest.getMessge()
-        avatar.image = guest.getImage()
+    func binData(guest: Guest) {
+        nameGuest.text = guest.nameGuest
+        avatar.sd_setImage(with: URL(string: guest.avatar))
+        let getNewestMessage = GetMessageWithGuest(page: 1, limit: 1)
+        getNewestMessage.request(blockSucess: { (data) in
+            if let newestMessage = data as? [Message] {
+                self.message.text = newestMessage.first?.getMessage()
+                self.time.text = newestMessage.first?.getTime().components(separatedBy: " ")[1]
+            }
+        }) { (_) in
+            
+        }
     }
 }

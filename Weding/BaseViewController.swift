@@ -10,29 +10,43 @@ import UIKit
 import SWRevealViewController
 import LCNetwork
 import CryptoSwift
+import SDWebImage
 
 class BaseViewController: UIViewController {
 
+    var swVC: SWRevealViewController?
+    var activity: UIActivityIndicatorView?
+    var backGroundview: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        swVC = self.revealViewController()
     }
     
     func setupNavigation() {
         if self.revealViewController() != nil {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_rightButton"), style: .plain, target: nil, action: nil)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .done, target: self, action: #selector(popToRootNavigation))
             navigationItem.title = "婚禮籌備平台"
-            self.navigationController?.navigationBar.isTranslucent = false
+//            self.navigationController?.navigationBar.isTranslucent = false
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         }
     }
     
-    func requestWithTask(task: BaseTaskNetwork, success: @escaping BlockSuccess, failure: @escaping BlockFailure) {
+    func popToRootNavigation() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainView") as? MainViewController
+    
+        let navigationController: UINavigationController = UINavigationController.init(rootViewController: vc!)
+        swVC?.pushFrontViewController(navigationController, animated: true)
+
+    }
+
+    func requestWithTask(task: BaseTaskNetwork, success: @escaping BlockSuccess) {
         task.request(blockSucess: { (data) in
             success(data)
         }) { (error) in
-            failure(error)
+            UIAlertController.showAlertWith(title: "", message: error!, myViewController: self)
         }
     }
     
@@ -44,47 +58,52 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func uploadFileSuccess(task: BaseTaskNetwork, success: @escaping BlockSuccess, failure: @escaping BlockFailure) {
+    func uploadFileSuccess(task: BaseTaskNetwork, success: @escaping BlockSuccess) {
         task.upLoadFile({ (data) in
             success(data)
         }) { (error) in
-            failure(error)
+            UIAlertController.showAlertWith(title: "", message: error!, myViewController: self)
         }
     }
     
     func downloadMemberExcel(objectID: String) {
         let getMemberTask: DowloadMemberList = DowloadMemberList(object: objectID)
         downloadFileSuccess(task: getMemberTask, success: { (data) in
-            let activityVC: UIActivityViewController =
-                UIActivityViewController.init(activityItems: [data!], applicationActivities: nil)
-            activityVC.popoverPresentationController?.sourceView = self.view
-            self.present(activityVC, animated: true, completion: nil)
+            if let fileURL  = data as? URL {
+                let activityVC: UIActivityViewController =
+                    UIActivityViewController.init(activityItems: [fileURL], applicationActivities: nil)
+                
+                if objectID == "1" {
+                    Constants.sharedInstance.man?.filePath = fileURL
+                } else {
+                    Constants.sharedInstance.woman?.filePath = fileURL
+                }
+                activityVC.popoverPresentationController?.sourceView = self.view
+                self.present(activityVC, animated: true, completion: nil)
+            }
         }) { (_) in
-                _ = UIAlertController.showAlertWith(title: "",
-                                                message: "不能下載賓客規劃表",
-                                                myViewController: self)
+            UIAlertController.showAlertWith(title: "", message: "不能下載賓客規劃表", myViewController: self)
         }
     }
     
     func uploadExcel(url: URL, object: String, nameFile: String) {
-        let uploadTask: UploadMemberTask = UploadMemberTask(fileUrl: url, todo: object, name: nameFile)
-        uploadFileSuccess(task: uploadTask, success: { (data) in
+        var data: Data?
+        do {
+            data = try? Data(contentsOf: url)
+        }
+        if data == nil {
+            _ = UIAlertController.showAlertWith(title: "", message: "no has file", myViewController: self)
+            return
+        }
+        let uploadTask: UploadMemberTask = UploadMemberTask(data: data!, todo: object, name: nameFile)
+        uploadFileSuccess(task: uploadTask) { (message) in
             let fileManager: FileManager = FileManager.default
             do {
                 try fileManager.removeItem(at: url)
             } catch {
                 
             }
-            _ = UIAlertController.showAlertWith(title: "",
-                                                message: (data as? String)!,
-                                                myViewController: self)
-        }) { (error) in
-            if let dictionary = error as? [String: Any] {
-                let mesage: String = (dictionary["ErrMsg"] as? String)!
-                _ = UIAlertController.showAlertWith(title: "",
-                                                    message: mesage,
-                                                    myViewController: self)
-            }
+            UIAlertController.showAlertWith(title: "", message: message! as! String, myViewController: self)
         }
     }
     
@@ -129,4 +148,34 @@ class BaseViewController: UIViewController {
         Account.saveAccount(myAccount: myAccount)
     }
     
+    func showActivity(inView myView: UIView) {
+        //        backGroundview = UIView(frame: UIScreen.main.bounds)
+        backGroundview = UIView(frame: myView.bounds)
+        backGroundview?.backgroundColor = UIColor.white
+        let loadingView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        loadingView.backgroundColor = UIColor.clear
+        activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        loadingView.addSubview(activity!)
+        let nameLoading = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 20))
+        nameLoading.font = UIFont(name: "Helvetica Neue", size: 15)
+        nameLoading.text = "loading..."
+        nameLoading.textAlignment = .center
+        nameLoading.textColor = UIColor.gray
+        nameLoading.backgroundColor = UIColor.clear
+        nameLoading.translatesAutoresizingMaskIntoConstraints = true
+        loadingView.addSubview(nameLoading)
+        
+        backGroundview?.addSubview(loadingView)
+        nameLoading.center = CGPoint(x: loadingView.center.x, y: loadingView.center.y + 23)
+        activity?.center = loadingView.center
+        loadingView.center = (backGroundview?.center)!
+        myView.addSubview(backGroundview!)
+        //        UIApplication.shared.keyWindow?.addSubview(backGroundview!)
+        activity?.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activity?.stopAnimating()
+        backGroundview?.removeFromSuperview()
+    }
 }

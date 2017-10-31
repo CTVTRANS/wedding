@@ -11,18 +11,22 @@ import LCNetwork
 
 class UploadMemberTask: BaseTaskNetwork {
     
-    private var filePath: URL?
     private var _todo: String!
     private var _name: String!
+    private var _data: Data?
     
-    init(fileUrl: URL, todo: String, name: String) {
-        self.filePath = fileUrl
+    init(data: Data, todo: String, name: String) {
+        _data = data
         _todo = todo
         _name = name
     }
     
-    override func fileURL() -> URL! {
-        return self.filePath
+    override func fileUpload() -> Data! {
+        return _data
+    }
+    
+    override func parameterOfFile() -> String! {
+        return "UploadFile"
     }
     
     override func nameFile() -> String! {
@@ -33,7 +37,7 @@ class UploadMemberTask: BaseTaskNetwork {
         return  sendData + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
     }
     
-    override func parameters() -> [AnyHashable : Any]! {
+    override func parameters() -> [AnyHashable: Any]! {
         return ["todo": _todo]
     }
     
@@ -46,6 +50,6 @@ class UploadMemberTask: BaseTaskNetwork {
             let mesage: String = (dictionary["ErrMsg"] as? String)!
             return mesage
         }
-        return nil
+        return "Fail"
     }
 }

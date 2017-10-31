@@ -16,19 +16,15 @@ class SplashViewController: BaseViewController {
         if Account.isAuthentic() {
             let loginTask: LoginTask = LoginTask(name: Account.getAccount().name,
                                                 pass: Account.getAccount().pass)
-            requestWithTask(task: loginTask, success: { (data) in
-                print(data!)
+            requestWithTask(task: loginTask) { (_) in
                 self.processNumberNotification()
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as? SWRevealViewController
                 self.present(vc!, animated: false, completion: nil)
-            }) { (_) in
-                _ = UIAlertController.showAlertWith(title: "Warnning", message: "", myViewController: self)
-                return
             }
         } else {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginView") as? UINavigationController
             self.present(vc!, animated: false, completion: { 
-                print("ok")
+                
             })
         }
     }

@@ -20,14 +20,14 @@ class SendMessageTask: BaseTaskNetwork {
     }
     
     override func path() -> String! {
-        return sendData + "id=" + Account.getAccount().name + "&k=" + Constants.sharedInstance.keyAccount!
+        return sendData + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
     }
 
     override func method() -> String! {
         return POST
     }
     
-    override func parameters() -> [AnyHashable : Any]! {
+    override func parameters() -> [AnyHashable: Any]! {
         return ["todo": "MemberAddMessageToGuest", "GuestList": guestName, "msg": content]
     }
     

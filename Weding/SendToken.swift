@@ -11,7 +11,7 @@ import LCNetwork
 
 class SendToken: BaseTaskNetwork {
     
-    override func parameters() -> [AnyHashable : Any]! {
+    override func parameters() -> [AnyHashable: Any]! {
         return ["token": Account.getAccount().token]
     }
     

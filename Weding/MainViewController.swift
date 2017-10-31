@@ -31,6 +31,8 @@ class MainViewController: BaseViewController {
         setupNavigation()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadNumberNotification(notification:)), name: NSNotification.Name(rawValue: "refreshNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "requestToServer"), object: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_rightButton"), style: .plain, target: nil, action: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,13 +100,13 @@ class MainViewController: BaseViewController {
     }
    
     @IBAction func openSecondView(_ sender: Any) {
-        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
+        let secondVC = storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
         viewNumberMessage.isHidden = true
         Constants.sharedInstance.currentNotificationMessage = 0
         let myAccount = Account.getAccount()
         myAccount.currentMessageNumberBadge = 0
         Account.saveAccount(myAccount: myAccount)
-        self.navigationController?.pushViewController(secondVC!, animated: false)
+        navigationController?.pushViewController(secondVC!, animated: false)
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
@@ -118,7 +120,9 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func sendImageOfSeatPosition(_ sender: Any) {
-        sendImageOfPosition()
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SendImageSeatViewController") as? SendImageSeatViewController {
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     deinit {
@@ -142,13 +146,9 @@ class MainViewController: BaseViewController {
     
     func requestToServer(notification: Notification) {
         let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
-        requestWithTask(task: request, success: { (_) in
+        requestWithTask(task: request) { (_) in
             self.processNumberNotification()
             self.setupNotification()
-        }) { (error) in
-            _ = UIAlertController(title: "",
-                                  message: error as? String,
-                                  preferredStyle: .alert)
         }
     }
 }

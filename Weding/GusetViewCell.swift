@@ -20,10 +20,9 @@ class GusetViewCell: UITableViewCell {
         avatar.layer.cornerRadius = hightOfAvatar.constant / 2
     }
     
-    func binData(guestMessage: GuestMessage) {
-        message.text = guestMessage.getMessge()
+    func binData(guestMessage: Message) {
         timeMessage.text = guestMessage.getTime()
-        avatar.image = guestMessage.getImage()
+        message.text = guestMessage.getMessage()
     }
 
 }
