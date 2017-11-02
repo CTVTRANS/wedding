@@ -28,6 +28,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         setUpReplyMessageView()
         setupNavigation()
         table.estimatedRowHeight = 140
+        getListGuest()
     }
     
     func setupListMessage() {
@@ -44,6 +45,16 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
         replyMessageText.delegate = self
+    }
+    
+    func getListGuest() {
+        let getListGuestTask = GetListGuestTask()
+        requestWithTask(task: getListGuestTask) { (data) in
+            if let array = data as? [Guest] {
+                self.arrGuest = array
+                self.table.reloadData()
+            }
+        }
     }
     
     func dismissKeyboard() {
@@ -77,12 +88,12 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             replyMessageText.resignFirstResponder()
             return
         }
-        let sendMessageTask: SendMessageTask = SendMessageTask(name: "m01,m02,m03", contentMessage: message)
+        let sendMessageTask: SendMessageTask = SendMessageTask(name: "All", contentMessage: message)
         requestWithTask(task: sendMessageTask) { (data) in
             print(data!)
             self.replyMessageText.text = ""
             self.replyMessageText.resignFirstResponder()
-            _ = UIAlertController.showAlertWith(title: "", message: (data as? String)!, myViewController: self)
+            UIAlertController.showAlertWith(title: "", message: (data as? String)!, myViewController: self)
         }
     }
  

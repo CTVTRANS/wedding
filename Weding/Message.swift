@@ -9,22 +9,28 @@
 import UIKit
 
 class Message: NSObject {
-    private var messageOwner: Int!
+    private var _isMyMessage: Bool!
     private var messageBoby: String!
     private var time: String!
+    private var _isReaded: Bool!
     
-    init(messageOwner: Int, message: String, timeSend: String) {
-        self.messageOwner = messageOwner
+    init(myMessage: Bool, message: String, timeSend: String, isReaded: Bool) {
+        _isMyMessage = myMessage
         messageBoby = message
         time = timeSend
+        _isReaded = isReaded
     }
     
-    func getOwner() -> Int {
-        return messageOwner
+    func isMyMessage() -> Bool {
+        return _isMyMessage
     }
     
     func getMessage() -> String {
         return messageBoby
+    }
+    
+    func isReades() -> Bool {
+        return _isReaded
     }
     
     func getTime() -> String {

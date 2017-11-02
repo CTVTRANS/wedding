@@ -33,7 +33,7 @@
 		6D8143BA1F47E6C30005AD8B /* SendMessageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8143B91F47E6C20005AD8B /* SendMessageTask.swift */; };
 		6DABE6DF1F34C2FC00053AA3 /* CustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */; };
 		6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */; };
-		6DEC723A1FA1CC7B00AAAE57 /* GetLIstGuestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC72391FA1CC7B00AAAE57 /* GetLIstGuestTask.swift */; };
+		6DEC723A1FA1CC7B00AAAE57 /* GetListGuestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEC72391FA1CC7B00AAAE57 /* GetListGuestTask.swift */; };
 		6DEDBD511F45836600526AD0 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEDBD501F45836600526AD0 /* SplashViewController.swift */; };
 		6DEF9B821F4EAB5A0004BC31 /* Guest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEF9B811F4EAB5A0004BC31 /* Guest.swift */; };
 		6DEFC1961F53EF83006C696B /* MSJH.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 6DEFC1941F53EF83006C696B /* MSJH.TTF */; };
@@ -115,7 +115,7 @@
 		6D8143B91F47E6C20005AD8B /* SendMessageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMessageTask.swift; sourceTree = "<group>"; };
 		6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNavigationBar.xib; sourceTree = "<group>"; };
 		6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		6DEC72391FA1CC7B00AAAE57 /* GetLIstGuestTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLIstGuestTask.swift; sourceTree = "<group>"; };
+		6DEC72391FA1CC7B00AAAE57 /* GetListGuestTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetListGuestTask.swift; sourceTree = "<group>"; };
 		6DECCBDB1F4D1E640097AE52 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
 		6DEDBD501F45836600526AD0 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6DEF9B811F4EAB5A0004BC31 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 				6DF535831F43435000305D12 /* UploadMemberTask.swift */,
 				6D8143B91F47E6C20005AD8B /* SendMessageTask.swift */,
 				6DF7DEAE1F4E850F004D6719 /* SendToken.swift */,
-				6DEC72391FA1CC7B00AAAE57 /* GetLIstGuestTask.swift */,
+				6DEC72391FA1CC7B00AAAE57 /* GetListGuestTask.swift */,
 				9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */,
 			);
 			name = Network;
@@ -713,7 +713,7 @@
 				6D29ACCB1F34261500A17621 /* MainViewController.swift in Sources */,
 				6DF535841F43435000305D12 /* UploadMemberTask.swift in Sources */,
 				6D29AC9D1F34039C00A17621 /* AppDelegate.swift in Sources */,
-				6DEC723A1FA1CC7B00AAAE57 /* GetLIstGuestTask.swift in Sources */,
+				6DEC723A1FA1CC7B00AAAE57 /* GetListGuestTask.swift in Sources */,
 				6D6228571F34C658000CE328 /* CustomNavigationBar.swift in Sources */,
 				6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */,
 				6DF4A4BA1F3702B900869C38 /* LoginTask.swift in Sources */,

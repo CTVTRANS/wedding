@@ -46,10 +46,10 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func getMessage() {
-        let getMessageGuest = GetMessageWithGuest(page: pager, limit: 20)
+        let getMessageGuest = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: pager, limit: 20)
         requestWithTask(task: getMessageGuest) { (listMessage) in
             if let listMessage = listMessage as? [Message] {
-                self.arr += listMessage
+                self.arr = listMessage
                 self.table.reloadData()
             }
         }
@@ -76,7 +76,6 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
         requestWithTask(task: sendMessageTask) { (_) in
             self.getMessage()
-            self.table.reloadData()
             self.scrollLastMessage()
         }
     }
@@ -89,12 +88,12 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         let guestCell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as? GusetViewCell
         let myCell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as? MyViewCell
         let message = arr[indexPath.row]
-        if message.getOwner() == 1 {
-            guestCell?.binData(guestMessage: message)
-            return guestCell!
-        } else {
+        if message.isMyMessage() {
             myCell?.binData(myMessage: message)
             return myCell!
+        } else {
+            guestCell?.binData(guestMessage: message)
+            return guestCell!
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -103,7 +103,7 @@ class BaseViewController: UIViewController {
             } catch {
                 
             }
-            UIAlertController.showAlertWith(title: "", message: message! as! String, myViewController: self)
+            UIAlertController.showAlertWith(title: "", message: (message as? String)!, myViewController: self)
         }
     }
     

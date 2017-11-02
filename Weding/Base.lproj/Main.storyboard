@@ -623,7 +623,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="檢視邀約平台">
-                                            <color key="titleColor" red="0.41176470590000003" green="0.33333333329999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFontToRealIPhoneSize" value="YES"/>
@@ -1129,7 +1129,7 @@
                                 <rect key="frame" x="100" y="240" width="32" height="40"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ps:以上規劃表建議使用電腦編輯    -&gt; freeweb.com.tw-&gt;會員登入-&gt;賓客規劃表製作-&gt;下載規劃參考表 -&gt;編輯完成後再上傳至手機App" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmT-1B-b0g">
-                                <rect key="frame" x="50" y="341" width="220" height="65.5"/>
+                                <rect key="frame" x="50" y="341" width="220" height="74.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="F6O-gk-XVG">
@@ -1149,7 +1149,7 @@
                                 <rect key="frame" x="100" y="478" width="24" height="21"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手機App端, 僅適用隨時修改及註記" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCe-nD-ncx">
-                                <rect key="frame" x="50" y="461.5" width="220" height="16.5"/>
+                                <rect key="frame" x="50" y="459" width="220" height="19"/>
                                 <fontDescription key="fontDescription" name="MicrosoftJhengHeiBold" family="Microsoft JhengHei" pointSize="14"/>
                                 <color key="textColor" red="0.52941176470588236" green="0.34901960784313724" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1488,7 +1488,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/08/15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF2-fq-Q3t">
-                                                    <rect key="frame" x="167" y="8" width="63" height="16"/>
+                                                    <rect key="frame" x="167" y="10" width="63" height="16"/>
                                                     <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="13"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.33333333329999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1507,11 +1507,20 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLD-OL-Atq">
-                                                    <rect key="frame" x="214" y="40" width="16" height="14"/>
+                                                    <rect key="frame" x="214" y="37.5" width="16" height="14"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="2DS-pY-8k4">
                                                             <rect key="frame" x="0.0" y="0.0" width="16" height="14"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlH-uT-BEb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="14"/>
+                                                            <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="10"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFontToRealIPhoneSize" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1520,21 +1529,25 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </constraint>
+                                                        <constraint firstItem="rlH-uT-BEb" firstAttribute="leading" secondItem="GLD-OL-Atq" secondAttribute="leading" id="9xq-dW-54Y"/>
+                                                        <constraint firstAttribute="trailing" secondItem="rlH-uT-BEb" secondAttribute="trailing" id="Z1q-uC-X6X"/>
                                                         <constraint firstItem="2DS-pY-8k4" firstAttribute="leading" secondItem="GLD-OL-Atq" secondAttribute="leading" id="aZj-sk-UFH"/>
                                                         <constraint firstAttribute="height" constant="14" id="b9k-2x-bK0">
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </constraint>
+                                                        <constraint firstAttribute="bottom" secondItem="rlH-uT-BEb" secondAttribute="bottom" id="dZ1-yf-nuQ"/>
                                                         <constraint firstItem="2DS-pY-8k4" firstAttribute="top" secondItem="GLD-OL-Atq" secondAttribute="top" id="eKm-FQ-sb2"/>
                                                         <constraint firstAttribute="trailing" secondItem="2DS-pY-8k4" secondAttribute="trailing" id="en8-6v-s0j"/>
                                                         <constraint firstAttribute="bottom" secondItem="2DS-pY-8k4" secondAttribute="bottom" id="fuY-NC-le0"/>
+                                                        <constraint firstItem="rlH-uT-BEb" firstAttribute="top" secondItem="GLD-OL-Atq" secondAttribute="top" id="yD9-rD-CLs"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="alo alo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcW-Bl-Sjv">
-                                                    <rect key="frame" x="63" y="34" width="143" height="26"/>
+                                                    <rect key="frame" x="64" y="31" width="142" height="27"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="14"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.33333333329999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1542,10 +1555,10 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hFm-F0-dXe">
-                                                    <rect key="frame" x="5" y="11" width="50" height="50"/>
+                                                    <rect key="frame" x="8" y="12" width="48" height="48"/>
                                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="dCQ-mM-WTl">
+                                                        <constraint firstAttribute="height" constant="48" id="dCQ-mM-WTl">
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
@@ -1554,7 +1567,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvS-jW-JHf">
-                                                    <rect key="frame" x="63" y="8" width="10" height="16"/>
+                                                    <rect key="frame" x="64" y="10" width="10" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="ulj-F6-9a0">
                                                             <userDefinedRuntimeAttributes>
@@ -1562,7 +1575,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </constraint>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Calibri-Bold" family="Calibri" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Calibri-Bold" family="Calibri" pointSize="15"/>
                                                     <color key="textColor" red="0.41176470590000003" green="0.33333333329999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1572,7 +1585,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hFm-F0-dXe" firstAttribute="centerY" secondItem="fjQ-we-W8g" secondAttribute="centerY" id="6D0-Lt-clA"/>
-                                                <constraint firstItem="dfR-HJ-xGP" firstAttribute="top" secondItem="lcW-Bl-Sjv" secondAttribute="bottom" constant="10" id="7Qt-aM-C5c">
+                                                <constraint firstItem="dfR-HJ-xGP" firstAttribute="top" secondItem="lcW-Bl-Sjv" secondAttribute="bottom" constant="12" id="7Qt-aM-C5c">
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
@@ -1584,14 +1597,14 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </constraint>
-                                                <constraint firstItem="hFm-F0-dXe" firstAttribute="leading" secondItem="fjQ-we-W8g" secondAttribute="leading" constant="5" id="LKg-m8-kwU"/>
+                                                <constraint firstItem="hFm-F0-dXe" firstAttribute="leading" secondItem="fjQ-we-W8g" secondAttribute="leading" constant="8" id="LKg-m8-kwU"/>
                                                 <constraint firstItem="lcW-Bl-Sjv" firstAttribute="leading" secondItem="hFm-F0-dXe" secondAttribute="trailing" constant="8" id="MDS-d6-4rS"/>
-                                                <constraint firstItem="vvS-jW-JHf" firstAttribute="top" secondItem="fjQ-we-W8g" secondAttribute="top" constant="8" id="TT3-am-9q4">
+                                                <constraint firstItem="vvS-jW-JHf" firstAttribute="top" secondItem="fjQ-we-W8g" secondAttribute="top" constant="10" id="TT3-am-9q4">
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </constraint>
-                                                <constraint firstItem="lcW-Bl-Sjv" firstAttribute="top" secondItem="vvS-jW-JHf" secondAttribute="bottom" constant="10" id="Tbk-P7-ccA">
+                                                <constraint firstItem="lcW-Bl-Sjv" firstAttribute="top" secondItem="vvS-jW-JHf" secondAttribute="bottom" constant="5" id="Tbk-P7-ccA">
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="adjustConstantToRealIPhoneSize" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
@@ -1609,6 +1622,8 @@
                                             <outlet property="hightOffAvatar" destination="dCQ-mM-WTl" id="yWq-Se-mZF"/>
                                             <outlet property="message" destination="lcW-Bl-Sjv" id="exp-wd-DIe"/>
                                             <outlet property="nameGuest" destination="vvS-jW-JHf" id="2v9-lf-uRk"/>
+                                            <outlet property="numberMessage" destination="rlH-uT-BEb" id="9Gn-XG-qaN"/>
+                                            <outlet property="numberMessageView" destination="GLD-OL-Atq" id="dtw-jC-pqV"/>
                                             <outlet property="time" destination="wF2-fq-Q3t" id="TVH-79-KRd"/>
                                         </connections>
                                     </tableViewCell>
@@ -1921,8 +1936,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order for the table view to do this, you must also provide an estimatedRowHeight" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wb-Dv-6rS">
-                                                            <rect key="frame" x="0.0" y="24" width="152" height="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wb-Dv-6rS">
+                                                            <rect key="frame" x="0.0" y="24" width="9" height="15"/>
                                                             <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1963,15 +1978,15 @@
                                             <outlet property="timeMessage" destination="b5z-B4-nY1" id="frM-dV-ZjQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyViewCell" rowHeight="49" id="f1q-o7-zMd" customClass="MyViewCell" customModule="Weding" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="88" width="238" height="49"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyViewCell" rowHeight="45" id="f1q-o7-zMd" customClass="MyViewCell" customModule="Weding" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="238" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f1q-o7-zMd" id="dza-Cd-kpd">
-                                            <rect key="frame" x="0.0" y="0.0" width="238" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8/24 23:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTc-GB-Jzp">
-                                                    <rect key="frame" x="12" y="18.5" width="70" height="17.5"/>
+                                                    <rect key="frame" x="118" y="14.5" width="70" height="17.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="KPS-fv-8LV"/>
                                                     </constraints>
@@ -1980,11 +1995,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chat" translatesAutoresizingMaskIntoConstraints="NO" id="bmj-6Y-9Kc">
-                                                    <rect key="frame" x="82" y="8" width="156" height="36"/>
+                                                    <rect key="frame" x="188" y="5" width="50" height="35"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxh-fv-iQ2">
-                                                    <rect key="frame" x="92" y="16" width="138" height="20"/>
-                                                    <string key="text">The method 'sizeWithFont' is deprecated and I want to ensure best practices, and XCode says to use 'boundingRectWithSize' but not sure how to use this to size a font down so that all text fits.</string>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxh-fv-iQ2">
+                                                    <rect key="frame" x="196" y="11" width="32" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="V5u-Ej-Ugv"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1995,15 +2012,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bmj-6Y-9Kc" firstAttribute="leading" secondItem="sTc-GB-Jzp" secondAttribute="trailing" id="2AQ-6i-aq5"/>
-                                                <constraint firstItem="bmj-6Y-9Kc" firstAttribute="top" secondItem="dza-Cd-kpd" secondAttribute="top" constant="8" id="3R9-1C-7RL"/>
+                                                <constraint firstItem="bmj-6Y-9Kc" firstAttribute="top" secondItem="dza-Cd-kpd" secondAttribute="top" constant="5" id="3R9-1C-7RL"/>
                                                 <constraint firstAttribute="bottom" secondItem="bmj-6Y-9Kc" secondAttribute="bottom" constant="5" id="9Mt-MV-dq6"/>
                                                 <constraint firstItem="fxh-fv-iQ2" firstAttribute="width" relation="lessThanOrEqual" secondItem="dza-Cd-kpd" secondAttribute="width" constant="-100" id="FVy-X4-bEl"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="fxh-fv-iQ2" secondAttribute="bottom" constant="5" id="Oos-0h-rB0"/>
-                                                <constraint firstItem="fxh-fv-iQ2" firstAttribute="leading" secondItem="sTc-GB-Jzp" secondAttribute="trailing" constant="10" id="gCk-oj-swu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fxh-fv-iQ2" secondAttribute="bottom" constant="3" id="Oos-0h-rB0"/>
+                                                <constraint firstItem="fxh-fv-iQ2" firstAttribute="leading" secondItem="sTc-GB-Jzp" secondAttribute="trailing" constant="8" id="gCk-oj-swu"/>
                                                 <constraint firstAttribute="trailing" secondItem="bmj-6Y-9Kc" secondAttribute="trailing" id="glc-fy-GGO"/>
-                                                <constraint firstItem="fxh-fv-iQ2" firstAttribute="top" secondItem="dza-Cd-kpd" secondAttribute="topMargin" constant="8" id="jXq-dC-Gf5"/>
+                                                <constraint firstItem="fxh-fv-iQ2" firstAttribute="top" secondItem="dza-Cd-kpd" secondAttribute="topMargin" constant="3" id="jXq-dC-Gf5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="sTc-GB-Jzp" secondAttribute="bottom" constant="5" id="nUf-WA-n0e"/>
-                                                <constraint firstAttribute="trailing" secondItem="fxh-fv-iQ2" secondAttribute="trailing" constant="8" id="umQ-kI-Nnt"/>
+                                                <constraint firstAttribute="trailing" secondItem="fxh-fv-iQ2" secondAttribute="trailing" constant="10" id="umQ-kI-Nnt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2101,7 +2118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L4W-tZ-YvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5194" y="1638"/>
+            <point key="canvasLocation" x="5193.75" y="1637.323943661972"/>
         </scene>
         <!--Send Image Seat View Controller-->
         <scene sceneID="vHX-Hh-Mju">
@@ -2369,7 +2386,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="210" height="239"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="帳號 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXx-rk-beC">
-                                        <rect key="frame" x="8" y="67" width="41" height="19"/>
+                                        <rect key="frame" x="8" y="70" width="41" height="21.5"/>
                                         <fontDescription key="fontDescription" name="MicrosoftJhengHeiBold" family="Microsoft JhengHei" pointSize="16"/>
                                         <color key="textColor" red="0.88235294117647056" green="0.0" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2378,7 +2395,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5yt-hw-uha">
-                                        <rect key="frame" x="57" y="65" width="165" height="23"/>
+                                        <rect key="frame" x="57" y="69.5" width="165" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="UFs-HZ-l3w">
                                                 <userDefinedRuntimeAttributes>
@@ -2397,7 +2414,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOC-US-maa">
-                                        <rect key="frame" x="57" y="96" width="165" height="23"/>
+                                        <rect key="frame" x="57" y="103" width="165" height="23"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="Mud-t0-75k">
                                                 <userDefinedRuntimeAttributes>
@@ -2416,7 +2433,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請輸入您已註冊的帳密..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIp-sq-SxS">
-                                        <rect key="frame" x="0.0" y="26" width="210" height="21"/>
+                                        <rect key="frame" x="0.0" y="26" width="210" height="24"/>
                                         <fontDescription key="fontDescription" name="MicrosoftJhengHeiBold" family="Microsoft JhengHei" pointSize="18"/>
                                         <color key="textColor" red="0.88235294117647056" green="0.0" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2425,7 +2442,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密碼 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbr-fp-c7c">
-                                        <rect key="frame" x="8" y="98" width="41" height="19"/>
+                                        <rect key="frame" x="8" y="103.5" width="41" height="21.5"/>
                                         <fontDescription key="fontDescription" name="MicrosoftJhengHeiBold" family="Microsoft JhengHei" pointSize="16"/>
                                         <color key="textColor" red="0.88235294117647056" green="0.0" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2434,7 +2451,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="若您尚未註冊或忘記帳密" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auj-49-UNV">
-                                        <rect key="frame" x="-12" y="197.5" width="143" height="15.5"/>
+                                        <rect key="frame" x="-12" y="195.5" width="143" height="17.5"/>
                                         <fontDescription key="fontDescription" name="MicrosoftJhengHeiBold" family="Microsoft JhengHei" pointSize="13"/>
                                         <color key="textColor" red="0.88235294117647056" green="0.0" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -2443,7 +2460,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDf-ht-1a0">
-                                        <rect key="frame" x="162" y="193.5" width="67" height="25"/>
+                                        <rect key="frame" x="162" y="192.5" width="67" height="25"/>
                                         <color key="backgroundColor" red="0.5490196078431373" green="0.75686274509803919" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="6or-DG-YA6">
@@ -2469,7 +2486,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXb-Aw-RZp">
-                                        <rect key="frame" x="162" y="135" width="60" height="29"/>
+                                        <rect key="frame" x="162" y="142" width="60" height="29"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="siginButton" translatesAutoresizingMaskIntoConstraints="NO" id="rJ3-8o-DQB">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="29"/>
@@ -2511,7 +2528,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEA-Tt-0WV">
-                                        <rect key="frame" x="131" y="190.5" width="31" height="30"/>
+                                        <rect key="frame" x="131" y="189.5" width="31" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ0-mS-rI0">
                                                 <rect key="frame" x="8" y="7" width="16" height="16"/>

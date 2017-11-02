@@ -13,14 +13,17 @@ class GetMessageWithGuest: BaseTaskNetwork {
     
     private var _limit: Int!
     private var _page: Int!
+    private var _idGuest: String!
     
-    init(page: Int, limit: Int) {
+    init(idGuest: String, page: Int, limit: Int) {
+        _idGuest = idGuest
         _page = page
         _limit = limit
     }
     
     override func path() -> String! {
         return getMessageGuest + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
+            + "&guest_id=" + _idGuest
     }
     
     override func method() -> String! {
@@ -45,10 +48,19 @@ class GetMessageWithGuest: BaseTaskNetwork {
 
 extension BaseTaskNetwork {
     func parseMessage(dictionary: [String: Any]) -> Message {
-        let messageOwner = dictionary[""] as? Int ?? 0
-        let content = dictionary[""] as? String ?? ""
-        let time = dictionary[""] as? String ?? ""
-        let message = Message(messageOwner: messageOwner, message: content, timeSend: time)
+        var isMyMessage = false
+        var status = false
+        let fromUser = dictionary["FROM_USER_ACCOUNT"] as? String ?? ""
+        if fromUser == Account.getAccount().name {
+            isMyMessage = true
+        }
+        let content = dictionary["MESSAGE_CONTENT"] as? String ?? ""
+        let time = dictionary["MESSAGE_TIME"] as? String ?? ""
+        let isReaed = dictionary["IS_PUSH"] as? Int ?? 0
+        if isReaed == 1 {
+            status = true
+        }
+        let message = Message(myMessage: isMyMessage, message: content, timeSend: time, isReaded: status)
         return message
     }
 }

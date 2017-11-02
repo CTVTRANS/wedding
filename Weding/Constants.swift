@@ -15,7 +15,7 @@ let linkWebLogin = baseURL + "app/index0.aspx?"
 let sendData = baseURL + "api/UpdateData.aspx?"
 let downloadExcel = baseURL + "api/GetGuestPlanDoc.aspx?"
 let getListGuestURL = baseURL + "/api/GetGuestInfoByMember.aspx?"
-let getMessageGuest = baseURL + "/api/GetMemberMessage.aspx?"
+let getMessageGuest = baseURL + "/api/GetMemberGuestHistoryMessage.aspx?"
 let linkguideExcel = baseURL + "/app/guest_doc_guide.aspx"
 
 class Constants {

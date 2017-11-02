@@ -9,7 +9,7 @@
 import UIKit
 import LCNetwork
 
-class GetLIstGuestTask: BaseTaskNetwork {
+class GetListGuestTask: BaseTaskNetwork {
 
     override func path() -> String! {
         return getListGuestURL + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
@@ -34,7 +34,7 @@ class GetLIstGuestTask: BaseTaskNetwork {
 extension BaseTaskNetwork {
     func parseGuest(dictionary: [String: Any]) -> Guest {
         let nameGuest = dictionary["USERNAME"] as? String ?? ""
-        let idGuest = dictionary["id"] as? String ?? ""
+        let idGuest = dictionary["ACCOUNT"] as? String ?? ""
         let mobileGuest = dictionary["MOBILE"] as? String ?? ""
         let emailGuest = dictionary["EMAIL"] as? String ?? ""
         let avaterGuest = dictionary["AVATAR"] as? String ?? ""

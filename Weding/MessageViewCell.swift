@@ -10,6 +10,8 @@ import UIKit
 
 class MessageViewCell: UITableViewCell {
 
+    @IBOutlet weak var numberMessage: UILabel!
+    @IBOutlet weak var numberMessageView: UIView!
     @IBOutlet weak var nameGuest: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var message: UILabel!
@@ -24,11 +26,22 @@ class MessageViewCell: UITableViewCell {
     func binData(guest: Guest) {
         nameGuest.text = guest.nameGuest
         avatar.sd_setImage(with: URL(string: guest.avatar))
-        let getNewestMessage = GetMessageWithGuest(page: 1, limit: 1)
+        let getNewestMessage = GetMessageWithGuest(idGuest: guest.idGuest, page: 1, limit: 1)
         getNewestMessage.request(blockSucess: { (data) in
-            if let newestMessage = data as? [Message] {
-                self.message.text = newestMessage.first?.getMessage()
-                self.time.text = newestMessage.first?.getTime().components(separatedBy: " ")[1]
+            if let arr = data as? [Message] {
+                if arr.first != nil {
+                    let newest = arr[0]
+                    self.message.text = newest.getMessage()
+                    let timeDate = newest.getTime().components(separatedBy: "T")[0]
+                    let month: Int = Int((timeDate.components(separatedBy: "-")[1]))!
+                    let date: Int = Int((timeDate.components(separatedBy: "-")[2]))!
+                    let timeString: String = String(month) + "/" + String(date)
+                    self.time.text = timeString
+                    
+                    if newest.isReades() {
+                        self.numberMessage.isHidden = true
+                    }
+                }
             }
         }) { (_) in
             
