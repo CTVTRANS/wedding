@@ -34,7 +34,7 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func popToRootNavigation() {
+    @objc func popToRootNavigation() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainView") as? MainViewController
     
         let navigationController: UINavigationController = UINavigationController.init(rootViewController: vc!)
@@ -125,9 +125,9 @@ class BaseViewController: UIViewController {
         let linkTable = Constants.sharedInstance.woman?.tableSeat
         let linkWedStep = Constants.sharedInstance.woman?.webStep
         var newNumberNotificationOfSeat: Int = 0
-        if (linkTable?.characters.count)! > 0 {
+        if (linkTable?.count)! > 0 {
             newNumberNotificationOfSeat += 1
-        } else if (linkWedStep?.characters.count)! > 0 {
+        } else if (linkWedStep?.count)! > 0 {
             newNumberNotificationOfSeat += 1
         }
         
@@ -142,9 +142,9 @@ class BaseViewController: UIViewController {
         myAccount.numberGuest = newNumberGuest
         myAccount.numberMessage = newNumberMessage
         myAccount.tableNotification = newNumberNotificationOfSeat
-        myAccount.currentGuestNumberBadge =  Constants.sharedInstance.currentNotificationGuest!
-        myAccount.currentMessageNumberBadge = Constants.sharedInstance.currentNotificationMessage!
-        myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat!
+        myAccount.currentGuestNumberBadge =  Constants.sharedInstance.currentNotificationGuest
+        myAccount.currentMessageNumberBadge = Constants.sharedInstance.currentNotificationMessage
+        myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat
         Account.saveAccount(myAccount: myAccount)
     }
     

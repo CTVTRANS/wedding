@@ -37,9 +37,9 @@ class LoginViewController: BaseViewController {
             Constants.sharedInstance.currentNotificationSeat = 0
             let memberURL = Constants.sharedInstance.woman?.memberURL
             let myAccount = Account(name: name!, pass: pass!, numberGuest: 0, numberMessage: 0, memberURL: memberURL!, seat: 0)
-            myAccount.currentGuestNumberBadge = Constants.sharedInstance.currentNotificationGuest!
-            myAccount.currentMessageNumberBadge =  Constants.sharedInstance.currentNotificationMessage!
-            myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat!
+            myAccount.currentGuestNumberBadge = Constants.sharedInstance.currentNotificationGuest
+            myAccount.currentMessageNumberBadge =  Constants.sharedInstance.currentNotificationMessage
+            myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat
             myAccount.token = Constants.sharedInstance.token ?? ""
             myAccount.keyAccess = Constants.sharedInstance.keyAccount!
             Account.saveAccount(myAccount: myAccount)

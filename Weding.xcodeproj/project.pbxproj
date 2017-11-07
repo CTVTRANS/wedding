@@ -55,6 +55,7 @@
 		6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */; };
 		6DF853621F46E8B900C76D83 /* MyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF853611F46E8B900C76D83 /* MyViewCell.swift */; };
 		9D2215991FA6B5CD001F0947 /* GetMessageWithGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */; };
+		9DF5C99C1FB157C8000200C2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */; };
 		E19E08D17C0560817A4AF853 /* Pods_WedingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */; };
 		E7D2C5B895444686E9A6B648 /* Pods_WedingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */; };
 /* End PBXBuildFile section */
@@ -116,7 +117,6 @@
 		6DABE6DE1F34C2FC00053AA3 /* CustomNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNavigationBar.xib; sourceTree = "<group>"; };
 		6DDB401E1F34CAB30018E7AF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6DEC72391FA1CC7B00AAAE57 /* GetListGuestTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetListGuestTask.swift; sourceTree = "<group>"; };
-		6DECCBDB1F4D1E640097AE52 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
 		6DEDBD501F45836600526AD0 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6DEF9B811F4EAB5A0004BC31 /* Guest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guest.swift; sourceTree = "<group>"; };
 		6DEFC1941F53EF83006C696B /* MSJH.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = MSJH.TTF; sourceTree = "<group>"; };
@@ -140,6 +140,8 @@
 		75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMessageWithGuest.swift; sourceTree = "<group>"; };
+		9D6AE7EE1FB15AFA00F66733 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
+		9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF5C99C1FB157C8000200C2 /* UserNotifications.framework in Frameworks */,
 				1B312FC487BEC603D587C832 /* Pods_Weding.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +176,7 @@
 		18A0DA8A73640FF7B97B89F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */,
 				3500324A2C54666C533D2D01 /* Pods_Weding.framework */,
 				75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */,
 				913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */,
@@ -213,7 +217,7 @@
 		6D29AC9B1F34039C00A17621 /* Weding */ = {
 			isa = PBXGroup;
 			children = (
-				6DECCBDB1F4D1E640097AE52 /* Weding.entitlements */,
+				9D6AE7EE1FB15AFA00F66733 /* Weding.entitlements */,
 				58F5E9001F3BFBAC00D32A7F /* Extendtion */,
 				6D29AC9C1F34039C00A17621 /* AppDelegate.swift */,
 				6D29ACD21F3481F100A17621 /* BaseViewController.swift */,
@@ -424,15 +428,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "kien le van";
 				TargetAttributes = {
 					6D29AC981F34039C00A17621 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = HDNMHL7M4Y;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -440,11 +447,13 @@
 					};
 					6D29ACAC1F34039C00A17621 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6D29AC981F34039C00A17621;
 					};
 					6D29ACB71F34039C00A17621 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6D29AC981F34039C00A17621;
 					};
@@ -782,7 +791,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -790,7 +801,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -833,7 +848,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -841,7 +858,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -874,14 +895,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Weding/Weding.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HDNMHL7M4Y;
 				INFOPLIST_FILE = Weding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ctvtran.kien.Weding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -892,13 +917,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Weding/Weding.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HDNMHL7M4Y;
 				INFOPLIST_FILE = Weding/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ctvtran.kien.Weding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -912,7 +941,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weding.app/Weding";
 			};
 			name = Debug;
@@ -927,7 +957,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Weding.app/Weding";
 			};
 			name = Release;
@@ -941,7 +972,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Weding;
 			};
 			name = Debug;
@@ -955,7 +987,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hust.edu.kien.WedingUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Weding;
 			};
 			name = Release;

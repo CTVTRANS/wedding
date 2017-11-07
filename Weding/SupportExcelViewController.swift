@@ -22,7 +22,7 @@ class SupportExcelViewController: BaseViewController, UIWebViewDelegate {
         
     }
     
-    func popNavigation() {
+    @objc func popNavigation() {
         navigationController?.popViewController(animated: false)
     }
     

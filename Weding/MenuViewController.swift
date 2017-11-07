@@ -110,7 +110,7 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         swVC?.pushFrontViewController(navigationVC, animated: true)
     }
     
-    func requestToServer(notification: Notification) {
+    @objc func requestToServer(notification: Notification) {
         let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
         requestWithTask(task: request) { (_) in
             self.processNumberNotification()

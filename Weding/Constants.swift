@@ -24,9 +24,9 @@ class Constants {
     var factory: Factory?
     var token: String?
     var keyAccount: String?
-    var currentNotificationGuest: Int?
-    var currentNotificationMessage: Int?
-    var currentNotificationSeat: Int?
+    var currentNotificationGuest: Int = 0
+    var currentNotificationMessage: Int = 0
+    var currentNotificationSeat: Int = 0
     
     static let sharedInstance = Constants()
 }

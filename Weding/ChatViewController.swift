@@ -33,7 +33,7 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
     }
     
-    func popNavigation() {
+    @objc func popNavigation() {
         navigationController?.popViewController(animated: false)
     }
     
@@ -51,21 +51,25 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
             if let listMessage = listMessage as? [Message] {
                 self.arr = listMessage
                 self.table.reloadData()
+                self.scrollLastMessage()
+            }
+        }
+    }
+
+    func scrollLastMessage() {
+        DispatchQueue.main.async {
+            let contensizeHight = self.table.contentSize.height
+            let frameHight = self.table.frame.size.height
+            if contensizeHight > frameHight {
+                let offset = CGPoint(x: 0, y: contensizeHight - frameHight)
+                self.table.setContentOffset(offset, animated: false)
             }
         }
     }
     
-    func scrollLastMessage() {
-        let contensizeHight = self.table.contentSize.height
-        let frameHight = self.table.frame.size.height
-        if contensizeHight > frameHight {
-            let offset = CGPoint(x: 0, y: contensizeHight - frameHight)
-            self.table.setContentOffset(offset, animated: false)
-        }
-    }
-    
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
+        view.removeGestureRecognizer(tap!)
     }
 
     @IBAction func pressedReplyButton(_ sender: Any) {
@@ -76,7 +80,7 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
         requestWithTask(task: sendMessageTask) { (_) in
             self.getMessage()
-            self.scrollLastMessage()
+            self.replyTextView.text = ""
         }
     }
     
@@ -114,7 +118,6 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
                 self.navigationItem.leftBarButtonItem?.isEnabled = true
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
-                view.removeGestureRecognizer(tap!)
                 constraintBotView.constant = 0.0
                 constraintBotTextView.constant = 0.0
             } else {

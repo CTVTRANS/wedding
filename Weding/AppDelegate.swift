@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -20,14 +20,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().setBackgroundImage(#imageLiteral(resourceName: "navigationBar"), for: .default)
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.rgb(105, 85, 80)]
-        registerForPushNotifications()
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.rgb(105, 85, 80)]
+//        registerForPushNotifications()
         
         if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
             let aps = notification["aps"] as? [String: AnyObject]
             print(aps!)
         }
-
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        application.registerForRemoteNotifications()
         return true
     }
     
@@ -53,12 +65,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // iOS 9 support
         else if #available(iOS 9, *) {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
             // iOS 8 support
         else if #available(iOS 8, *) {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
     }
     
@@ -66,12 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 print("Notification settings: \(settings)")
-                
                 guard settings.authorizationStatus == .authorized else { return }
-                UIApplication.shared.registerForRemoteNotifications()
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             }
-        } else {
-            // Fallback on earlier versions
         }
     }
 
@@ -83,6 +98,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         Constants.sharedInstance.token = token
+        let alertView = UIAlertController(title: "title",
+                                          message: token,
+                                          preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK",
+                                   style: UIAlertActionStyle.default) { (_) in
+                                    alertView.dismiss(animated: true, completion: nil)
+        }
+        alertView.addAction(action)
+        self.window?.rootViewController?.present(alertView, animated: true, completion: nil)
         print("Device Token: \(token)")
     }
     
@@ -100,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
             let stringPath = String(describing: directoryContents[0])
             let index = stringPath.index(stringPath.startIndex, offsetBy: 101)
-            let charrac = stringPath.substring(to: index)
+            let charrac = String(stringPath[..<index])
             Constants.sharedInstance.man?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN-ann730204.xlsx")!
             Constants.sharedInstance.woman?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN2-ann730204.xlsx")!
         } catch let error as NSError {

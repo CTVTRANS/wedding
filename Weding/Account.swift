@@ -58,12 +58,12 @@ class Account: NSObject, NSCoding {
         coder.encode(_token, forKey: "token")
     }
     
-    class func saveAccount(myAccount: Account) {
+    static func saveAccount(myAccount: Account) {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: myAccount)
         UserDefaults.standard.set(encodedData, forKey: "myAccount")
     }
     
-    class func getAccount() -> Account {
+    static func getAccount() -> Account {
         if let data = UserDefaults.standard.data(forKey: "myAccount"),
             let myAccount = NSKeyedUnarchiver.unarchiveObject(with: data) as? Account {
             return myAccount
@@ -73,7 +73,7 @@ class Account: NSObject, NSCoding {
         }
     }
     
-    class func isAuthentic() -> Bool {
+    static func isAuthentic() -> Bool {
         if UserDefaults.standard.data(forKey: "myAccount") != nil {
             return true
         } else {

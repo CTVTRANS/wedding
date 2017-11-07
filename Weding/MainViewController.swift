@@ -25,6 +25,22 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var viewNumberMessage: UIView!
     @IBOutlet weak var viewNumberSeat: UIView!
     
+    var isNewMessage: Bool = false {
+        didSet {
+            viewNumberMessage.isHidden = !isNewMessage
+        }
+    }
+    var isNewGuest: Bool = false {
+        didSet {
+            viewNumberGuest.isHidden = !isNewGuest
+        }
+    }
+    var isNewSeat: Bool = false {
+        didSet {
+            viewNumberSeat.isHidden = !isNewSeat
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWdding()
@@ -41,31 +57,17 @@ class MainViewController: BaseViewController {
     }
     
     func setupNotification() {
-        let numberGestNotification: Int = Constants.sharedInstance.currentNotificationGuest!
-        let numberMessageNotification: Int = Constants.sharedInstance.currentNotificationMessage!
-        let numberSeatNotification: Int = Constants.sharedInstance.currentNotificationSeat!
-
-        if numberGestNotification > 9 {
-             numberGuest.text = "9"
-        } else if numberGestNotification == 0 {
-             viewNumberGuest.isHidden = true
-        } else {
-            numberGuest.text = String(numberGestNotification)
-        }
-
-        if numberMessageNotification > 9 {
-            numberMessage.text = "9"
-        } else if numberMessageNotification == 0 {
-            viewNumberMessage.isHidden = true
-        } else {
-            numberMessage.text = String(numberMessageNotification)
-        }
+        let numberGestNotification = Constants.sharedInstance.currentNotificationGuest
+        let numberMessageNotification = Constants.sharedInstance.currentNotificationMessage
+        let numberSeatNotification = Constants.sharedInstance.currentNotificationSeat
+        isNewGuest = (numberGestNotification > 0) ? true : false
+        numberGuest.text = (numberGestNotification > 9) ? "9" : String(numberGestNotification)
         
-        if numberSeatNotification > 0 {
-             numberNotificationSeat.text = String(numberSeatNotification)
-        } else {
-            viewNumberSeat.isHidden = true
-        }
+        isNewMessage = (numberMessageNotification > 0) ? true : false
+        numberMessage.text = (numberMessageNotification > 9) ? "9" : String(numberMessageNotification)
+        
+        isNewSeat = (numberSeatNotification > 0) ? true : false
+        numberNotificationSeat.text = (numberSeatNotification > 9) ? "9" : String(numberSeatNotification)
     }
     
     func setupWdding() {
@@ -83,7 +85,7 @@ class MainViewController: BaseViewController {
 
     @IBAction func openWeb(_ sender: Any) {
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
-        viewNumberGuest.isHidden = true
+        isNewGuest = false
         Constants.sharedInstance.currentNotificationGuest = 0
         let myAccount = Account.getAccount()
         myAccount.currentGuestNumberBadge = 0
@@ -101,7 +103,7 @@ class MainViewController: BaseViewController {
    
     @IBAction func openSecondView(_ sender: Any) {
         let secondVC = storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
-        viewNumberMessage.isHidden = true
+        isNewMessage = false
         Constants.sharedInstance.currentNotificationMessage = 0
         let myAccount = Account.getAccount()
         myAccount.currentMessageNumberBadge = 0
@@ -112,7 +114,7 @@ class MainViewController: BaseViewController {
     @IBAction func openWedForLogined(_ sender: Any) {
         let webLogined = linkWebLogin + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
         UIApplication.shared.openURL(URL(string: webLogined)!)
-        viewNumberSeat.isHidden = true
+        isNewSeat = false
         Constants.sharedInstance.currentNotificationSeat = 0
         let myAccount = Account.getAccount()
         myAccount.currentSeatNumberBadge = 0
@@ -129,7 +131,7 @@ class MainViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func reloadNumberNotification(notification: Notification) {
+    @objc func reloadNumberNotification(notification: Notification) {
        let name = (notification.object as? String)!
         switch name {
         case "guest":
@@ -144,7 +146,7 @@ class MainViewController: BaseViewController {
         }
     }
     
-    func requestToServer(notification: Notification) {
+    @objc func requestToServer(notification: Notification) {
         let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
         requestWithTask(task: request) { (_) in
             self.processNumberNotification()

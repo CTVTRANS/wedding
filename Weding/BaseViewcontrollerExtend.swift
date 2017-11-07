@@ -37,6 +37,33 @@ extension UIAlertController {
 }
 
 extension UILabel {
+    @IBInspectable
+    var adjustFontToRealIPhoneSize: Bool {
+        set {
+            if newValue {
+                let currentFont = self.font
+                var sizeScale: CGFloat = 1
+                let device = Device()
+                if device == .simulator(.iPhone7) || device == .simulator(.iPhone6) || device == .iPhone6
+                    || device == .iPhone6s || device == .iPhone7 || device == .simulator(.iPhone8)
+                    || device == .iPhone8 {
+                    sizeScale = 1.2
+                } else if device == .simulator(.iPhone6Plus) || device == .simulator(.iPhone7Plus)
+                    || device == .iPhone6Plus || device == .iPhone7Plus || device == .simulator(.iPhone8Plus)
+                    || device == .iPhone8Plus {
+                    sizeScale = 1.3
+                }
+                self.font = currentFont?.withSize((currentFont?.pointSize)! * sizeScale)
+            }
+        }
+        get {
+            return false
+        }
+    }
+}
+
+extension UITextView {
+    @IBInspectable
     var adjustFontToRealIPhoneSize: Bool {
         set {
             if newValue {
@@ -62,6 +89,7 @@ extension UILabel {
 }
 
 extension UITextField {
+    @IBInspectable
     var adjustFontToRealIPhoneSize: Bool {
         set {
             if newValue {
@@ -87,6 +115,7 @@ extension UITextField {
 }
 
 extension NSLayoutConstraint {
+    @IBInspectable
     var adjustConstantToRealIPhoneSize: Bool {
         set {
             if newValue {
@@ -113,6 +142,7 @@ extension NSLayoutConstraint {
 }
 
 extension UIButton {
+    @IBInspectable
     var adjustFontToRealIPhoneSize: Bool {
         set {
             if newValue {
@@ -146,8 +176,8 @@ extension UIButton {
 }
 
 extension UIColor {
-    static func rgb(_ red: Float, _ green: Float, _ blue: Float) -> UIColor {
-        return UIColor(colorLiteralRed: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0)
+    static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat) -> UIColor {
+        return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: 1.0)
     }
 }
 

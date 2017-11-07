@@ -57,8 +57,9 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         }
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
+        view.removeGestureRecognizer(tap!)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,7 +129,6 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
                 replyView.isHidden = true
                 replyMessageText.isHidden = true
                 replyLine.isHidden = true
-                view.removeGestureRecognizer(tap!)
                 contrainsReplayView.constant = 0.0
                 contraintTextMessage.constant = 0.0
 //                hightOfTextView.constant = hightConstant
@@ -148,9 +148,6 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
                            options: animationCurve,
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
-//            DispatchQueue.main.async(execute: {
-//                self.scrollLastMessage()
-//            })
         }
     }
 }
