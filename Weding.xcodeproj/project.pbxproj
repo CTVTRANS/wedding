@@ -55,6 +55,7 @@
 		6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */; };
 		6DF853621F46E8B900C76D83 /* MyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF853611F46E8B900C76D83 /* MyViewCell.swift */; };
 		9D2215991FA6B5CD001F0947 /* GetMessageWithGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */; };
+		9DEEF6FC1FB9449100FEE1AE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEEF6FB1FB9449000FEE1AE /* Storage.swift */; };
 		9DF5C99C1FB157C8000200C2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */; };
 		E19E08D17C0560817A4AF853 /* Pods_WedingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */; };
 		E7D2C5B895444686E9A6B648 /* Pods_WedingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */; };
@@ -141,6 +142,7 @@
 		913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMessageWithGuest.swift; sourceTree = "<group>"; };
 		9D6AE7EE1FB15AFA00F66733 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
+		9DEEF6FB1FB9449000FEE1AE /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -311,6 +313,7 @@
 				58F5E8FE1F3AF69400D32A7F /* Message.swift */,
 				58E166B71F39A2B500E59DE2 /* Factory.swift */,
 				6DF6A8D81F4534F000A19212 /* Account.swift */,
+				9DEEF6FB1FB9449000FEE1AE /* Storage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				9D2215991FA6B5CD001F0947 /* GetMessageWithGuest.swift in Sources */,
 				6D8143BA1F47E6C30005AD8B /* SendMessageTask.swift in Sources */,
 				6D3174031F43E1A4001E19B6 /* ExcelController.swift in Sources */,
+				9DEEF6FC1FB9449100FEE1AE /* Storage.swift in Sources */,
 				6DF083121F3581DC0073A9BF /* MenuViewCell.swift in Sources */,
 				6DF2506D1FA43E97005F6CF7 /* SupportExcelViewController.swift in Sources */,
 				6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */,
@@ -907,6 +911,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -928,6 +933,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

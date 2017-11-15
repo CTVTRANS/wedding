@@ -14,6 +14,10 @@ class Message: NSObject {
     private var time: String!
     private var _isReaded: Bool!
     
+    override init() {
+        super.init()
+    }
+    
     init(myMessage: Bool, message: String, timeSend: String, isReaded: Bool) {
         _isMyMessage = myMessage
         messageBoby = message

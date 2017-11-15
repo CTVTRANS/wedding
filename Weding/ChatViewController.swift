@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
+class ChatViewController: BaseViewController {
     
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var constraintBotTextView: NSLayoutConstraint!
@@ -21,6 +21,10 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     var guest: Guest?
     var arr = [Message]()
     var pager = 1
+    var scrollToLast = true
+    var isloading = false
+    var isMoreData = true
+    var isScrollTop = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,10 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
         getMessage()
-        
+        if #available(iOS 11.0, *) {
+            table.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
+        } else {
+        }
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
     }
     
@@ -46,23 +53,33 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func getMessage() {
+        isloading = true
         let getMessageGuest = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: pager, limit: 20)
         requestWithTask(task: getMessageGuest) { (listMessage) in
             if let listMessage = listMessage as? [Message] {
-                self.arr = listMessage
+                if listMessage.count == 0 {
+                    self.isMoreData = false
+                }
+                self.isloading = false
+                self.arr += listMessage
                 self.table.reloadData()
-                self.scrollLastMessage()
+                if self.isScrollTop {
+                    let indexpath = IndexPath(row: listMessage.count, section: 0)
+                    self.table.scrollToRow(at: indexpath, at: .top, animated: false)
+                    self.isScrollTop = false
+                }
+                if self.scrollToLast {
+                    self.scrollLastMessage()
+                    self.scrollToLast = false
+                }
             }
         }
     }
 
     func scrollLastMessage() {
         DispatchQueue.main.async {
-            let contensizeHight = self.table.contentSize.height
-            let frameHight = self.table.frame.size.height
-            if contensizeHight > frameHight {
-                let offset = CGPoint(x: 0, y: contensizeHight - frameHight)
-                self.table.setContentOffset(offset, animated: false)
+            if self.arr.count > 0 {
+                self.table.scrollToRow(at: IndexPath(row: self.arr.count - 1, section: 0), at: .bottom, animated: false)
             }
         }
     }
@@ -77,13 +94,37 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         if message == "" {
             return
         }
+        let date = Date()
+        let dateFomater = DateFormatter()
+        dateFomater.dateFormat = "yyyy-MM-ddThh:mm:ss"
+        let timeSend = dateFomater.string(from: date)
+        let newMesage = Message(myMessage: true, message: replyTextView.text, timeSend: timeSend, isReaded: true)
+        arr.insert(newMesage, at: 0)
+        table.beginUpdates()
+        table.insertRows(at: [IndexPath(row: arr.count - 1, section: 0)], with: .automatic)
+        table.endUpdates()
         let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
         requestWithTask(task: sendMessageTask) { (_) in
+            self.scrollToLast = true
+            self.isScrollTop = false
+            self.isMoreData = true
+            self.pager = 1
+            self.arr = []
             self.getMessage()
             self.replyTextView.text = ""
         }
     }
     
+    @IBAction func pressedBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
+extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr.count
     }
@@ -91,7 +132,8 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as? GusetViewCell
         let myCell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as? MyViewCell
-        let message = arr[indexPath.row]
+        let numberMessage = arr.count - 1
+        let message = arr[numberMessage - indexPath.row]
         if message.isMyMessage() {
             myCell?.binData(myMessage: message)
             return myCell!
@@ -104,8 +146,15 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
         return UITableViewAutomaticDimension
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let topOftable = table.contentOffset.y == 0.0 ? true : false
+        if isMoreData && topOftable && !isloading && !scrollView.isDragging
+            && !scrollView.isDecelerating {
+            isloading = true
+            pager += 1
+            isScrollTop = true
+            getMessage()
+        }
     }
     
     @objc func keyboardNotification(notification: NSNotification) {
@@ -134,11 +183,18 @@ class ChatViewController: BaseViewController, UITableViewDataSource, UITableView
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
             DispatchQueue.main.async(execute: {
-                self.scrollLastMessage()
+                //                self.scrollLastMessage()
             })
         }
     }
-    @IBAction func pressedBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+}
+
+extension UITableView {
+    func reloadSucess(sucess:@escaping (() -> Void)) {
+        UIView.animate(withDuration: 0, animations: {
+            self.reloadData()
+        }) { (_) in
+            sucess()
+        }
     }
 }

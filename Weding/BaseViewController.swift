@@ -27,6 +27,7 @@ class BaseViewController: UIViewController {
         if self.revealViewController() != nil {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .done, target: self, action: #selector(popToRootNavigation))
+            navigationController?.navigationBar.isTranslucent = false
             navigationItem.title = "婚禮籌備平台"
 //            self.navigationController?.navigationBar.isTranslucent = false
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

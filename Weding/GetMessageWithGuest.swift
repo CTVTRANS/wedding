@@ -31,7 +31,7 @@ class GetMessageWithGuest: BaseTaskNetwork {
     }
     
     override func parameters() -> [AnyHashable: Any]! {
-        return ["page": _page, "limit": _limit]
+        return ["pno": _page, "pnum": _limit]
     }
     
     override func data(withResponse response: Any!) -> Any! {
