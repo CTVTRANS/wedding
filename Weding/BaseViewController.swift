@@ -76,9 +76,9 @@ class BaseViewController: UIViewController {
                     UIActivityViewController.init(activityItems: [fileURL], applicationActivities: nil)
                 
                 if objectID == "1" {
-                    Constants.sharedInstance.man?.filePath = fileURL
+                    Constants.shared.man?.filePath = fileURL
                 } else {
-                    Constants.sharedInstance.woman?.filePath = fileURL
+                    Constants.shared.woman?.filePath = fileURL
                 }
                 activityVC.popoverPresentationController?.sourceView = self.view
                 self.present(activityVC, animated: true, completion: nil)
@@ -122,32 +122,23 @@ class BaseViewController: UIViewController {
 
     func processNumberNotification() {
         let myAccount = Account.getAccount()
-        let newNumberGuest = (Constants.sharedInstance.man?.numberGuest)! + (Constants.sharedInstance.woman?.numberGuest)!
-        let newNumberMessage = Int(5)
-        let linkTable = Constants.sharedInstance.woman?.tableSeat
-        let linkWedStep = Constants.sharedInstance.woman?.webStep
-        var newNumberNotificationOfSeat: Int = 0
+        let totalGuest = (Constants.shared.man?.numberGuest)! + (Constants.shared.woman?.numberGuest)!
+        let totalMessage = Int(5)
+        let linkTable = Constants.shared.woman?.tableSeat
+        let linkWedStep = Constants.shared.woman?.webStep
+        var totalSeat: Int = 0
         if (linkTable?.count)! > 0 {
-            newNumberNotificationOfSeat += 1
+            totalSeat += 1
         } else if (linkWedStep?.count)! > 0 {
-            newNumberNotificationOfSeat += 1
+            totalSeat += 1
         }
         
-        let guestNotification = newNumberGuest - myAccount.numberGuest
-        
-        Constants.sharedInstance.currentNotificationGuest = guestNotification + myAccount.currentGuestNumberBadge
-        let messageNotification = newNumberMessage - myAccount.numberMessage
-        Constants.sharedInstance.currentNotificationMessage = messageNotification +  myAccount.currentMessageNumberBadge
-        let seatNotification = newNumberNotificationOfSeat - myAccount.tableNotification
-        Constants.sharedInstance.currentNotificationSeat = seatNotification + myAccount.currentSeatNumberBadge
-        
-        myAccount.numberGuest = newNumberGuest
-        myAccount.numberMessage = newNumberMessage
-        myAccount.tableNotification = newNumberNotificationOfSeat
-        myAccount.currentGuestNumberBadge =  Constants.sharedInstance.currentNotificationGuest
-        myAccount.currentMessageNumberBadge = Constants.sharedInstance.currentNotificationMessage
-        myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat
-        Account.saveAccount(myAccount: myAccount)
+        Constants.shared.newGuest = abs(totalGuest - myAccount.numberGuest)
+        Constants.shared.totalGuest = totalGuest
+        Constants.shared.newMessage = abs(totalMessage - myAccount.numberMessage)
+        Constants.shared.totalMessage = totalMessage
+        Constants.shared.newSeat = abs(totalSeat - myAccount.numberSeat)
+        Constants.shared.newSeat = totalSeat
     }
     
     func showActivity(inView myView: UIView) {

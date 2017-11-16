@@ -18,7 +18,7 @@ class ExcelController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        nameFactory.text = Constants.sharedInstance.factory?.getName()
+        nameFactory.text = Constants.shared.factory?.getName()
         manView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor
         womwnView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor
         supportView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor
@@ -29,7 +29,7 @@ class ExcelController: BaseViewController {
     }
 
     @IBAction func manUploadEcel(_ sender: Any) {
-        let filePath = Constants.sharedInstance.man?.filePath
+        let filePath = Constants.shared.man?.filePath
         uploadExcel(url: filePath!, object: "MemberAddGuestPlanDoc", nameFile: "GUESTPLAN-ann730204.xlsx")
     }
     
@@ -38,7 +38,7 @@ class ExcelController: BaseViewController {
     }
     
     @IBAction func wonmanUploadExcel(_ sender: Any) {
-        let filePath = Constants.sharedInstance.woman?.filePath
+        let filePath = Constants.shared.woman?.filePath
         uploadExcel(url: filePath!, object: "MemberAddGuestPlanDoc2", nameFile: "GUESTPLAN2-ann730204.xlsx")
     }
     

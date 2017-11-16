@@ -18,7 +18,7 @@ class SendImageSeatViewController: BaseViewController {
         setupNavigation()
         openWebButotn.layer.borderColor = UIColor.rgb(248, 54, 123).cgColor
         titleLabel.layer.borderColor = UIColor.rgb(248, 54, 123).cgColor
-        nameCompany.text = Constants.sharedInstance.factory?.getName()
+        nameCompany.text = Constants.shared.factory?.getName()
         navigationItem.title = "婚禮助手 App"
     }
     

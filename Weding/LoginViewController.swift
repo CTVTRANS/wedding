@@ -32,16 +32,13 @@ class LoginViewController: BaseViewController {
         let loginTask: LoginTask = LoginTask(name: name!, pass: pass!)
         requestWithTask(task: loginTask) { (data) in
             print(data!)
-            Constants.sharedInstance.currentNotificationGuest = 0
-            Constants.sharedInstance.currentNotificationMessage = 0
-            Constants.sharedInstance.currentNotificationSeat = 0
-            let memberURL = Constants.sharedInstance.woman?.memberURL
-            let myAccount = Account(name: name!, pass: pass!, numberGuest: 0, numberMessage: 0, memberURL: memberURL!, seat: 0)
-            myAccount.currentGuestNumberBadge = Constants.sharedInstance.currentNotificationGuest
-            myAccount.currentMessageNumberBadge =  Constants.sharedInstance.currentNotificationMessage
-            myAccount.currentSeatNumberBadge = Constants.sharedInstance.currentNotificationSeat
-            myAccount.token = Constants.sharedInstance.token ?? ""
-            myAccount.keyAccess = Constants.sharedInstance.keyAccount!
+            let memberURL = Constants.shared.woman?.memberURL
+            let myAccount = Account.getAccount()
+            myAccount.token = Constants.shared.token ?? ""
+            myAccount.keyAccess = Constants.shared.keyAccount!
+            myAccount.memberURL = memberURL!
+            myAccount.name = name!
+            myAccount.pass = pass!
             Account.saveAccount(myAccount: myAccount)
             self.processNumberNotification()
             self.showmainMenu()

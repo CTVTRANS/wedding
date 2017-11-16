@@ -95,18 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
         }
-        
         let token = tokenParts.joined()
-        Constants.sharedInstance.token = token
-        let alertView = UIAlertController(title: "title",
-                                          message: token,
-                                          preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "OK",
-                                   style: UIAlertActionStyle.default) { (_) in
-                                    alertView.dismiss(animated: true, completion: nil)
-        }
-        alertView.addAction(action)
-        self.window?.rootViewController?.present(alertView, animated: true, completion: nil)
+        Constants.shared.token = token
         print("Device Token: \(token)")
     }
     
@@ -125,8 +115,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let stringPath = String(describing: directoryContents[0])
             let index = stringPath.index(stringPath.startIndex, offsetBy: 101)
             let charrac = String(stringPath[..<index])
-            Constants.sharedInstance.man?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN-ann730204.xlsx")!
-            Constants.sharedInstance.woman?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN2-ann730204.xlsx")!
+            Constants.shared.man?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN-ann730204.xlsx")!
+            Constants.shared.woman?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN2-ann730204.xlsx")!
         } catch let error as NSError {
             print(error.localizedDescription)
         }

@@ -26,9 +26,13 @@ class MessageViewCell: UITableViewCell {
     func binData(guest: Guest) {
         nameGuest.text = guest.nameGuest
         avatar.sd_setImage(with: URL(string: guest.avatar))
-        let getNewestMessage = GetMessageWithGuest(idGuest: guest.idGuest, page: 1, limit: 1)
+        let getNewestMessage = GetMessageWithGuest(idGuest: guest.idGuest, page: 1, limit: 30)
         getNewestMessage.request(blockSucess: { (data) in
+            var numberNewMessage = 0
             if let arr = data as? [Message] {
+                for message in arr where !message.isMyMessage() && !message.isReades() {
+                    numberNewMessage += 1
+                }
                 if arr.first != nil {
                     let newest = arr[0]
                     self.message.text = newest.getMessage()
@@ -37,9 +41,9 @@ class MessageViewCell: UITableViewCell {
                     let date: Int = Int((timeDate.components(separatedBy: "-")[2]))!
                     let timeString: String = String(month) + "/" + String(date)
                     self.time.text = timeString
-                    
-                    if newest.isReades() {
-                        self.numberMessage.isHidden = true
+                    if numberNewMessage > 0 {
+                        self.numberMessage.isHidden = false
+                        self.numberMessage.text = numberNewMessage.description
                     }
                 }
             }

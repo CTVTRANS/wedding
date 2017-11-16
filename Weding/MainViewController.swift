@@ -57,9 +57,9 @@ class MainViewController: BaseViewController {
     }
     
     func setupNotification() {
-        let numberGestNotification = Constants.sharedInstance.currentNotificationGuest
-        let numberMessageNotification = Constants.sharedInstance.currentNotificationMessage
-        let numberSeatNotification = Constants.sharedInstance.currentNotificationSeat
+        let numberGestNotification = Constants.shared.newGuest
+        let numberMessageNotification = Constants.shared.newMessage
+        let numberSeatNotification = Constants.shared.newSeat
         isNewGuest = (numberGestNotification > 0) ? true : false
         numberGuest.text = (numberGestNotification > 9) ? "9" : String(numberGestNotification)
         
@@ -71,24 +71,24 @@ class MainViewController: BaseViewController {
     }
     
     func setupWdding() {
-        manName.text = Constants.sharedInstance.man?.name
-        manCounterDay.text = Constants.sharedInstance.man?.counterDay
-        let numberManCustomer = String(Constants.sharedInstance.man!.numberGuest)
+        manName.text = Constants.shared.man?.name
+        manCounterDay.text = Constants.shared.man?.counterDay
+        let numberManCustomer = String(Constants.shared.man!.numberGuest)
         manNumberClient.text =  numberManCustomer
         
-        womanName.text = Constants.sharedInstance.woman?.name
-        womanCounterDay.text = Constants.sharedInstance.woman?.counterDay
-        let numberWonmanCustomer = String(Constants.sharedInstance.woman!.numberGuest)
+        womanName.text = Constants.shared.woman?.name
+        womanCounterDay.text = Constants.shared.woman?.counterDay
+        let numberWonmanCustomer = String(Constants.shared.woman!.numberGuest)
         womanNumberClient.text = numberWonmanCustomer
-        nameFactory.text = Constants.sharedInstance.factory?.getName()
+        nameFactory.text = Constants.shared.factory?.getName()
     }
 
     @IBAction func openWeb(_ sender: Any) {
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
         isNewGuest = false
-        Constants.sharedInstance.currentNotificationGuest = 0
+        Constants.shared.newGuest = 0
         let myAccount = Account.getAccount()
-        myAccount.currentGuestNumberBadge = 0
+        myAccount.numberGuest = Constants.shared.totalGuest
         Account.saveAccount(myAccount: myAccount)
     }
     
@@ -104,9 +104,9 @@ class MainViewController: BaseViewController {
     @IBAction func openSecondView(_ sender: Any) {
         let secondVC = storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
         isNewMessage = false
-        Constants.sharedInstance.currentNotificationMessage = 0
+        Constants.shared.newMessage = 0
         let myAccount = Account.getAccount()
-        myAccount.currentMessageNumberBadge = 0
+        myAccount.numberMessage = Constants.shared.totalMessage
         Account.saveAccount(myAccount: myAccount)
         navigationController?.pushViewController(secondVC!, animated: false)
     }
@@ -115,9 +115,9 @@ class MainViewController: BaseViewController {
         let webLogined = linkWebLogin + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess
         UIApplication.shared.openURL(URL(string: webLogined)!)
         isNewSeat = false
-        Constants.sharedInstance.currentNotificationSeat = 0
+        Constants.shared.newSeat = 0
         let myAccount = Account.getAccount()
-        myAccount.currentSeatNumberBadge = 0
+        myAccount.numberSeat = Constants.shared.totalSeat
         Account.saveAccount(myAccount: myAccount)
     }
     
@@ -136,13 +136,13 @@ class MainViewController: BaseViewController {
         switch name {
         case "guest":
             viewNumberGuest.isHidden = true
-            Constants.sharedInstance.currentNotificationGuest = 0
+            Constants.shared.newGuest = 0
         case "message":
             viewNumberGuest.isHidden = true
-            Constants.sharedInstance.currentNotificationGuest = 0
+            Constants.shared.newMessage = 0
         default:
             viewNumberSeat.isHidden = true
-            Constants.sharedInstance.currentNotificationSeat = 0
+            Constants.shared.newSeat = 0
         }
     }
     

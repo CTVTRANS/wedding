@@ -16,7 +16,7 @@ class SendToken: BaseTaskNetwork {
     }
     
     override func path() -> String! {
-        return login + "?id=" + Account.getAccount().name + "&k=" + Constants.sharedInstance.keyAccount!
+        return login + "?id=" + Account.getAccount().name + "&k=" + Constants.shared.keyAccount!
     }
     
     override func method() -> String! {

@@ -20,9 +20,9 @@ class MenuViewCell: UITableViewCell {
     }
     
     func binData(name: String, index: Int) {
-        let numberGest: Int = Constants.sharedInstance.currentNotificationGuest
-        let numberMessage: Int = Constants.sharedInstance.currentNotificationMessage
-        let numberSeat: Int = Constants.sharedInstance.currentNotificationSeat
+        let numberGest: Int = Constants.shared.newGuest
+        let numberMessage: Int = Constants.shared.newMessage
+        let numberSeat: Int = Constants.shared.newSeat
         nameRow.text = name
         if index == 0 && numberGest > 0 && numberGest <= 9 {
             viewNotification.isHidden = false

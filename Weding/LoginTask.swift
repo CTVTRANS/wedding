@@ -23,7 +23,7 @@ class LoginTask: BaseTaskNetwork {
     func getKey() -> String {
         let key = "username=" + useName + "&password=" + passWord + "&key=" + loginKey
         let keySHA1 = key.sha1()
-        Constants.sharedInstance.keyAccount = keySHA1
+        Constants.shared.keyAccount = keySHA1
         return keySHA1
     }
     
@@ -43,10 +43,10 @@ class LoginTask: BaseTaskNetwork {
         if let dictionary = response as? [String: Any] {
             let name = dictionary["COMPANYNM"] as? String
             let factory: Factory = Factory(name: name!)
-            Constants.sharedInstance.factory = factory
+            Constants.shared.factory = factory
 
-            Constants.sharedInstance.woman = parseWoman(dictionary: dictionary)
-            Constants.sharedInstance.man = parseMan(dictionary: dictionary)
+            Constants.shared.woman = parseWoman(dictionary: dictionary)
+            Constants.shared.man = parseMan(dictionary: dictionary)
             
         }
         return response

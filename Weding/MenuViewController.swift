@@ -20,7 +20,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         table.tableFooterView = UIView()
         self.revealViewController().delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "requestToServer"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,9 +40,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     func openWebDetail() {
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
         swVC?.revealToggle(animated: false)
-        Constants.sharedInstance.currentNotificationGuest = 0
+        Constants.shared.newGuest = 0
         let myAccount = Account.getAccount()
-        myAccount.currentGuestNumberBadge = 0
+        myAccount.numberGuest = Constants.shared.totalGuest
         Account.saveAccount(myAccount: myAccount)
         NotificationCenter.default.post(name: notificationName, object: "guest")
         return
@@ -54,9 +53,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         UIApplication.shared.openURL(URL(string: webLogined)!)
         swVC?.revealToggle(animated: false)
         NotificationCenter.default.post(name: notificationName, object: "seat")
-        Constants.sharedInstance.currentNotificationSeat = 0
+        Constants.shared.newSeat = 0
         let myAccount = Account.getAccount()
-        myAccount.currentSeatNumberBadge = 0
+        myAccount.numberSeat = Constants.shared.totalSeat
         Account.saveAccount(myAccount: myAccount)
         return
     }
@@ -86,9 +85,9 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 return
             }
             NotificationCenter.default.post(name: notificationName, object: "message")
-            Constants.sharedInstance.currentNotificationMessage = 0
+            Constants.shared.newMessage = 0
             let myAccount = Account.getAccount()
-            myAccount.currentMessageNumberBadge = 0
+            myAccount.numberMessage = Constants.shared.totalMessage
             Account.saveAccount(myAccount: myAccount)
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
         case 4:
@@ -110,11 +109,11 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         swVC?.pushFrontViewController(navigationVC, animated: true)
     }
     
-    @objc func requestToServer(notification: Notification) {
-        let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
-        requestWithTask(task: request) { (_) in
-            self.processNumberNotification()
-            self.table.reloadData()
-        }
-    }
+//    @objc func requestToServer(notification: Notification) {
+//        let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
+//        requestWithTask(task: request) { (_) in
+//            self.processNumberNotification()
+//            self.table.reloadData()
+//        }
+//    }
 }

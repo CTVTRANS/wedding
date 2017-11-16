@@ -23,7 +23,7 @@ class GetFactoryTask: BaseTaskNetwork {
         if let dictionary = response as? [String: Any] {
             let name = dictionary["COMPANYNM"] as? String
             let factory: Factory = Factory(name: name!)
-            Constants.sharedInstance.factory = factory
+            Constants.shared.factory = factory
         }
         return nil
     }

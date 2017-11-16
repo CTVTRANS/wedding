@@ -15,9 +15,6 @@ class Account: NSObject, NSCoding {
     private var totalGuest: Int!
     private var totalMessage: Int!
     private var tableSeat: Int!
-    private var _currentGuestNumberBadge: Int!
-    private var _currentMessageNumberBadge: Int!
-    private var _currentSeatNumberBadge: Int!
     private var _keyAccess: String!
     private var _token: String!
     
@@ -37,9 +34,6 @@ class Account: NSObject, NSCoding {
         totalGuest = decoder.decodeObject(forKey: "totalGuest") as? Int
         totalMessage = decoder.decodeObject(forKey: "totalMessage") as? Int
         tableSeat = decoder.decodeObject(forKey: "tableSeat") as? Int
-        _currentGuestNumberBadge = decoder.decodeObject(forKey: "currentGuestNumberBadge") as? Int
-        _currentMessageNumberBadge = decoder.decodeObject(forKey: "currentMessageNumberBadge") as? Int
-        _currentSeatNumberBadge = decoder.decodeObject(forKey: "currentSeatNumberBadge") as? Int
         _keyAccess = decoder.decodeObject(forKey: "keyAccess") as? String
         _token = decoder.decodeObject(forKey: "token") as? String
     }
@@ -51,9 +45,6 @@ class Account: NSObject, NSCoding {
         coder.encode(totalGuest, forKey: "totalGuest")
         coder.encode(totalMessage, forKey: "totalMessage")
         coder.encode(tableSeat, forKey: "tableSeat")
-        coder.encode(_currentGuestNumberBadge, forKey: "currentGuestNumberBadge")
-        coder.encode(_currentMessageNumberBadge, forKey: "currentMessageNumberBadge")
-        coder.encode(_currentSeatNumberBadge, forKey: "currentSeatNumberBadge")
         coder.encode(_keyAccess, forKey: "keyAccess")
         coder.encode(_token, forKey: "token")
     }
@@ -68,8 +59,8 @@ class Account: NSObject, NSCoding {
             let myAccount = NSKeyedUnarchiver.unarchiveObject(with: data) as? Account {
             return myAccount
         } else {
-            let myAccount: Account? = nil
-            return myAccount!
+            let myAccount = Account(name: "", pass: "", numberGuest: 0, numberMessage: 0, memberURL: "", seat: 0)
+            return myAccount
         }
     }
     
@@ -81,91 +72,35 @@ class Account: NSObject, NSCoding {
         }
     }
     var name: String {
-        get {
-            return accountName
-        }
-        set {
-            accountName = newValue
-        }
+        get {return accountName}
+        set {accountName = newValue}
     }
     var pass: String {
-        get {
-            return passWord
-        }
-        set {
-            passWord = newValue
-        }
+        get {return passWord}
+        set {passWord = newValue}
     }
     var numberGuest: Int {
-        get {
-            return totalGuest
-        }
-        set {
-            totalGuest = newValue
-        }
+        get {return totalGuest}
+        set {totalGuest = newValue}
     }
     var numberMessage: Int {
-        get {
-            return totalMessage
-        }
-        set {
-            totalMessage = newValue
-        }
+        get {return totalMessage}
+        set {totalMessage = newValue}
     }
     var memberURL: String {
-        get {
-            return linkMember
-        }
-        set {
-            linkMember = newValue
-        }
+        get {return linkMember}
+        set {linkMember = newValue}
     }
-    var tableNotification: Int {
-        get {
-            return tableSeat
-        }
-        set {
-            tableSeat = newValue
-        }
-    }
-    var currentGuestNumberBadge: Int {
-        get {
-            return _currentGuestNumberBadge
-        }
-        set {
-            _currentGuestNumberBadge = newValue
-        }
-    }
-    var  currentMessageNumberBadge: Int {
-        get {
-            return _currentMessageNumberBadge
-        }
-        set {
-            _currentMessageNumberBadge = newValue
-        }
-    }
-    var currentSeatNumberBadge: Int {
-        get {
-            return _currentSeatNumberBadge
-        }
-        set {
-            _currentSeatNumberBadge = newValue
-        }
+    var numberSeat: Int {
+        get {return tableSeat}
+        set {tableSeat = newValue}
     }
     var keyAccess: String {
-        get {
-            return _keyAccess
-        }
-        set {
-            _keyAccess = newValue
-        }
+        get {return _keyAccess}
+        set {_keyAccess = newValue}
     }
     var token: String {
-        get {
-            return _token
-        }
-        set {
-            _token = newValue
-        }
+        get {return _token}
+        set {_token = newValue}
     }
 }

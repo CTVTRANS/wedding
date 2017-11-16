@@ -17,6 +17,12 @@ class ChatViewController: BaseViewController {
     @IBOutlet weak var moreButotn: UIButton!
     var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
+    var refresh: UIRefreshControl = {
+        let refresh = UIRefreshControl()
+        refresh.tintColor = UIColor.gray
+        refresh.addTarget(self, action: #selector(turOffRefresh), for: .valueChanged)
+        return refresh
+    }()
     
     var guest: Guest?
     var arr = [Message]()
@@ -30,19 +36,21 @@ class ChatViewController: BaseViewController {
         super.viewDidLoad()
         setupNavigation()
         showActivity(inView: self.view)
+        table.addSubview(refresh)
         moreButotn.layer.borderColor = UIColor.blue.cgColor
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
         getMessage()
-        if #available(iOS 11.0, *) {
-            table.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentBehavior.never
-        } else {
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "requestToServer"), object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
     }
     
     @objc func popNavigation() {
         navigationController?.popViewController(animated: false)
+    }
+    
+    @objc func turOffRefresh() {
+        refresh.endRefreshing()
     }
     
     func setUpReplyMessageView() {
@@ -57,6 +65,7 @@ class ChatViewController: BaseViewController {
         isloading = true
         let getMessageGuest = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: pager, limit: 20)
         requestWithTask(task: getMessageGuest) { (listMessage) in
+            self.refresh.endRefreshing()
             if let listMessage = listMessage as? [Message] {
                 if listMessage.count == 0 {
                     self.isMoreData = false
@@ -77,6 +86,18 @@ class ChatViewController: BaseViewController {
                 }
             }
         }
+    }
+    
+    func getNewMessage() {
+        self.isScrollTop = false
+        self.isMoreData = true
+        self.pager = 1
+        self.arr = []
+        self.getMessage()
+    }
+    
+    @objc func requestToServer(notification: Notification) {
+       getNewMessage()
     }
 
     func scrollLastMessage(animated: Bool) {
@@ -100,11 +121,7 @@ class ChatViewController: BaseViewController {
         }
         let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
         requestWithTask(task: sendMessageTask) { (_) in
-            self.isScrollTop = false
-            self.isMoreData = true
-            self.pager = 1
-            self.arr = []
-            self.getMessage()
+            self.getNewMessage()
             self.replyTextView.text = ""
         }
     }
@@ -141,9 +158,10 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let topOftable = table.contentOffset.y == 0.0 ? true : false
+        let topOftable = table.contentOffset.y <= 10.0 ? true : false
         if isMoreData && topOftable && !isloading && !scrollView.isDragging
             && !scrollView.isDecelerating {
+            refresh.beginRefreshing()
             isloading = true
             pager += 1
             isScrollTop = true
