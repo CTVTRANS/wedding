@@ -47,6 +47,7 @@ class BaseViewController: UIViewController {
         task.request(blockSucess: { (data) in
             success(data)
         }) { (error) in
+            self.stopActivityIndicator()
             UIAlertController.showAlertWith(title: "", message: error!, myViewController: self)
         }
     }

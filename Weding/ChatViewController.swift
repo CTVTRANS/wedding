@@ -21,14 +21,15 @@ class ChatViewController: BaseViewController {
     var guest: Guest?
     var arr = [Message]()
     var pager = 1
-    var scrollToLast = true
     var isloading = false
     var isMoreData = true
     var isScrollTop = false
+    var isFirstGotoView = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        showActivity(inView: self.view)
         moreButotn.layer.borderColor = UIColor.blue.cgColor
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
@@ -67,19 +68,22 @@ class ChatViewController: BaseViewController {
                     let indexpath = IndexPath(row: listMessage.count, section: 0)
                     self.table.scrollToRow(at: indexpath, at: .top, animated: false)
                     self.isScrollTop = false
-                }
-                if self.scrollToLast {
-                    self.scrollLastMessage()
-                    self.scrollToLast = false
+                } else {
+                    if self.isFirstGotoView {
+                         self.scrollLastMessage(animated: false)
+                    } else {
+                         self.scrollLastMessage(animated: true)
+                    }
                 }
             }
         }
     }
 
-    func scrollLastMessage() {
+    func scrollLastMessage(animated: Bool) {
         DispatchQueue.main.async {
             if self.arr.count > 0 {
-                self.table.scrollToRow(at: IndexPath(row: self.arr.count - 1, section: 0), at: .bottom, animated: false)
+                self.table.scrollToRow(at: IndexPath(row: self.arr.count - 1, section: 0), at: .bottom, animated: animated)
+                self.stopActivityIndicator()
             }
         }
     }
@@ -94,18 +98,8 @@ class ChatViewController: BaseViewController {
         if message == "" {
             return
         }
-        let date = Date()
-        let dateFomater = DateFormatter()
-        dateFomater.dateFormat = "yyyy-MM-ddThh:mm:ss"
-        let timeSend = dateFomater.string(from: date)
-        let newMesage = Message(myMessage: true, message: replyTextView.text, timeSend: timeSend, isReaded: true)
-        arr.insert(newMesage, at: 0)
-        table.beginUpdates()
-        table.insertRows(at: [IndexPath(row: arr.count - 1, section: 0)], with: .automatic)
-        table.endUpdates()
         let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
         requestWithTask(task: sendMessageTask) { (_) in
-            self.scrollToLast = true
             self.isScrollTop = false
             self.isMoreData = true
             self.pager = 1
