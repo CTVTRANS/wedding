@@ -6,7 +6,7 @@ target 'Weding' do
   use_frameworks!
 	pod 'LCNetwork', :git => 'https://github.com/conglv/LCNetwork.git'
 	pod 'SWRevealViewController'
-  	pod 'CryptoSwift’, '~> 0.8.0'
+  pod 'CryptoSwift’, '~> 0.8.0'
  	pod 'DeviceKit', '~> 1.0'
  	pod 'SDWebImage', '~> 4.0'
   	pod 'SwiftLint'

@@ -21,6 +21,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         swVC = self.revealViewController()
+        setupNavigation()
     }
     
     func setupNavigation() {
@@ -28,6 +29,7 @@ class BaseViewController: UIViewController {
             navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_leftButton"), style: .plain, target: self.revealViewController(), action: #selector(revealViewController().revealToggle(_:)))
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .done, target: self, action: #selector(popToRootNavigation))
             navigationController?.navigationBar.isTranslucent = false
+            navigationController?.navigationBar.barTintColor = UIColor.rgb(240, 167, 195)
             navigationItem.title = "婚禮籌備平台"
 //            self.navigationController?.navigationBar.isTranslucent = false
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         application.applicationIconBadgeNumber = 0
-        
-        UINavigationBar.appearance().setBackgroundImage(#imageLiteral(resourceName: "navigationBar"), for: .default)
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.rgb(105, 85, 80)]
 //        registerForPushNotifications()

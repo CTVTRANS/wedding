@@ -14,7 +14,6 @@ class SupportExcelViewController: BaseViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         showActivity(inView: self.view)
-        setupNavigation()
         webView.delegate = self
         webView.scrollView.bounces = false
         webView.loadRequest(URLRequest(url: URL(string: linkguideExcel)!))

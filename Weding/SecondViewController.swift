@@ -26,7 +26,6 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         setupListMessage()
         setUpReplyMessageView()
-        setupNavigation()
         table.estimatedRowHeight = 140
         getListGuest()
     }

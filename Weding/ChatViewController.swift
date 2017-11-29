@@ -17,12 +17,12 @@ class ChatViewController: BaseViewController {
     @IBOutlet weak var moreButotn: UIButton!
     var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
-    var refresh: UIRefreshControl = {
-        let refresh = UIRefreshControl()
-        refresh.tintColor = UIColor.gray
-        refresh.addTarget(self, action: #selector(turOffRefresh), for: .valueChanged)
-        return refresh
-    }()
+//    var refresh: UIRefreshControl = {
+//        let refresh = UIRefreshControl()
+//        refresh.tintColor = UIColor.gray
+//        refresh.addTarget(self, action: #selector(turOffRefresh), for: .valueChanged)
+//        return refresh
+//    }()
     
     var guest: Guest?
     var arr = [Message]()
@@ -36,7 +36,7 @@ class ChatViewController: BaseViewController {
         super.viewDidLoad()
         setupNavigation()
         showActivity(inView: self.view)
-        table.addSubview(refresh)
+//        table.addSubview(refresh)
         moreButotn.layer.borderColor = UIColor.blue.cgColor
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
@@ -50,7 +50,7 @@ class ChatViewController: BaseViewController {
     }
     
     @objc func turOffRefresh() {
-        refresh.endRefreshing()
+//        refresh.endRefreshing()
     }
     
     func setUpReplyMessageView() {
@@ -65,7 +65,7 @@ class ChatViewController: BaseViewController {
         isloading = true
         let getMessageGuest = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: pager, limit: 20)
         requestWithTask(task: getMessageGuest) { (listMessage) in
-            self.refresh.endRefreshing()
+//            self.refresh.endRefreshing()
             if let listMessage = listMessage as? [Message] {
                 if listMessage.count == 0 {
                     self.isMoreData = false
@@ -161,7 +161,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
         let topOftable = table.contentOffset.y <= 10.0 ? true : false
         if isMoreData && topOftable && !isloading && !scrollView.isDragging
             && !scrollView.isDecelerating {
-            refresh.beginRefreshing()
+//            refresh.beginRefreshing()
             isloading = true
             pager += 1
             isScrollTop = true
