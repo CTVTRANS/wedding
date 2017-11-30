@@ -46,7 +46,7 @@ class MainViewController: BaseViewController {
         setupWdding()
 //        setupNavigation()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadNumberNotification(notification:)), name: NSNotification.Name(rawValue: "refreshNotification"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "requestToServer"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "recivePush"), object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_rightButton"), style: .plain, target: nil, action: nil)
 
     }
@@ -102,13 +102,13 @@ class MainViewController: BaseViewController {
     }
    
     @IBAction func openSecondView(_ sender: Any) {
-        let secondVC = storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
-        isNewMessage = false
-        Constants.shared.newMessage = 0
-        let myAccount = Account.getAccount()
-        myAccount.numberMessage = Constants.shared.totalMessage
-        Account.saveAccount(myAccount: myAccount)
-        navigationController?.pushViewController(secondVC!, animated: false)
+            self.isNewMessage = false
+            Constants.shared.newMessage = 0
+            let myAccount = Account.getAccount()
+            myAccount.numberMessage = Constants.shared.totalMessage
+            Account.saveAccount(myAccount: myAccount)
+            let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
+            self.navigationController?.pushViewController(secondVC!, animated: false)
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
@@ -147,6 +147,16 @@ class MainViewController: BaseViewController {
     }
     
     @objc func requestToServer(notification: Notification) {
+        let name = notification.object as? String
+        let notice = Account.getAccount()
+        if name == "GuestAddMessageToMember" {
+            notice.numberMessage += 1
+            Account.saveAccount(myAccount: notice)
+            self.processNumberNotification()
+            self.setupNotification()
+            return
+        }
+        
         let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
         requestWithTask(task: request) { (_) in
             self.processNumberNotification()

@@ -26,7 +26,7 @@ class MessageViewCell: UITableViewCell {
     func binData(guest: Guest) {
         nameGuest.text = guest.nameGuest
         avatar.sd_setImage(with: URL(string: guest.avatar))
-        let getNewestMessage = GetMessageWithGuest(idGuest: guest.idGuest, page: 1, limit: 30)
+        let getNewestMessage = GetMessageWithGuest(idGuest: guest.idGuest, page: 1, limit: 10)
         getNewestMessage.request(blockSucess: { (data) in
             var numberNewMessage = 0
             if let arr = data as? [Message] {

@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         application.applicationIconBadgeNumber = 0
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.rgb(105, 85, 80)]
-//        registerForPushNotifications()
         
         if let notification = launchOptions?[.remoteNotification] as? [String: AnyObject] {
             let aps = notification["aps"] as? [String: AnyObject]
@@ -42,10 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let notificationName = Notification.Name("requestToServer")
+        let notificationName = Notification.Name("recivePush")
         NotificationCenter.default.post(name: notificationName, object: nil)
-        let aps = userInfo["aps"] as? [String: AnyObject]
-        print(aps!)
+        debugPrint(userInfo)
+        if let messagetype = userInfo["MESSAGE_TYPE"] as? String {
+            debugPrint(messagetype)
+            NotificationCenter.default.post(name: notificationName, object: messagetype)
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {

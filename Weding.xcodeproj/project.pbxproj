@@ -126,8 +126,8 @@
 		6DF853611F46E8B900C76D83 /* MyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewCell.swift; sourceTree = "<group>"; };
 		75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D0635361FCFBA690077B002 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
 		9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMessageWithGuest.swift; sourceTree = "<group>"; };
-		9D6AE7EE1FB15AFA00F66733 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
 		9DEEF6FB1FB9449000FEE1AE /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -205,7 +205,7 @@
 		6D29AC9B1F34039C00A17621 /* Weding */ = {
 			isa = PBXGroup;
 			children = (
-				9D6AE7EE1FB15AFA00F66733 /* Weding.entitlements */,
+				9D0635361FCFBA690077B002 /* Weding.entitlements */,
 				58F5E9001F3BFBAC00D32A7F /* Extendtion */,
 				6D29AC9C1F34039C00A17621 /* AppDelegate.swift */,
 				6D29ACD21F3481F100A17621 /* BaseViewController.swift */,

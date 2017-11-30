@@ -24,6 +24,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showActivity(inView: self.view)
         setupListMessage()
         setUpReplyMessageView()
         table.estimatedRowHeight = 140
@@ -52,6 +53,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             if let array = data as? [Guest] {
                 self.arrGuest = array
                 self.table.reloadData()
+                self.stopActivityIndicator()
             }
         }
     }
@@ -88,10 +90,10 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             replyMessageText.resignFirstResponder()
             return
         }
+        self.replyMessageText.text = ""
         let sendMessageTask: SendMessageTask = SendMessageTask(name: "All", contentMessage: message)
         requestWithTask(task: sendMessageTask) { (data) in
             print(data!)
-            self.replyMessageText.text = ""
             self.replyMessageText.resignFirstResponder()
             UIAlertController.showAlertWith(title: "", message: (data as? String)!, myViewController: self)
         }
@@ -130,7 +132,6 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
                 replyLine.isHidden = true
                 contrainsReplayView.constant = 0.0
                 contraintTextMessage.constant = 0.0
-//                hightOfTextView.constant = hightConstant
             } else {
                 self.navigationItem.leftBarButtonItem?.isEnabled = false
                 self.navigationItem.rightBarButtonItem?.isEnabled = false
