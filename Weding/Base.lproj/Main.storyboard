@@ -2442,7 +2442,7 @@
                                         </constraints>
                                         <color key="textColor" red="0.9137254901960784" green="0.50980392156862742" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                 <real key="value" value="0.5"/>
