@@ -37,7 +37,7 @@ extension BaseTaskNetwork {
         let idGuest = dictionary["ACCOUNT"] as? String ?? ""
         let mobileGuest = dictionary["MOBILE"] as? String ?? ""
         let emailGuest = dictionary["EMAIL"] as? String ?? ""
-        let avaterGuest = dictionary["AVATAR"] as? String ?? ""
+        let avaterGuest = dictionary["LOGO"] as? String ?? ""
         let guest = Guest(idGuest: idGuest, nameGuset: nameGuest, avatar: avaterGuest, phone: mobileGuest, email: emailGuest)
         return guest
     }
