@@ -17,6 +17,7 @@ let downloadExcel = baseURL + "api/GetGuestPlanDoc.aspx?"
 let getListGuestURL = baseURL + "/api/GetGuestInfoByMember.aspx?"
 let getMessageGuest = baseURL + "/api/GetMemberGuestHistoryMessage.aspx?"
 let linkguideExcel = baseURL + "/app/guest_doc_guide.aspx"
+let readedMessageURL = baseURL + "api/UpdateMemberGuestMessageStatus.aspx?"
 
 class Constants {
     var woman: Woman?

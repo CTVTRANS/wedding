@@ -140,6 +140,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
             return myCell!
         } else {
             guestCell?.binData(guestMessage: message)
+            guestCell?.avatar.sd_setImage(with: URL(string: (guest?.avatar)!))
             return guestCell!
         }
     }

@@ -79,6 +79,11 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
+        let task = ConfirmReadedMessageTask(idGuest: arrGuest[indexPath.row].idGuest)
+        requestWithTask(task: task) { (_) in
+            
+        }
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController
         vc?.guest = arrGuest[indexPath.row]
         self.navigationController?.pushViewController(vc!, animated: true)

@@ -30,7 +30,6 @@ class GusetViewCell: UITableViewCell {
         let timeHour = guestMessage.getTime().components(separatedBy: "T")[1]
         let hour = timeHour.components(separatedBy: ":")[0]
         let min = timeHour.components(separatedBy: ":")[1]
-        
         self.timeMessage.text = timeString + " " + hour + ":" + min
     }
 
