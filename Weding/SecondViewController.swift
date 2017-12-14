@@ -106,18 +106,10 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     }
  
     @IBAction func prssedSendAll(_ sender: Any) {
-//        replyMessageText.becomeFirstResponder()
         replyView.isHidden = false
         replyMessageText.isHidden = false
         replyLine.isHidden = false
     }
-    
-//    func textViewDidChange(_ textView: UITextView) {
-//        let fixedWidth = replyMessageText.frame.size.width
-//        replyMessageText.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-//        let newSize = replyMessageText.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-//        hightOfTextView.constant = newSize.height
-//    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)

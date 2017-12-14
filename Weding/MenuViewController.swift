@@ -99,8 +99,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         default:
             break
         }
-        let navigationController: UINavigationController = UINavigationController.init(rootViewController: vc!)
-        swVC?.pushFrontViewController(navigationController, animated: true)
+        navigationVC?.pushViewController(vc!, animated: false)
+        swVC?.pushFrontViewController(navigationVC, animated: true)
     }
     
     func showSecondView() {

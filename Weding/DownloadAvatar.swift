@@ -1,24 +1,22 @@
 //
-//  DowloadExcel.swift
+//  DownloadAvatar.swift
 //  Weding
 //
-//  Created by Le Cong on 8/8/17.
+//  Created by le kien on 12/14/17.
 //  Copyright © 2017 kien le van. All rights reserved.
 //
 
 import UIKit
 import LCNetwork
 
-class DowloadMemberList: BaseTaskNetwork {
+class DownloadAvatar: BaseTaskNetwork {
+    let file: String!
     
-    private var _object: String
-    
-    init(object: String) {
-        _object = object
+    init(file: String) {
+        self.file = file
     }
-    
     override func path() -> String! {
-        return downloadExcel + "id=" + Account.getAccount().name + "&k=" + Account.getAccount().keyAccess + "&g=" + _object
+        return file
     }
     
     override func method() -> String! {

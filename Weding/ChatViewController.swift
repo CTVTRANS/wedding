@@ -19,6 +19,7 @@ class ChatViewController: BaseViewController {
     var hightConstant: CGFloat!
 
     var guest: Guest?
+    var filePathAvatar: URL?
     var arr = [Message]()
     var pager = 1
     var isloading = false
@@ -33,7 +34,8 @@ class ChatViewController: BaseViewController {
         moreButotn.layer.borderColor = UIColor.blue.cgColor
         table.estimatedRowHeight = 140
         setUpReplyMessageView()
-        getMessage()
+        donwloadGuestAvatar()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "recivePush"), object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
     }
@@ -45,6 +47,18 @@ class ChatViewController: BaseViewController {
     func setUpReplyMessageView() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         replyTextView.delegate = self
+    }
+    
+    func donwloadGuestAvatar() {
+        let task = DownloadAvatar(file: (guest?.avatar)!)
+        downloadFileSuccess(task: task, success: { (data) in
+            if let url = data as? URL {
+                self.filePathAvatar = url
+                self.getMessage()
+            }
+        }) { (_) in
+            
+        }
     }
     
     func getMessage() {
@@ -64,7 +78,6 @@ class ChatViewController: BaseViewController {
             if self.isScrollTop {
                 let indexpath = IndexPath(row: listMessage.count, section: 0)
                 self.table.scrollToRow(at: indexpath, at: .top, animated: false)
-                self.isScrollTop = false
             } else {
                 if self.isFirstGotoView {
                      self.scrollLastMessage(animated: false)
@@ -76,7 +89,6 @@ class ChatViewController: BaseViewController {
     }
     
     func getNewMessage() {
-        self.isScrollTop = false
         self.isMoreData = true
         self.pager = 1
         self.arr = []
@@ -109,6 +121,7 @@ class ChatViewController: BaseViewController {
         if message == "" {
             return
         }
+        isScrollTop = false
         self.replyTextView.text = ""
         let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
         requestWithTask(task: sendMessageTask) { (_) in
@@ -139,7 +152,8 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
             return myCell!
         } else {
             guestCell?.binData(guestMessage: message)
-//            guestCell?.avatar.sd_setImage(with: URL(string: (guest?.avatar)!))
+            let data = try? Data(contentsOf: filePathAvatar!)
+            guestCell?.avatar.image = UIImage(data: data!)
             return guestCell!
         }
     }
@@ -182,19 +196,6 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
                            options: animationCurve,
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
-            DispatchQueue.main.async(execute: {
-//                                self.scrollLastMessage()
-            })
         }
     }
-}
-
-extension UITableView {
-//    func reloadSucess(sucess:@escaping (() -> Void)) {
-//        UIView.animate(withDuration: 0, animations: {
-//            self.reloadData()
-//        }) { (_) in
-//            sucess()
-//        }
-//    }
 }
