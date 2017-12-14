@@ -1400,8 +1400,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="BX1-FH-O00" id="Lu1-lG-qny"/>
-                                    <outlet property="delegate" destination="BX1-FH-O00" id="r9o-XI-4DM"/>
+                                    <outlet property="dataSource" destination="BX1-FH-O00" id="10z-zt-s5d"/>
+                                    <outlet property="delegate" destination="BX1-FH-O00" id="Sjy-Mo-Fhk"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -1418,7 +1418,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="table" destination="zdk-NU-sXn" id="5Bz-M2-TGf"/>
+                        <outlet property="table" destination="zdk-NU-sXn" id="lQV-Vy-sPC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkq-m1-gqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1444,7 +1444,7 @@
             </objects>
             <point key="canvasLocation" x="4252.5" y="955.9859154929577"/>
         </scene>
-        <!--婚禮籌備平台-->
+        <!--Second View Controller-->
         <scene sceneID="HNx-GO-s3Z">
             <objects>
                 <viewController storyboardIdentifier="SecondView" id="LXO-Ii-IJG" customClass="SecondViewController" customModule="Weding" customModuleProvider="target" sceneMemberID="viewController">
@@ -1798,11 +1798,7 @@
                             <constraint firstItem="g3d-Mp-Qjf" firstAttribute="top" secondItem="7Ra-Jd-uza" secondAttribute="bottom" id="zwI-Lu-0x3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="婚禮籌備平台" id="Zx2-rS-z9m">
-                        <barButtonItem key="backBarButtonItem" title=" " id="IBG-oS-Ft8"/>
-                        <barButtonItem key="leftBarButtonItem" image="ic_leftButton" id="6Mi-lN-UhZ"/>
-                        <barButtonItem key="rightBarButtonItem" image="ic_rightButton" id="Q0k-Pn-skW"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Zx2-rS-z9m"/>
                     <connections>
                         <outlet property="contrainsReplayView" destination="ote-hB-EdN" id="Ioo-6A-HR5"/>
                         <outlet property="contraintTextMessage" destination="yIJ-ap-jVP" id="1es-Xb-0Am"/>
@@ -1815,7 +1811,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MjS-yJ-Haf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5926.875" y="957.04225352112678"/>
+            <point key="canvasLocation" x="6053" y="958"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="5JE-dH-Rdh">
@@ -1906,7 +1902,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="adjustFontToRealIPhoneSize" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BSF-bh-Wud">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BSF-bh-Wud">
                                 <rect key="frame" x="41" y="22" width="238" height="506"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1919,7 +1915,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B2z-B6-97z">
                                                     <rect key="frame" x="15" y="8.5" width="42" height="42"/>
-                                                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="B2z-B6-97z" secondAttribute="height" multiplier="1:1" id="YMu-Mj-4wA"/>
                                                         <constraint firstAttribute="height" constant="42" id="oN5-mg-voY">
@@ -1947,7 +1943,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wb-Dv-6rS">
-                                                            <rect key="frame" x="0.0" y="24" width="11" height="15.5"/>
+                                                            <rect key="frame" x="0.0" y="24" width="10.5" height="15.5"/>
                                                             <fontDescription key="fontDescription" name="Calibri" family="Calibri" pointSize="13"/>
                                                             <color key="textColor" red="0.18431372549019609" green="0.20392156862745098" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2121,6 +2117,7 @@
                             <constraint firstItem="VF7-Df-epi" firstAttribute="height" secondItem="l3v-d4-k2P" secondAttribute="height" id="zZo-Da-LjM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jf7-nF-lbE"/>
                     <connections>
                         <outlet property="constraintBotTextView" destination="w0d-Im-rjO" id="Jky-5E-goY"/>
                         <outlet property="constraintBotView" destination="r4B-7B-43w" id="jCP-vg-Dj1"/>
@@ -2325,7 +2322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jsi-BA-hQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5927" y="1631"/>
+            <point key="canvasLocation" x="6053" y="1631"/>
         </scene>
         <!--婚禮籌備平台-->
         <scene sceneID="rC1-qq-3lL">

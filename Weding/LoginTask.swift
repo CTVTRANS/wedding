@@ -84,7 +84,7 @@ class LoginTask: BaseTaskNetwork {
                                 day: manWeddingDay,
                                 dayCounter: manWeddingCounter,
                                 numberCustomer: manNumberCustomer,
-                                linkDownloadExcel: manLLinkExcel, filePath: "0")
+                                linkDownloadExcel: manLLinkExcel, filePath: "")
         return man
     }
     

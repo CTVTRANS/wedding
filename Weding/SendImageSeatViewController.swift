@@ -13,8 +13,10 @@ class SendImageSeatViewController: BaseViewController {
     @IBOutlet weak var nameCompany: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var openWebButotn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         openWebButotn.layer.borderColor = UIColor.rgb(248, 54, 123).cgColor
         titleLabel.layer.borderColor = UIColor.rgb(248, 54, 123).cgColor
         nameCompany.text = Constants.shared.factory?.getName()
@@ -24,5 +26,4 @@ class SendImageSeatViewController: BaseViewController {
     @IBAction func pressedButton(_ sender: Any) {
         sendImageOfPosition()
     }
-
 }

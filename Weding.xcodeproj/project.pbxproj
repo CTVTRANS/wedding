@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1B312FC487BEC603D587C832 /* Pods_Weding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500324A2C54666C533D2D01 /* Pods_Weding.framework */; };
 		58E166B81F39A2B500E59DE2 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E166B71F39A2B500E59DE2 /* Factory.swift */; };
-		58E166BA1F39A37400E59DE2 /* GetFactoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E166B91F39A37400E59DE2 /* GetFactoryTask.swift */; };
 		58E166BC1F39C9DB00E59DE2 /* DowloadMemberList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E166BB1F39C9DB00E59DE2 /* DowloadMemberList.swift */; };
 		58F5E8FF1F3AF69400D32A7F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F5E8FE1F3AF69400D32A7F /* Message.swift */; };
 		58F5E9021F3BFBD700D32A7F /* BaseViewcontrollerExtend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F5E9011F3BFBD600D32A7F /* BaseViewcontrollerExtend.swift */; };
@@ -81,7 +80,6 @@
 		44761337A1FC0665B24D15F1 /* Pods-WedingUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WedingUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WedingUITests/Pods-WedingUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4AA48B413161ECED27D30A07 /* Pods-WedingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WedingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WedingTests/Pods-WedingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		58E166B71F39A2B500E59DE2 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
-		58E166B91F39A37400E59DE2 /* GetFactoryTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFactoryTask.swift; sourceTree = "<group>"; };
 		58E166BB1F39C9DB00E59DE2 /* DowloadMemberList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DowloadMemberList.swift; sourceTree = "<group>"; };
 		58F5E8FE1F3AF69400D32A7F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		58F5E9011F3BFBD600D32A7F /* BaseViewcontrollerExtend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewcontrollerExtend.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				6DF4A4B91F3702B900869C38 /* LoginTask.swift */,
-				58E166B91F39A37400E59DE2 /* GetFactoryTask.swift */,
 				58E166BB1F39C9DB00E59DE2 /* DowloadMemberList.swift */,
 				6DF535831F43435000305D12 /* UploadMemberTask.swift */,
 				6D8143B91F47E6C20005AD8B /* SendMessageTask.swift */,
@@ -676,7 +673,6 @@
 				6DF2506D1FA43E97005F6CF7 /* SupportExcelViewController.swift in Sources */,
 				6D29ACCD1F345E8900A17621 /* SecondViewController.swift in Sources */,
 				6DF7DEAF1F4E850F004D6719 /* SendToken.swift in Sources */,
-				58E166BA1F39A37400E59DE2 /* GetFactoryTask.swift in Sources */,
 				6DF4A4BF1F372CE500869C38 /* Man.swift in Sources */,
 				6DEF9B821F4EAB5A0004BC31 /* Guest.swift in Sources */,
 				6DF1F25C1F36B54500C595B8 /* Constants.swift in Sources */,

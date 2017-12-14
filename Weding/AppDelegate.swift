@@ -115,8 +115,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let stringPath = String(describing: directoryContents[0])
             let index = stringPath.index(stringPath.startIndex, offsetBy: 101)
             let charrac = String(stringPath[..<index])
-            Constants.shared.man?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN-ann730204.xlsx")!
-            Constants.shared.woman?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN2-ann730204.xlsx")!
+            Constants.shared.man?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN-\(Account.getAccount().name).xlsx")!
+            Constants.shared.woman?.filePath = URL(string: charrac + "/Inbox/GUESTPLAN2-\(Account.getAccount().name).xlsx")!
         } catch let error as NSError {
             print(error.localizedDescription)
         }

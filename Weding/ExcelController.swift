@@ -17,6 +17,7 @@ class ExcelController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         nameFactory.text = Constants.shared.factory?.getName()
         manView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor
         womwnView.layer.borderColor = UIColor.rgb(152, 102, 13).cgColor

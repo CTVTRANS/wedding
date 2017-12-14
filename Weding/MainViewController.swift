@@ -44,7 +44,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWdding()
-//        setupNavigation()
+        setupNavigation()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadNumberNotification(notification:)), name: NSNotification.Name(rawValue: "refreshNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "recivePush"), object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_rightButton"), style: .plain, target: nil, action: nil)
@@ -98,17 +98,19 @@ class MainViewController: BaseViewController {
     
     @IBAction func downloadMemberList(_ sender: Any) {
         let excelVC = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as? ExcelController
-        self.navigationController?.pushViewController(excelVC!, animated: false)
+        let navigationController: UINavigationController = UINavigationController.init(rootViewController: excelVC!)
+        swVC?.pushFrontViewController(navigationController, animated: true)
     }
    
     @IBAction func openSecondView(_ sender: Any) {
-            self.isNewMessage = false
-            Constants.shared.newMessage = 0
-            let myAccount = Account.getAccount()
-            myAccount.numberMessage = Constants.shared.totalMessage
-            Account.saveAccount(myAccount: myAccount)
-            let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
-            self.navigationController?.pushViewController(secondVC!, animated: false)
+        self.isNewMessage = false
+        Constants.shared.newMessage = 0
+        let myAccount = Account.getAccount()
+        myAccount.numberMessage = Constants.shared.totalMessage
+        Account.saveAccount(myAccount: myAccount)
+        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
+        let navigationController: UINavigationController = UINavigationController.init(rootViewController: secondVC!)
+        swVC?.pushFrontViewController(navigationController, animated: true)
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
@@ -123,7 +125,8 @@ class MainViewController: BaseViewController {
     
     @IBAction func sendImageOfSeatPosition(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "SendImageSeatViewController") as? SendImageSeatViewController {
-            navigationController?.pushViewController(vc, animated: false)
+            let navigationController: UINavigationController = UINavigationController.init(rootViewController: vc)
+            swVC?.pushFrontViewController(navigationController, animated: true)
         }
     }
     

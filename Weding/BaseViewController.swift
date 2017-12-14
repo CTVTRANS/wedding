@@ -21,7 +21,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         swVC = self.revealViewController()
-        setupNavigation()
     }
     
     func setupNavigation() {
@@ -39,7 +38,6 @@ class BaseViewController: UIViewController {
     
     @objc func popToRootNavigation() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainView") as? MainViewController
-    
         let navigationController: UINavigationController = UINavigationController.init(rootViewController: vc!)
         swVC?.pushFrontViewController(navigationController, animated: true)
 

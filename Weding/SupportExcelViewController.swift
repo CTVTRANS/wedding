@@ -11,8 +11,10 @@ import UIKit
 class SupportExcelViewController: BaseViewController, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         showActivity(inView: self.view)
         webView.delegate = self
         webView.scrollView.bounces = false

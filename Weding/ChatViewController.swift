@@ -28,6 +28,7 @@ class ChatViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
         showActivity(inView: self.view)
         moreButotn.layer.borderColor = UIColor.blue.cgColor
         table.estimatedRowHeight = 140
@@ -42,34 +43,33 @@ class ChatViewController: BaseViewController {
     }
     
     func setUpReplyMessageView() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardNotification(notification:)),
-                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
-                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         replyTextView.delegate = self
     }
     
     func getMessage() {
         isloading = true
-        let getMessageGuest = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: pager, limit: 20)
+        let getMessageGuest = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: pager, limit: 30)
         requestWithTask(task: getMessageGuest) { (listMessage) in
-            if let listMessage = listMessage as? [Message] {
-                if listMessage.count == 0 {
-                    self.isMoreData = false
-                }
-                self.isloading = false
-                self.arr += listMessage
-                self.table.reloadData()
-                if self.isScrollTop {
-                    let indexpath = IndexPath(row: listMessage.count, section: 0)
-                    self.table.scrollToRow(at: indexpath, at: .top, animated: false)
-                    self.isScrollTop = false
+            guard let listMessage = listMessage as? [Message] else {
+                return
+            }
+            if listMessage.count == 0 {
+                self.isMoreData = false
+                return
+            }
+            self.isloading = false
+            self.arr.insert(contentsOf: listMessage.reversed(), at: 0)
+            self.table.reloadData()
+            if self.isScrollTop {
+                let indexpath = IndexPath(row: listMessage.count, section: 0)
+                self.table.scrollToRow(at: indexpath, at: .top, animated: false)
+                self.isScrollTop = false
+            } else {
+                if self.isFirstGotoView {
+                     self.scrollLastMessage(animated: false)
                 } else {
-                    if self.isFirstGotoView {
-                         self.scrollLastMessage(animated: false)
-                    } else {
-                         self.scrollLastMessage(animated: true)
-                    }
+                     self.scrollLastMessage(animated: true)
                 }
             }
         }
@@ -133,14 +133,13 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let guestCell = table.dequeueReusableCell(withIdentifier: "GuestViewCell", for: indexPath) as? GusetViewCell
         let myCell = table.dequeueReusableCell(withIdentifier: "MyViewCell", for: indexPath) as? MyViewCell
-        let numberMessage = arr.count - 1
-        let message = arr[numberMessage - indexPath.row]
+        let message = arr[indexPath.row]
         if message.isMyMessage() {
             myCell?.binData(myMessage: message)
             return myCell!
         } else {
             guestCell?.binData(guestMessage: message)
-            guestCell?.avatar.sd_setImage(with: URL(string: (guest?.avatar)!))
+//            guestCell?.avatar.sd_setImage(with: URL(string: (guest?.avatar)!))
             return guestCell!
         }
     }
@@ -149,9 +148,8 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let topOftable = table.contentOffset.y <= 10.0 ? true : false
-        if isMoreData && topOftable && !isloading && !scrollView.isDragging
-            && !scrollView.isDecelerating {
+        let topOftable = table.contentOffset.y < 100.0 ? true : false
+        if isMoreData && topOftable && !isloading {
             isloading = true
             pager += 1
             isScrollTop = true
@@ -192,11 +190,11 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
 }
 
 extension UITableView {
-    func reloadSucess(sucess:@escaping (() -> Void)) {
-        UIView.animate(withDuration: 0, animations: {
-            self.reloadData()
-        }) { (_) in
-            sucess()
-        }
-    }
+//    func reloadSucess(sucess:@escaping (() -> Void)) {
+//        UIView.animate(withDuration: 0, animations: {
+//            self.reloadData()
+//        }) { (_) in
+//            sucess()
+//        }
+//    }
 }

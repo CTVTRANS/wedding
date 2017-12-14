@@ -25,6 +25,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         showActivity(inView: self.view)
+        setupNavigation()
         setupListMessage()
         setUpReplyMessageView()
         table.estimatedRowHeight = 140
