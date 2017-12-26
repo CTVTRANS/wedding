@@ -10,27 +10,37 @@ import UIKit
 
 class MyViewCell: UITableViewCell {
 
+    @IBOutlet weak var test: UIImageView!
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var time: UILabel!
-    @IBOutlet weak var widthOfTime: NSLayoutConstraint!
-    
     @IBOutlet weak var widthOfMessage: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        test.tintColor = UIColor.green
     }
 
     func binData(myMessage: Message) {
         message.text = myMessage.getMessage()
-        let timeDate = myMessage.getTime().components(separatedBy: "T")[0]
-        let month: Int = Int((timeDate.components(separatedBy: "-")[1]))!
-        let date: Int = Int((timeDate.components(separatedBy: "-")[2]))!
-        let timeString: String = String(month) + "/" + String(date)
-        
-        let timeHour = myMessage.getTime().components(separatedBy: "T")[1]
-        let hour = timeHour.components(separatedBy: ":")[0]
-        let min = timeHour.components(separatedBy: ":")[1]
-        
-        self.time.text = timeString + " " + hour + ":" + min
+        let date = Date.convertToDateWith(timeInt: myMessage.getTime(), withFormat: "yyyy-MM-dd'T'HH-mm-ss")
+        let time = Date.convert(date: date!, toString: "MM/dd HH:mm")
+        self.time.text = time
     }
 
+}
+
+extension Date {
+    static func convertToDateWith(timeInt: String, withFormat: String) -> Date? {
+        let dateFomater = DateFormatter()
+        dateFomater.dateFormat = withFormat
+        let date = dateFomater.date(from: timeInt)
+        return date
+    }
+    
+    static func convert(date: Date, toString timeOut: String) -> String {
+        let dateFomater = DateFormatter()
+        dateFomater.dateFormat = timeOut
+        let dateString = dateFomater.string(from: date)
+        return dateString
+    }
 }

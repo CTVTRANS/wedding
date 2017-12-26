@@ -41,13 +41,15 @@ class LoginTask: BaseTaskNetwork {
     
     override func data(withResponse response: Any!) -> Any! {
         if let dictionary = response as? [String: Any] {
-            let name = dictionary["COMPANYNM"] as? String
-            let factory: Factory = Factory(name: name!)
+            let name = dictionary["COMPANYNM"] as? String ?? ""
+            let factory: Factory = Factory(name: name)
             Constants.shared.factory = factory
-
+//            let tableCount = dictionary["MEMBER_DOC_TABLE_COUNT"] as? Int ?? 0
+//            let sitCount = dictionary["MEMBER_DOC_SIT_COUNT"] as? Int ?? 0
+//            let webCount = dictionary["MEMBER_DOC_WEDSTEP_COUNT"] as? Int ?? 0
+            
             Constants.shared.woman = parseWoman(dictionary: dictionary)
             Constants.shared.man = parseMan(dictionary: dictionary)
-            
         }
         return response
     }

@@ -43,9 +43,7 @@ class ExcelController: BaseViewController {
     }
     
     @IBAction func pressedShowsupport(_ sender: Any) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "SupportExcelViewController") as? SupportExcelViewController {
-            navigationController?.pushViewController(vc, animated: false)
-        }
+        UIApplication.shared.openURL(URL(string: linkguideExcel)!)
     }
     deinit {
         NotificationCenter.default.removeObserver(self)

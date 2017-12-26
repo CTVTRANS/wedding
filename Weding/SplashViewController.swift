@@ -17,7 +17,6 @@ class SplashViewController: BaseViewController {
             let loginTask: LoginTask = LoginTask(name: Account.getAccount().name,
                                                 pass: Account.getAccount().pass)
             requestWithTask(task: loginTask) { (_) in
-                self.processNumberNotification()
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "SWRevealViewController") as? SWRevealViewController
                 self.present(vc!, animated: false, completion: nil)
             }

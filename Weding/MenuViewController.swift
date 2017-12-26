@@ -41,9 +41,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
         swVC?.revealToggle(animated: false)
         Constants.shared.newGuest = 0
-        let myAccount = Account.getAccount()
-        myAccount.numberGuest = Constants.shared.totalGuest
-        Account.saveAccount(myAccount: myAccount)
+        let task = UpdateNumberNotice(type: 3)
+        task.request(blockSucess: { (_) in}) { (_) in}
         NotificationCenter.default.post(name: notificationName, object: "guest")
         return
     }
@@ -54,9 +53,8 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         swVC?.revealToggle(animated: false)
         NotificationCenter.default.post(name: notificationName, object: "seat")
         Constants.shared.newSeat = 0
-        let myAccount = Account.getAccount()
-        myAccount.numberSeat = Constants.shared.totalSeat
-        Account.saveAccount(myAccount: myAccount)
+        let task = UpdateNumberNotice(type: 2)
+        task.request(blockSucess: { (_) in}) { (_) in}
         return
     }
     
@@ -86,9 +84,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             }
             NotificationCenter.default.post(name: notificationName, object: "message")
             Constants.shared.newMessage = 0
-            let myAccount = Account.getAccount()
-            myAccount.numberMessage = Constants.shared.totalMessage
-            Account.saveAccount(myAccount: myAccount)
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
         case 4:
             openWebLogined()

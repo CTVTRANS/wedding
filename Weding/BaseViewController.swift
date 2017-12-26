@@ -119,27 +119,6 @@ class BaseViewController: UIViewController {
             self.present(activityVC, animated: true, completion: nil)
         }
     }
-
-    func processNumberNotification() {
-        let myAccount = Account.getAccount()
-        let totalGuest = (Constants.shared.man?.numberGuest)! + (Constants.shared.woman?.numberGuest)!
-        let totalMessage = Int(5)
-        let linkTable = Constants.shared.woman?.tableSeat
-        let linkWedStep = Constants.shared.woman?.webStep
-        var totalSeat: Int = 0
-        if (linkTable?.count)! > 0 {
-            totalSeat += 1
-        } else if (linkWedStep?.count)! > 0 {
-            totalSeat += 1
-        }
-        
-        Constants.shared.newGuest = abs(totalGuest - myAccount.numberGuest)
-        Constants.shared.totalGuest = totalGuest
-        Constants.shared.newMessage = abs(totalMessage - myAccount.numberMessage)
-        Constants.shared.totalMessage = totalMessage
-        Constants.shared.newSeat = abs(totalSeat - myAccount.numberSeat)
-        Constants.shared.newSeat = totalSeat
-    }
     
     func showActivity(inView myView: UIView) {
         //        backGroundview = UIView(frame: UIScreen.main.bounds)

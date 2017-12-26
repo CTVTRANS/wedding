@@ -18,6 +18,11 @@ let getListGuestURL = baseURL + "/api/GetGuestInfoByMember.aspx?"
 let getMessageGuest = baseURL + "/api/GetMemberGuestHistoryMessage.aspx?"
 let linkguideExcel = baseURL + "/app/guest_doc_guide.aspx"
 let readedMessageURL = baseURL + "api/UpdateMemberGuestMessageStatus.aspx?"
+let getNumberNotice = baseURL + "/api/GetMemberMessageCounts.aspx?"
+let updateNotice = baseURL + "/api/UpdateMemberMessageCountsStatus.aspx?"
+
+let widthScreen = UIScreen.main.bounds.width
+let heightScreen = UIScreen.main.bounds.height
 
 class Constants {
     var woman: Woman?
@@ -29,10 +34,6 @@ class Constants {
     var newGuest: Int = 0
     var newMessage: Int = 0
     var newSeat: Int = 0
-    
-    var totalGuest: Int = 0
-    var totalMessage: Int = 0
-    var totalSeat: Int = 0
     
     static let shared = Constants()
 }

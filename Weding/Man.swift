@@ -20,8 +20,7 @@ class Man: NSObject {
     init(name: String, day: String, dayCounter: String, numberCustomer: Int, linkDownloadExcel: String, filePath: String) {
         self._name = name
         self._weddingDay = day
-        let dayCounterArray = dayCounter.components(separatedBy: " ")
-        self._weddingDayCounter = dayCounterArray[1]
+        self._weddingDayCounter = dayCounter
         self._numberGuest = numberCustomer
         self._linkDownloadExcel = linkDownloadExcel
         self._filepathURL = URL(string: filePath)

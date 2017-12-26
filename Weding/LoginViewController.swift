@@ -40,7 +40,6 @@ class LoginViewController: BaseViewController {
             myAccount.name = name!
             myAccount.pass = pass!
             Account.saveAccount(myAccount: myAccount)
-            self.processNumberNotification()
             self.showmainMenu()
             
             let sendToken: SendToken = SendToken()

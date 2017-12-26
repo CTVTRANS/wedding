@@ -32,6 +32,11 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         getListGuest()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        table.reloadData()
+    }
+    
     func setupListMessage() {
         table.layer.borderWidth = 0.5
         table.layer.borderColor = UIColor.rgb(236, 186, 206).cgColor

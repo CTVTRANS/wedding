@@ -65,6 +65,7 @@ class ChatViewController: BaseViewController {
         isloading = true
         let getMessageGuest = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: pager, limit: 30)
         requestWithTask(task: getMessageGuest) { (listMessage) in
+            self.stopActivityIndicator()
             guard let listMessage = listMessage as? [Message] else {
                 return
             }
@@ -103,12 +104,12 @@ class ChatViewController: BaseViewController {
     }
 
     func scrollLastMessage(animated: Bool) {
-        DispatchQueue.main.async {
+//        DispatchQueue.main.async {
             if self.arr.count > 0 {
                 self.table.scrollToRow(at: IndexPath(row: self.arr.count - 1, section: 0), at: .bottom, animated: animated)
                 self.stopActivityIndicator()
             }
-        }
+//        }
     }
     
     @objc func dismissKeyboard() {
@@ -157,12 +158,13 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
             return guestCell!
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let topOftable = table.contentOffset.y < 100.0 ? true : false
+        let topOftable = table.contentOffset.y < 20.0 ? true : false
         if isMoreData && topOftable && !isloading {
             isloading = true
             pager += 1
