@@ -14,6 +14,7 @@ class MyViewCell: UITableViewCell {
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var widthOfMessage: NSLayoutConstraint!
+    @IBOutlet weak var status: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

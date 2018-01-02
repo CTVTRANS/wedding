@@ -17,9 +17,9 @@ let downloadExcel = baseURL + "api/GetGuestPlanDoc.aspx?"
 let getListGuestURL = baseURL + "/api/GetGuestInfoByMember.aspx?"
 let getMessageGuest = baseURL + "/api/GetMemberGuestHistoryMessage.aspx?"
 let linkguideExcel = baseURL + "/app/guest_doc_guide.aspx"
-let readedMessageURL = baseURL + "api/UpdateMemberGuestMessageStatus.aspx?"
 let getNumberNotice = baseURL + "/api/GetMemberMessageCounts.aspx?"
 let updateNotice = baseURL + "/api/UpdateMemberMessageCountsStatus.aspx?"
+let updateStatusMessage = baseURL + "/api/UpdateMemberGuestMessageStatus.aspx?"
 
 let widthScreen = UIScreen.main.bounds.width
 let heightScreen = UIScreen.main.bounds.height

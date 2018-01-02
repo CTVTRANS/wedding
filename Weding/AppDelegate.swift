@@ -51,7 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        application.applicationIconBadgeNumber = 0
+        let notificationName = Notification.Name("recivePush")
+        NotificationCenter.default.post(name: notificationName, object: "nil")
     }
     
     func registerForPushNotifications() {

@@ -46,10 +46,10 @@
 		6DF8535C1F46E10300C76D83 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535B1F46E10300C76D83 /* ChatViewController.swift */; };
 		6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF8535F1F46E8A900C76D83 /* GusetViewCell.swift */; };
 		6DF853621F46E8B900C76D83 /* MyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF853611F46E8B900C76D83 /* MyViewCell.swift */; };
-		9D03A7CE1FDA973F00D323D5 /* ConfirmReadedMessageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D03A7CD1FDA973F00D323D5 /* ConfirmReadedMessageTask.swift */; };
 		9D073A071FF22E4B009F2568 /* GetNumberNoticeTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D073A061FF22E4B009F2568 /* GetNumberNoticeTask.swift */; };
 		9D073A091FF232DC009F2568 /* UpdateNumberNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D073A081FF232DC009F2568 /* UpdateNumberNotice.swift */; };
 		9D2215991FA6B5CD001F0947 /* GetMessageWithGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */; };
+		9D2373861FF496B60033C091 /* UpdateStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2373851FF496B60033C091 /* UpdateStatusMessage.swift */; };
 		9D8C605C1FE279770064DDED /* DownloadAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8C605B1FE279770064DDED /* DownloadAvatar.swift */; };
 		9DEEF6FC1FB9449100FEE1AE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEEF6FB1FB9449000FEE1AE /* Storage.swift */; };
 		9DF5C99C1FB157C8000200C2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */; };
@@ -128,11 +128,11 @@
 		6DF853611F46E8B900C76D83 /* MyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewCell.swift; sourceTree = "<group>"; };
 		75905AF5CE1ECB5C86BD0769 /* Pods_WedingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		913D0E142182FAE64796BECD /* Pods_WedingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WedingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D03A7CD1FDA973F00D323D5 /* ConfirmReadedMessageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmReadedMessageTask.swift; sourceTree = "<group>"; };
 		9D0635361FCFBA690077B002 /* Weding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Weding.entitlements; sourceTree = "<group>"; };
 		9D073A061FF22E4B009F2568 /* GetNumberNoticeTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNumberNoticeTask.swift; sourceTree = "<group>"; };
 		9D073A081FF232DC009F2568 /* UpdateNumberNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNumberNotice.swift; sourceTree = "<group>"; };
 		9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMessageWithGuest.swift; sourceTree = "<group>"; };
+		9D2373851FF496B60033C091 /* UpdateStatusMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStatusMessage.swift; sourceTree = "<group>"; };
 		9D8C605B1FE279770064DDED /* DownloadAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAvatar.swift; sourceTree = "<group>"; };
 		9DEEF6FB1FB9449000FEE1AE /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		9DF5C99B1FB157C8000200C2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -268,10 +268,10 @@
 				6DF7DEAE1F4E850F004D6719 /* SendToken.swift */,
 				6DEC72391FA1CC7B00AAAE57 /* GetListGuestTask.swift */,
 				9D2215981FA6B5CD001F0947 /* GetMessageWithGuest.swift */,
-				9D03A7CD1FDA973F00D323D5 /* ConfirmReadedMessageTask.swift */,
 				9D8C605B1FE279770064DDED /* DownloadAvatar.swift */,
 				9D073A061FF22E4B009F2568 /* GetNumberNoticeTask.swift */,
 				9D073A081FF232DC009F2568 /* UpdateNumberNotice.swift */,
+				9D2373851FF496B60033C091 /* UpdateStatusMessage.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -687,7 +687,6 @@
 				6DF4A4BF1F372CE500869C38 /* Man.swift in Sources */,
 				6DEF9B821F4EAB5A0004BC31 /* Guest.swift in Sources */,
 				6DF1F25C1F36B54500C595B8 /* Constants.swift in Sources */,
-				9D03A7CE1FDA973F00D323D5 /* ConfirmReadedMessageTask.swift in Sources */,
 				6DF082D01F3555A60073A9BF /* SecondNavigation.swift in Sources */,
 				6DDB401F1F34CAB30018E7AF /* LoginViewController.swift in Sources */,
 				6D29ACCB1F34261500A17621 /* MainViewController.swift in Sources */,
@@ -698,6 +697,7 @@
 				6D6228571F34C658000CE328 /* CustomNavigationBar.swift in Sources */,
 				6DF853601F46E8A900C76D83 /* GusetViewCell.swift in Sources */,
 				6DF4A4BA1F3702B900869C38 /* LoginTask.swift in Sources */,
+				9D2373861FF496B60033C091 /* UpdateStatusMessage.swift in Sources */,
 				6DF111541FA33D0500F065BD /* SendImageSeatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

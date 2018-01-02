@@ -26,30 +26,27 @@ class MessageViewCell: UITableViewCell {
     func binData(guest: Guest) {
         nameGuest.text = guest.nameGuest
         avatar.sd_setImage(with: URL(string: guest.avatar))
-        let getNewestMessage = GetMessageWithGuest(idGuest: guest.idGuest, page: 1, limit: 10)
+        let getNewestMessage = GetMessageWithGuest(idGuest: guest.idGuest, page: 1, limit: 9)
         getNewestMessage.request(blockSucess: { (data) in
             var numberNewMessage = 0
-            guard let arr = data as? [Message] else {
+            guard let arr = data as? [Message], arr.count > 0 else {
                 return
             }
             for message in arr where !message.isMyMessage() && !message.isReades() {
                 numberNewMessage += 1
             }
-            if arr.first != nil {
-                let newest = arr[0]
-                self.message.text = newest.getMessage()
-                let timeDate = newest.getTime().components(separatedBy: "T")[0]
-                let month: Int = Int((timeDate.components(separatedBy: "-")[1]))!
-                let date: Int = Int((timeDate.components(separatedBy: "-")[2]))!
-                let timeString: String = String(month) + "/" + String(date)
-                self.time.text = timeString
-                self.numberMessage.isHidden = false
-                self.numberMessage.text = numberNewMessage.description
-                if numberNewMessage > 0 {
-                    self.numberMessageView.isHidden = false
-                } else {
-                    self.numberMessageView.isHidden = true
-                }
+            let newest = arr.first
+            self.message.text = newest?.getMessage()
+            if let date = Date.convertToDateWith(timeInt: (newest?.getTime())!, withFormat: "yyyy-MM-dd'T'HH-mm-ss") {
+                let time = Date.convert(date: date, toString: "MM/dd HH:mm")
+                self.time.text = time
+            }
+            self.numberMessage.isHidden = false
+            self.numberMessage.text = numberNewMessage.description
+            if numberNewMessage > 0 {
+                self.numberMessageView.isHidden = false
+            } else {
+                self.numberMessageView.isHidden = true
             }
         }) { (_) in
 

@@ -174,7 +174,7 @@ class MainViewController: BaseViewController {
         case "FACTORY_DOC_TABLE_UPLOAD", "FACTORY_DOC_WEDSTEP_UPLOAD", "MEMBER_DOC_OPEN_1", "MEMBER_DOC_OPEN_2", "MEMBER_DOC_OPEN_3", "MEMBER_DOC_TOFAC_4", "MEMBER_DOC_TOFAC_5":
             Constants.shared.newSeat += 1
         default:
-            break
+            processNumberNotification()
         }
         self.setupNotification()
     }

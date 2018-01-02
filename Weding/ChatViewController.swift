@@ -19,13 +19,14 @@ class ChatViewController: BaseViewController {
     var hightConstant: CGFloat!
 
     var guest: Guest?
-    var filePathAvatar: URL?
+    var filePathAvatar = URL(string: "ad")
     var arr = [Message]()
     var pager = 1
     var isloading = false
     var isMoreData = true
     var isScrollTop = false
     var isFirstGotoView = true
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class ChatViewController: BaseViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "recivePush"), object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(reGetMessage), userInfo: nil, repeats: true)
     }
     
     @objc func popNavigation() {
@@ -45,7 +47,9 @@ class ChatViewController: BaseViewController {
     }
     
     func setUpReplyMessageView() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         replyTextView.delegate = self
     }
     
@@ -57,7 +61,19 @@ class ChatViewController: BaseViewController {
                 self.getMessage()
             }
         }) { (_) in
-            
+             self.getMessage()
+        }
+    }
+    
+    @objc func reGetMessage() {
+        let task = GetMessageWithGuest(idGuest: (guest?.idGuest)!, page: 1, limit: arr.count)
+        requestWithTask(task: task) { (listMessage) in
+            guard let listMessage = listMessage as? [Message] else {
+                return
+            }
+            self.arr.removeAll()
+            self.arr.append(contentsOf: listMessage.reversed())
+            self.table.reloadData()
         }
     }
     
@@ -136,6 +152,8 @@ class ChatViewController: BaseViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        timer?.invalidate()
+        timer = nil
     }
 }
 
@@ -150,11 +168,24 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
         let message = arr[indexPath.row]
         if message.isMyMessage() {
             myCell?.binData(myMessage: message)
+            if indexPath.row == arr.count - 1 {
+                myCell?.status.isHidden = false
+                if message.isReades() {
+                    myCell?.status.text = "seen"
+                } else {
+                    myCell?.status.text = "sent"
+                }
+            } else {
+                 myCell?.status.isHidden = true
+            }
             return myCell!
         } else {
             guestCell?.binData(guestMessage: message)
-            let data = try? Data(contentsOf: filePathAvatar!)
-            guestCell?.avatar.image = UIImage(data: data!)
+            if let data = try? Data(contentsOf: filePathAvatar!) {
+                guestCell?.avatar.image = UIImage(data: data)
+            } else {
+                guestCell?.avatar.backgroundColor = UIColor.green
+            }
             return guestCell!
         }
     }
@@ -173,31 +204,36 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
         }
     }
     
-    @objc func keyboardNotification(notification: NSNotification) {
-        if let userInfo = notification.userInfo {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
-            let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
-            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
-                self.navigationItem.leftBarButtonItem?.isEnabled = true
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-                constraintBotView.constant = 0.0
-                constraintBotTextView.constant = 0.0
-            } else {
-                tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-                view.addGestureRecognizer(tap!)
-                self.navigationItem.leftBarButtonItem?.isEnabled = false
-                self.navigationItem.rightBarButtonItem?.isEnabled = false
-                constraintBotView.constant = (endFrame?.size.height)!
-                constraintBotTextView.constant = (endFrame?.size.height)!
-            }
-            UIView.animate(withDuration: duration,
-                           delay: TimeInterval(0),
-                           options: animationCurve,
-                           animations: { self.view.layoutIfNeeded() },
-                           completion: nil)
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        let task = UpdateStatusMessage(guestID: (guest?.idGuest)!)
+        requestWithTask(task: task) { (_) in
+            
+        }
+        return true
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap!)
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            constraintBotView.constant = keyboardRectangle.height
+            constraintBotTextView.constant = keyboardRectangle.height
+        }
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        self.navigationItem.leftBarButtonItem?.isEnabled = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        constraintBotView.constant = 0.0
+        constraintBotTextView.constant = 0.0
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
         }
     }
 }

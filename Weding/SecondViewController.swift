@@ -46,10 +46,8 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         replyView.isHidden = true
         replyMessageText.isHidden = true
         replyLine.isHidden = true
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardNotification(notification1:)),
-                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
-                                               object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         replyMessageText.delegate = self
     }
     
@@ -85,7 +83,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
-        let task = ConfirmReadedMessageTask(idGuest: arrGuest[indexPath.row].idGuest)
+        let task = UpdateStatusMessage(guestID: arrGuest[indexPath.row].idGuest)
         requestWithTask(task: task) { (_) in
             
         }
@@ -120,37 +118,35 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         NotificationCenter.default.removeObserver(self)
     }
     
-    @objc func keyboardNotification(notification1: NSNotification) {
-        if let userInfo = notification1.userInfo {
-            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
-            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
-            let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
-            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
-                self.navigationItem.leftBarButtonItem?.isEnabled = true
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-                replyView.isHidden = true
-                replyMessageText.isHidden = true
-                replyLine.isHidden = true
-                contrainsReplayView.constant = 0.0
-                contraintTextMessage.constant = 0.0
-            } else {
-                self.navigationItem.leftBarButtonItem?.isEnabled = false
-                self.navigationItem.rightBarButtonItem?.isEnabled = false
-                replyView.isHidden = false
-                replyMessageText.isHidden = false
-                replyLine.isHidden = false
-                tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-                view.addGestureRecognizer(tap!)
-                contrainsReplayView.constant = (endFrame?.size.height)!
-                contraintTextMessage.constant = (endFrame?.size.height)!
-            }
-            UIView.animate(withDuration: duration,
-                           delay: TimeInterval(0),
-                           options: animationCurve,
-                           animations: { self.view.layoutIfNeeded() },
-                           completion: nil)
+    @objc func keyboardWillShow(_ notification: Notification) {
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        replyView.isHidden = false
+        replyMessageText.isHidden = false
+        replyLine.isHidden = false
+        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap!)
+       
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            contrainsReplayView.constant = keyboardRectangle.height
+            contraintTextMessage.constant = keyboardRectangle.height
+        }
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        self.navigationItem.leftBarButtonItem?.isEnabled = true
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        replyView.isHidden = true
+        replyMessageText.isHidden = true
+        replyLine.isHidden = true
+        contrainsReplayView.constant = 0.0
+        contraintTextMessage.constant = 0.0
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
         }
     }
 }
