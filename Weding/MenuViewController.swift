@@ -9,7 +9,7 @@
 import UIKit
 import SWRevealViewController
 
-class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, SWRevealViewControllerDelegate {
+class MenuViewController: BaseViewController, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var table: UITableView!
     var arrayRow = ["檢視邀約平台", "分享邀約平台", "賓客規劃表", "發送即時訊息", "婚禮管家", "桌位圖表發佈賓客"]
@@ -27,16 +27,6 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         table.reloadData()
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayRow.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as? MenuViewCell
-        cell?.binData(name: arrayRow[indexPath.row], index: indexPath.row)
-        return cell!
-    }
-    
     func openWebDetail() {
         UIApplication.shared.openURL(URL(string: Account.getAccount().memberURL)!)
         swVC?.revealToggle(animated: false)
@@ -56,6 +46,30 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         let task = UpdateNumberNotice(type: 2)
         task.request(blockSucess: { (_) in}) { (_) in}
         return
+    }
+    
+    func showSecondView() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
+        let navigationVC: UINavigationController = UINavigationController.init(rootViewController: vc!)
+        swVC?.pushFrontViewController(navigationVC, animated: true)
+    }
+    
+    @IBAction func pressHome(_ sender: Any) {
+        let navigationVC = swVC?.frontViewController as? UINavigationController
+        navigationVC?.popToRootViewController(animated: false)
+        swVC?.pushFrontViewController(navigationVC, animated: true)
+    }
+}
+
+extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayRow.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = table.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as? MenuViewCell
+        cell?.binData(name: arrayRow[indexPath.row], index: indexPath.row)
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -97,18 +111,4 @@ class MenuViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         navigationVC?.pushViewController(vc!, animated: false)
         swVC?.pushFrontViewController(navigationVC, animated: true)
     }
-    
-    func showSecondView() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
-        let navigationVC: UINavigationController = UINavigationController.init(rootViewController: vc!)
-        swVC?.pushFrontViewController(navigationVC, animated: true)
-    }
-    
-//    @objc func requestToServer(notification: Notification) {
-//        let request = LoginTask(name: Account.getAccount().name, pass: Account.getAccount().pass)
-//        requestWithTask(task: request) { (_) in
-//            self.processNumberNotification()
-//            self.table.reloadData()
-//        }
-//    }
 }

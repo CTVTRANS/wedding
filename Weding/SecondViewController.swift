@@ -10,6 +10,7 @@ import UIKit
 
 class SecondViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
 
+    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var hightOfTextView: NSLayoutConstraint!
     @IBOutlet weak var contrainsReplayView: NSLayoutConstraint!
@@ -18,7 +19,6 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var replyMessageText: UITextView!
     @IBOutlet weak var replyLine: UILabel!
     
-    var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
     var arrGuest: [Guest] = []
 
@@ -30,6 +30,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         setUpReplyMessageView()
         table.estimatedRowHeight = 140
         getListGuest()
+        blurView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,11 +62,6 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             }
         }
     }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        view.removeGestureRecognizer(tap!)
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrGuest.count
@@ -93,6 +89,9 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
+    @IBAction func pressBlur(_ sender: Any) {
+        view.endEditing(true)
+    }
     @IBAction func sendMeesage(_ sender: Any) {
         let message: String = replyMessageText.text
         if message == "" {
@@ -100,7 +99,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             return
         }
         self.replyMessageText.text = ""
-        let sendMessageTask: SendMessageTask = SendMessageTask(name: "All", contentMessage: message)
+        let sendMessageTask: SendMessageTask = SendMessageTask(idGuest: "All", contentMessage: message)
         requestWithTask(task: sendMessageTask) { (data) in
             print(data!)
             self.replyMessageText.resignFirstResponder()
@@ -119,13 +118,12 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
+        blurView.isHidden = false
         self.navigationItem.leftBarButtonItem?.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         replyView.isHidden = false
         replyMessageText.isHidden = false
         replyLine.isHidden = false
-        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap!)
        
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -138,6 +136,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
+        blurView.isHidden = true
         self.navigationItem.leftBarButtonItem?.isEnabled = true
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         replyView.isHidden = true

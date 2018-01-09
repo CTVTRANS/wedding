@@ -11,11 +11,11 @@ import LCNetwork
 
 class SendMessageTask: BaseTaskNetwork {
     
-    let guestName: String!
+    let guestID: String!
     let content: String!
     
-    init(name: String, contentMessage: String) {
-        self.guestName = name
+    init(idGuest: String, contentMessage: String) {
+        self.guestID = idGuest
         self.content = contentMessage
     }
     
@@ -28,7 +28,7 @@ class SendMessageTask: BaseTaskNetwork {
     }
     
     override func parameters() -> [AnyHashable: Any]! {
-        return ["todo": "MemberAddMessageToGuest", "GuestList": guestName, "msg": content]
+        return ["todo": "MemberAddMessageToGuest", "GuestList": guestID, "msg": content]
     }
     
     override func data(withResponse response: Any!) -> Any! {

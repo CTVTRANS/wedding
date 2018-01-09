@@ -10,12 +10,13 @@ import UIKit
 
 class ChatViewController: BaseViewController {
     
+    @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var constraintBotTextView: NSLayoutConstraint!
     @IBOutlet weak var replyTextView: UITextView!
     @IBOutlet weak var constraintBotView: NSLayoutConstraint!
     @IBOutlet weak var moreButotn: UIButton!
-    var tap: UITapGestureRecognizer?
+//    var tap: UITapGestureRecognizer?
     var hightConstant: CGFloat!
 
     var guest: Guest?
@@ -40,6 +41,7 @@ class ChatViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "recivePush"), object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
         timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(reGetMessage), userInfo: nil, repeats: true)
+        blurView.isHidden = true
     }
     
     @objc func popNavigation() {
@@ -127,11 +129,6 @@ class ChatViewController: BaseViewController {
             }
 //        }
     }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        view.removeGestureRecognizer(tap!)
-    }
 
     @IBAction func pressedReplyButton(_ sender: Any) {
         let message: String = replyTextView.text
@@ -140,10 +137,13 @@ class ChatViewController: BaseViewController {
         }
         isScrollTop = false
         self.replyTextView.text = ""
-        let sendMessageTask: SendMessageTask = SendMessageTask(name: (guest?.nameGuest)!, contentMessage: message)
+        let sendMessageTask: SendMessageTask = SendMessageTask(idGuest: (guest?.idGuest)!, contentMessage: message)
         requestWithTask(task: sendMessageTask) { (_) in
             self.getNewMessage()
         }
+    }
+    @IBAction func pressBlurView(_ sender: Any) {
+         view.endEditing(true)
     }
     
     @IBAction func pressedBack(_ sender: Any) {
@@ -170,13 +170,15 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
             myCell?.binData(myMessage: message)
             if indexPath.row == arr.count - 1 {
                 myCell?.status.isHidden = false
+                myCell?.heightOfStatus.constant = 14.5
                 if message.isReades() {
                     myCell?.status.text = "seen"
                 } else {
                     myCell?.status.text = "sent"
                 }
             } else {
-                 myCell?.status.isHidden = true
+                myCell?.status.isHidden = true
+                myCell?.heightOfStatus.constant = 0
             }
             return myCell!
         } else {
@@ -213,8 +215,9 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap!)
+        blurView.isHidden = false
+//        tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+//        view.addGestureRecognizer(tap!)
         self.navigationItem.leftBarButtonItem?.isEnabled = false
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
@@ -228,6 +231,7 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
+        blurView.isHidden = true
         self.navigationItem.leftBarButtonItem?.isEnabled = true
         self.navigationItem.rightBarButtonItem?.isEnabled = true
         constraintBotView.constant = 0.0
