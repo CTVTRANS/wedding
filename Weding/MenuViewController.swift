@@ -12,7 +12,7 @@ import SWRevealViewController
 class MenuViewController: BaseViewController, SWRevealViewControllerDelegate {
 
     @IBOutlet weak var table: UITableView!
-    var arrayRow = ["檢視邀約平台", "分享邀約平台", "賓客規劃表", "發送即時訊息", "婚禮管家", "桌位圖表發佈賓客"]
+    var arrayRow = ["檢視邀約平台", "賓客規劃表", "分享邀約平台", "發送即時訊息", "桌位圖表發佈賓客", "婚禮管家"]
 
     let notificationName = Notification.Name("refreshNotification")
     
@@ -76,21 +76,21 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         let row = indexPath.row
         table.deselectRow(at: indexPath, animated: false)
         let navigationVC = swVC?.frontViewController as? UINavigationController
-        var vc: UIViewController? = nil
+        var vc: BaseViewController? = nil
         switch row {
         case 0:
             openWebDetail()
             return
         case 1:
-            swVC?.revealToggle(animated: true)
-            shareApp()
-            return
-        case 2:
             if navigationVC?.topViewController is ExcelController {
                 swVC?.revealToggle(animated: true)
                 return
             }
             vc = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as? ExcelController
+        case 2:
+            swVC?.revealToggle(animated: true)
+            shareApp()
+            return
         case 3:
             if navigationVC?.topViewController is SecondViewController {
                 swVC?.revealToggle(animated: true)
@@ -100,11 +100,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             Constants.shared.newMessage = 0
             vc = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
         case 4:
-            openWebLogined()
-            return
-        case 5:
             swVC?.revealToggle(animated: true)
             vc = storyboard?.instantiateViewController(withIdentifier: "SendImageSeatViewController") as? SendImageSeatViewController
+        case 5:
+            openWebLogined()
+            return
         default:
             break
         }

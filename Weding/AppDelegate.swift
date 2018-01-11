@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let notificationName = Notification.Name("recivePush")
-        NotificationCenter.default.post(name: notificationName, object: nil)
         debugPrint(userInfo)
         if let messagetype = userInfo["MESSAGE_TYPE"] as? String {
             debugPrint(messagetype)

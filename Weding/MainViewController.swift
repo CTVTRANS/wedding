@@ -102,11 +102,7 @@ class MainViewController: BaseViewController {
         isNewGuest = false
         Constants.shared.newGuest = 0
         let task = UpdateNumberNotice(type: 3)
-        task.request(blockSucess: { (_) in
-            
-        }) { (_) in
-            
-        }
+        task.request(blockSucess: { (_) in }) { (_) in }
     }
     
     @IBAction func sharePressed(_ sender: Any) {
@@ -114,17 +110,17 @@ class MainViewController: BaseViewController {
     }
     
     @IBAction func downloadMemberList(_ sender: Any) {
-        let excelVC = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as? ExcelController
-        let navigationController: UINavigationController = UINavigationController.init(rootViewController: excelVC!)
-        swVC?.pushFrontViewController(navigationController, animated: true)
+        if let excelVC = self.storyboard?.instantiateViewController(withIdentifier: "ExcelController") as? ExcelController {
+            navigationController?.pushViewController(excelVC, animated: false)
+        }
     }
    
     @IBAction func openSecondView(_ sender: Any) {
         self.isNewMessage = false
         Constants.shared.newMessage = 0
-        let secondVC = self.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController
-        let navigationController: UINavigationController = UINavigationController.init(rootViewController: secondVC!)
-        swVC?.pushFrontViewController(navigationController, animated: true)
+        if let secondVC = storyboard?.instantiateViewController(withIdentifier: "SecondView") as? SecondViewController {
+            navigationController?.pushViewController(secondVC, animated: false)
+        }
     }
     
     @IBAction func openWedForLogined(_ sender: Any) {
@@ -138,8 +134,7 @@ class MainViewController: BaseViewController {
     
     @IBAction func sendImageOfSeatPosition(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "SendImageSeatViewController") as? SendImageSeatViewController {
-            let navigationController: UINavigationController = UINavigationController.init(rootViewController: vc)
-            swVC?.pushFrontViewController(navigationController, animated: true)
+            navigationController?.pushViewController(vc, animated: false)
         }
     }
     
