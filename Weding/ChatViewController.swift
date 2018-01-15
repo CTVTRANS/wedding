@@ -40,11 +40,13 @@ class ChatViewController: BaseViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(requestToServer(notification:)), name: NSNotification.Name(rawValue: "recivePush"), object: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(popNavigation))
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(reGetMessage), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 120, target: self, selector: #selector(reGetMessage), userInfo: nil, repeats: true)
         blurView.isHidden = true
     }
     
     @objc func popNavigation() {
+        timer?.invalidate()
+        timer = nil
         navigationController?.popViewController(animated: false)
     }
     
@@ -152,8 +154,6 @@ class ChatViewController: BaseViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-        timer?.invalidate()
-        timer = nil
     }
 }
 
@@ -168,18 +168,6 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate, UIText
         let message = arr[indexPath.row]
         if message.isMyMessage() {
             myCell?.binData(myMessage: message)
-            if indexPath.row == arr.count - 1 {
-                myCell?.status.isHidden = false
-                myCell?.heightOfStatus.constant = 14.5
-                if message.isReades() {
-                    myCell?.status.text = "seen"
-                } else {
-                    myCell?.status.text = "sent"
-                }
-            } else {
-                myCell?.status.isHidden = true
-                myCell?.heightOfStatus.constant = 0
-            }
             return myCell!
         } else {
             guestCell?.binData(guestMessage: message)

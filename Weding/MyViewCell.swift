@@ -27,6 +27,11 @@ class MyViewCell: UITableViewCell {
         let date = Date.convertToDateWith(timeInt: myMessage.getTime(), withFormat: "yyyy-MM-dd'T'HH-mm-ss")
         let time = Date.convert(date: date!, toString: "MM/dd HH:mm")
         self.time.text = time
+        if myMessage.isReades() {
+            status.text = "已讀"
+        } else {
+            status.text = "未讀"
+        }
     }
 
 }

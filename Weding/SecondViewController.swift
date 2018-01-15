@@ -99,7 +99,7 @@ class SecondViewController: BaseViewController, UITableViewDelegate, UITableView
             return
         }
         self.replyMessageText.text = ""
-        let sendMessageTask: SendMessageTask = SendMessageTask(idGuest: "All", contentMessage: message)
+        let sendMessageTask: SendMessageTask = SendMessageTask(idGuest: "[ALL]", contentMessage: message)
         requestWithTask(task: sendMessageTask) { (data) in
             print(data!)
             self.replyMessageText.resignFirstResponder()
